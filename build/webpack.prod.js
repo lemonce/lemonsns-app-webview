@@ -6,6 +6,7 @@ const webpack = require('webpack');
 const config = require('../config');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
@@ -24,7 +25,8 @@ const webpackConfig = merge(baseWebpackConfig, {
 	devtool: config.build.productionSourceMap ? config.build.devtool : false,
 	output: {
 		path: config.build.assetsRoot,
-		filename: utils.assetsPath('js/[name].[hash].js'),
+		filename: utils.assetsPath('js/[name].[chunkhash].js'),
+		chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
 	},
 	plugins: [
 		new webpack.DefinePlugin({
@@ -41,17 +43,17 @@ const webpackConfig = merge(baseWebpackConfig, {
 		}),
 		new ExtractTextPlugin({
 			filename: utils.assetsPath('css/[name].[contenthash].css'),
-			// allChunks: true,
+			allChunks: true,
 		}),
 		new OptimizeCSSPlugin({
-			cssProcessorOptions: config.build.productionSourceMap ?
-				{
+			cssProcessorOptions: config.build.productionSourceMap
+				? {
 					safe: true,
 					map: {
 						inline: false
 					}
-				} :
-				{
+				}
+				: {
 					safe: true
 				}
 		}),
@@ -64,35 +66,13 @@ const webpackConfig = merge(baseWebpackConfig, {
 				collapseWhitespace: true,
 				removeAttributeQuotes: true
 			},
-			// necessary to consistently work with multiple chunks via CommonsChunkPlugin
-			// chunksSortMode: 'dependency'
+			chunksSortMode: 'dependency'
 		}),
-		new webpack.HashedModuleIdsPlugin(),
-		new webpack.optimize.ModuleConcatenationPlugin(),
-		// new webpack.optimize.CommonsChunkPlugin({
-		// 	name: 'vendor',
-		// 	minChunks(module) {
-		// 		// any required modules inside node_modules are extracted to vendor
-		// 		return (
-		// 			module.resource &&
-		// 			/\.js$/.test(module.resource) &&
-		// 			module.resource.indexOf(
-		// 				path.join(__dirname, '../node_modules')
-		// 			) === 0
-		// 		)
-		// 	}
-		// }),
-		// new webpack.optimize.CommonsChunkPlugin({
-		// 	name: 'manifest',
-		// 	minChunks: Infinity
-		// }),
-		// new webpack.optimize.CommonsChunkPlugin({
-		// 	name: 'app',
-		// 	async: 'vendor-async',
-		// 	children: true,
-		// 	minChunks: 3
-		// }),
-
+		// new CopyWebpackPlugin([{
+		// 	from: path.resolve(__dirname, '../static'),
+		// 	to: config.build.assetsSubDirectory,
+		// 	ignore: ['.*']
+		// }])
 	]
 });
 

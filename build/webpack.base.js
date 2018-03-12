@@ -1,31 +1,28 @@
 'use strict';
-
 const path = require('path');
 const utils = require('./utils');
-const config = require('../config');
-const vueLoaderConfig = require('./vue-loader.conf');
-
-function resolve (dir) {
-	return path.join(__dirname, '..', dir);
-}
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-	context: path.resolve(__dirname, '../'),
 	entry: {
-		app: './src/main.js'
+		app: [
+			'framework7/dist/css/framework7.min.css',
+			path.resolve(__dirname, '../src/main.js')
+		]
 	},
 	output: {
-		path: config.build.assetsRoot,
-		filename: '[name].js',
-		publicPath: process.env.NODE_ENV === 'production'
-			? config.build.assetsPublicPath
-			: config.dev.assetsPublicPath
+		path: path.resolve(__dirname, '../static'),
+		filename: '[name].js'
 	},
 	resolve: {
 		extensions: ['.js', '.vue', '.json'],
 		alias: {
-			'vue$': 'vue/dist/vue.esm.js',
-			'@': resolve('src')
+			'vue$': 'vue/dist/vue.runtime.min.js',
+			'framework7$': 'framework7/dist/js/framework7.min.js',
+			'framework7-vue$': 'framework7-vue/dist/framework7-vue.min.js',
+			'template7$': 'template7/dist/template7.min.js',
+			'dom7$': 'dom7/dist/dom7.min.js',
+			'@': path.resolve(__dirname, '../src')
 		}
 	},
 	module: {
@@ -33,20 +30,19 @@ module.exports = {
 			{
 				test: /\.vue$/,
 				loader: 'vue-loader',
-				options: vueLoaderConfig
 			},
 			{
 				test: /\.js$/,
 				loader: 'babel-loader',
-				include: [
-					resolve('src'),
-					resolve('test'),
-					resolve('node_modules/webpack-dev-server/client'),
-					resolve('node_modules/framework7'),
-					resolve('node_modules/framework-vue'),
-					resolve('node_modules/template7'),
-					resolve('node_modules/dom7'),
-				]
+				exclude: /node_modules/
+			},
+			{
+				test: /\.css$/,
+				loader: ExtractTextPlugin.extract(['css-loader'])
+			},
+			{
+				test: /\.less$/,
+				loader: ExtractTextPlugin.extract(['css-loader', 'less-loader'])
 			},
 			{
 				test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -73,5 +69,9 @@ module.exports = {
 				}
 			},
 		]
-	}
+	},
+	plugins: [
+		new ExtractTextPlugin('style.css')
+	],
+	node: false
 }

@@ -1,27 +1,25 @@
-import Vue from 'vue';
-import Framework7 from 'framework7/dist/framework7.esm.bundle.js';
-import Framework7Vue from 'framework7-vue/dist/framework7-vue.esm.bundle.js';
-import Framework7Styles from 'framework7/dist/css/framework7.css';
+'use strict';
 
-// import IconsStyles from './css/icons.css';
-// import AppStyles from './css/app.css';
+import Vue from 'vue';
+import Framework7 from 'framework7';
+import Framework7Vue from 'framework7-vue';
+
+Vue.use(Framework7Vue, Framework7);
+
+import './css/icons.css';
+import './css/app.less';
 
 import Routes from './routes.js';
 
-import App from './app';
+import App from './app.vue';
 
-Vue.use(Framework7, Framework7Vue);
-
-new Vue({
-	el: '#app',
-	template: '<app/>',
+const $app = new Vue(Object.assign({
 	framework7: {
 		id: 'app-webview',
 		name: 'app-webview',
 		theme: 'auto',
 		routes: Routes
-	},
-	components: {
-		app: App
 	}
-});
+}, App));
+
+$app.$mount('#app');
