@@ -2,8 +2,17 @@
 	<div id="app">
 		<f7-statusbar></f7-statusbar>
 
-		<f7-view id="home" url="/" main></f7-view>
+		<f7-view url="/home" main></f7-view>
 
-
+		<login></login>
 	</div>
 </template>
+
+<script>
+import Login from './pages/account/login.vue';
+
+export default {
+	name: 'app',
+	components: { Login }
+}
+</script>

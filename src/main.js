@@ -18,6 +18,7 @@ const $app = new Vue(Object.assign({
 		id: 'app-webview',
 		name: 'app-webview',
 		theme: 'auto',
+		material: true,
 		routes: Routes
 	}
 }, App));
