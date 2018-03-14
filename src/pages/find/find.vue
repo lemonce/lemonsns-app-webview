@@ -1,15 +1,8 @@
 <template>
 
-<f7-page name="find">
-	<common-navbar title="Find">
-		<f7-link slot="left" href="/find">
-			<f7-icon if-ios="f7:bell" if-md="material:notifications_none"></f7-icon>
-		</f7-link>
-		<f7-link slot="right">
-			<f7-icon material="crop_free"></f7-icon>
-		</f7-link>
-	</common-navbar>
-
+<!-- <f7-page name="find">
+	<common-navbar title="Find"></common-navbar> -->
+<div>
 	<f7-list class="margin-vertical">
 		<f7-list-item
 			link=""
@@ -51,9 +44,9 @@
 			title="Delivery"></f7-list-item>
 	</f7-list>
 
-	<common-tabbar></common-tabbar>
-</f7-page>
-
+	<!-- <common-tabbar></common-tabbar>
+</f7-page> -->
+</div>
 </template>
 
 <script>

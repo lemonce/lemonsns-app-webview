@@ -3,7 +3,13 @@
 <f7-login-screen id="login-screen">
 	<f7-view>
 		<f7-page login-screen>
+			<f7-row>
+				<f7-col style="margin-top:5rem">
+					<img src="../../../build/logo.png" alt="logo">
+				</f7-col>
+			</f7-row>
 			<f7-login-screen-title>Login</f7-login-screen-title>
+
 			<f7-list form>
 				<f7-list-item>
 					<f7-label>Mobile</f7-label>
@@ -15,7 +21,7 @@
 				</f7-list-item>
 			</f7-list>
 			<f7-list>
-				<f7-list-button title="Sign In" href="/personal"></f7-list-button>
+				<f7-list-button title="Sign In" href="/index"></f7-list-button>
 				<f7-block-footer>
 				<p>Click Sign In to close Login Screen</p>
 				</f7-block-footer>
@@ -25,3 +31,14 @@
 </f7-login-screen>
 		
 </template>
+
+<style lang="less">
+#login-screen {
+	div.col {
+		text-align: center;
+	}
+	img {
+		width: 100px;
+	}
+}
+</style>

@@ -1,19 +1,13 @@
 <template>
 
-<f7-page name="personal">
-	<common-navbar title="Personal">
-		<f7-link slot="left" href="/personal">
-			<f7-icon if-ios="f7:bell" if-md="material:notifications_none"></f7-icon>
-		</f7-link>
-		<f7-link slot="right">
-			<f7-icon material="crop_free"></f7-icon>
-		</f7-link>
-	</common-navbar>
+<f7-page name="personal" id="personal-page">
+	<common-navbar title="Personal"></common-navbar>
+<!-- <div> -->
+
 
 	<f7-list media-list class="no-margin-top no-margin-bottom">
 		<f7-list-item
 			link=""
-			media="xx.jpg"
 			title="Name"
 			subtitle="Company"></f7-list-item>
 
@@ -53,7 +47,7 @@
 
 	<common-tabbar></common-tabbar>
 </f7-page>
-
+<!-- </div> -->
 </template>
 
 <script>
@@ -67,10 +61,13 @@ export default {
 </script>
 
 <style lang="less">
-div[class*="col"] {
-	text-align: center;
-	background: #fff;
-	border: 1px solid #ddd;
-	padding: .5rem;
+#personal-page {
+	div.col {
+		text-align: center;
+		background: #fff;
+		border: 1px solid #ddd;
+		padding: .5rem;
+	}
 }
+
 </style>
