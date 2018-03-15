@@ -1,7 +1,7 @@
 <template>
 
 <!-- <f7-pages> -->
-	<f7-page toolbar-fixed navbar-fixed>
+	<f7-page toolbar-fixed navbar-fixed name="index">
 		<f7-navbar>
 			<f7-nav-left>
 				<f7-link href="/message">
@@ -16,47 +16,50 @@
 			</f7-nav-right>
 		</f7-navbar>
 
-		<f7-view url="/home"></f7-view>
-
-		<f7-toolbar tabbar labels> 
+		<f7-toolbar tabbar labels bottom-md> 
 			<f7-link active
-				href="/home"
 				text="Home"
-				tab-link="#home"
-				icon-f7="home"></f7-link>
+				tab-link
+				tab-link-active
+				href="#home"
+				icon-f7="home"
+			></f7-link>
 			<f7-link
-				href="/message"
 				text="Messages"
-				tab-link="#message"
-				icon-f7="email"></f7-link>
+				tab-link
+				href="#message"
+				icon-f7="email"
+			></f7-link>
 			<f7-link
-				href="/find"
 				text="Find"
-				tab-link="#find"
-				icon-f7="compass"></f7-link>
+				tab-link
+				href="#find"
+				icon-f7="compass"
+			></f7-link>
 			<f7-link
-				href="/personal"
 				text="Personal"
-				tab-link="#personal"
-				icon-f7="person"></f7-link>
+				tab-link
+				href="#personal"
+				icon-f7="person"
+			></f7-link>
 		</f7-toolbar>
 
 		<f7-tabs>
 			<f7-tab id="home" tab-active
 				@tab:show="tabActived('home')">
-				<!-- <home-view></home-view> -->
+				<home></home>
 			</f7-tab>
 			<f7-tab id="message"
 				@tab:show="tabActived('message')">
-				<!-- <message-view></message-view> -->
+				<message></message>
 			</f7-tab>
 			<f7-tab id="find"
 				@tab:show="tabActived('find')">
-				<!-- <find-view></find-view> -->
+				<find></find>
 			</f7-tab>
 			<f7-tab id="personal"
 				@tab:show="tabActived('personal')">
-				<!-- <personal-view></personal-view>	 -->
+				<personal></personal>	
 			</f7-tab>
 		</f7-tabs>
 	</f7-page>
@@ -65,44 +68,38 @@
 </template>
 
 <script>
-// import HomeView from './home/home.vue';
-// import MessageView from './message/message.vue';
-// import FindView from './find/find.vue';
-// import PersonalView from './personal/personal.vue';
+import Home from './home/home.vue';
+import Message from './message/message.vue';
+import Find from './find/find.vue';
+import Personal from './personal/personal.vue';
 
 export default {
 	name: 'index',
-	// components: {
-	// 	HomeView,
-	// 	MessageView,
-	// 	FindView,
-	// 	PersonalView
-	// },
+	components: {
+		Home,
+		Message,
+		Find,
+		Personal
+	},
 	data() {
 		return {
 			activedTab: 'home',
+			tabList: {
+				'home': 'My App',
+				'message': 'Messages',
+				'find': 'Find',
+				'personal': 'Personal'
+			}
 		}
 	},
 	computed: {
 		navTitle() {
-			if (this.activedTab === 'home') {
-				return 'My App';
-			}
-			if (this.activedTab === 'message') {
-				return 'Messages';
-			}
-			if (this.activedTab === 'find') {
-				return 'Find';
-			}
-			if (this.activedTab === 'personal') {
-				return 'Personal';
-			}
+			return this.tabList[this.activedTab];
 		},
 	},
 	methods: {
 		tabActived(tab) {
 			this.activedTab = tab;
-			console.log(this.navTitle);
 		}
 	}
 }

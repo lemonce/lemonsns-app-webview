@@ -12,8 +12,8 @@
 
 			<f7-list form>
 				<f7-list-item>
-					<f7-label>Mobile</f7-label>
-					<f7-input name="mobile" placeholder="Your number" type="text"></f7-input>
+					<f7-label>Phone</f7-label>
+					<f7-input name="phone" placeholder="Your number" type="text"></f7-input>
 				</f7-list-item>
 				<f7-list-item>
 					<f7-label>Password</f7-label>
@@ -23,7 +23,7 @@
 			<f7-list>
 				<f7-list-button title="Sign In" href="/index"></f7-list-button>
 				<f7-block-footer>
-				<p>Click Sign In to close Login Screen</p>
+					Click <a href="/binding">Register</a> to have a new account.
 				</f7-block-footer>
 			</f7-list>
 		</f7-page>

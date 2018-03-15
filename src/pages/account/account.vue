@@ -18,14 +18,17 @@
 					login-screen-open="#login-screen">Account login</f7-button>
 			</f7-col>
 			<f7-col width="100">
-				<f7-button big>Register</f7-button>
+				<f7-button
+					big
+					tab-link
+					href="/binding">Register</f7-button>
 			</f7-col>
 		</f7-row>
 		
 	</f7-block>
 
 	<f7-block>
-		<hr>
+		<!-- <hr> -->
 
 	</f7-block>
 </f7-page>

@@ -1,0 +1,25 @@
+<template>
+
+<f7-page name="about">
+	<f7-navbar title="About" back-link></f7-navbar>
+
+	<f7-block>
+		<f7-row>
+			<f7-col style="text-align:center; margin-top:2.5rem">
+				<img src="../../../../build/logo.png" alt="logo" width="80">
+			</f7-col>
+		</f7-row>
+		<f7-block-footer style="text-align:center">App 1.0.0</f7-block-footer>
+	</f7-block>
+
+	<f7-list>
+		<f7-list-item
+			link="/introduction"
+			title="Functional introduction"></f7-list-item>
+		<f7-list-item
+			link="/feedback"
+			title="Feedback"></f7-list-item>
+	</f7-list>
+
+</f7-page>
+</template>

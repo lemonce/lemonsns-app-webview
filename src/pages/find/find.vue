@@ -1,7 +1,5 @@
 <template>
 
-<!-- <f7-page name="find">
-	<common-navbar title="Find"></common-navbar> -->
 <div>
 	<f7-list class="margin-vertical">
 		<f7-list-item
@@ -44,17 +42,5 @@
 			title="Delivery"></f7-list-item>
 	</f7-list>
 
-	<!-- <common-tabbar></common-tabbar>
-</f7-page> -->
 </div>
 </template>
-
-<script>
-import CommonTabbar from '../../golbal/tabbar.vue';
-import CommonNavbar from '../../golbal/navbar.vue';
-
-export default {
-	name: 'find',
-	components: { CommonTabbar, CommonNavbar }
-}
-</script>
