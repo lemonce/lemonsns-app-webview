@@ -12,15 +12,9 @@ const HOST = process.env.HOST;
 const PORT = process.env.PORT && Number(process.env.PORT);
 
 const devWebpackConfig = module.exports = merge(baseWebpackConfig, {
-
 	devtool: 'inline-source-map',
-
-	devServer: {
-		// hot: true
-	},
 	plugins: [
 		new webpack.DefinePlugin({
-			// 'process.env': require('../config/dev.env')
 			'process.env': '"development"'
 		}),
 		new HtmlWebpackPlugin({
