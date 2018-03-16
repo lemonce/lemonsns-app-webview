@@ -5,8 +5,13 @@ import Binding from './pages/account/binding.vue';
 import Info from './pages/account/info.vue';
 
 import Index from './pages/index.vue';
+import Article from './pages/global/article.vue';
+import Chanel from './pages/global/chanel.vue';
 
 import MessageContent from './pages/message/content.vue';
+
+import Circle from './pages/find/circle.vue';
+import See from './pages/find/see.vue';
 
 import PersonalInfo from './pages/personal/personal-info.vue';
 import Card from './pages/personal/card.vue';
@@ -30,6 +35,13 @@ import ModifyPassword from './pages/personal/setting/modify-password.vue';
 import About from './pages/personal/setting/about.vue';
 import Introduction from './pages/personal/setting/introduction.vue';
 
+import VoteIndex from './pages/vote/vote-index.vue';
+import Vote from './pages/vote/vote.vue';
+import Questionnaire from './pages/vote/questionnaire.vue';
+
+import Center from './pages/home/center.vue';
+import Knowledge from './pages/home/knowledge.vue';
+
 export default [
 	{
 		path: '/',
@@ -51,10 +63,27 @@ export default [
 		path: '/index',
 		component: Index
 	},
+	{
+		path: '/article',
+		component: Article
+	},
+	{
+		path: '/chanel',
+		component: Chanel
+	},
 
 	{
 		path: '/message-content',
 		component: MessageContent
+	},
+
+	{
+		path: '/circle',
+		component: Circle
+	},
+	{
+		path: '/see',
+		component: See
 	},
 
 	{
@@ -119,5 +148,27 @@ export default [
 	{
 		path: '/introduction',
 		component: Introduction
+	},
+
+	{
+		path: '/vote-index',
+		component: VoteIndex
+	},
+	{
+		path: '/vote',
+		component: Vote
+	},
+	{
+		path: '/questionnaire',
+		component: Questionnaire
+	},
+
+	{
+		path: '/center',
+		component: Center
+	},
+	{
+		path: '/knowledge',
+		component: Knowledge
 	},
 ]

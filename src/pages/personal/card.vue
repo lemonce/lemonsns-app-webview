@@ -3,7 +3,7 @@
 <f7-page name="card">
 	<f7-navbar title="Card" back-link></f7-navbar>
 
-	<f7-card class="demo-facebook-card">
+	<f7-card>
 		<f7-card-header>
 			<f7-list media-list>
 				<f7-list-item

@@ -1,10 +1,10 @@
 <template>
 
 <!-- <f7-pages> -->
-	<f7-page toolbar-fixed navbar-fixed name="index">
+	<f7-page toolbar-fixed navbar-fixed name="index" id="index">
 		<f7-navbar>
 			<f7-nav-left>
-				<f7-link href="/message">
+				<f7-link href="#message" tab-link>
 					<f7-icon if-ios="f7:bell" if-md="material:notifications_none"></f7-icon>
 				</f7-link>
 			</f7-nav-left>
@@ -104,3 +104,9 @@ export default {
 	}
 }
 </script>
+
+<style lang="less">
+// #app .view .navbar .title {
+// 	left: 0!important;
+// }
+</style>

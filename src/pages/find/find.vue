@@ -3,42 +3,42 @@
 <div>
 	<f7-list class="margin-vertical">
 		<f7-list-item
-			link=""
+			link="/circle"
 			title="Leader"
 			badge="1"
 			badge-color="red"></f7-list-item>
 		<f7-list-item
-			link=""
+			link="/circle"
 			title="Follow"></f7-list-item>
 	</f7-list>
 
 	<f7-list class="margin-vertical">
 		<f7-list-item
 			link=""
-			title="Scan"></f7-list-item>
+			title="QR Code"></f7-list-item>
 		<f7-list-item
-			link=""
+			link="/see"
 			title="See"></f7-list-item>
 	</f7-list>
 
 	<f7-list class="margin-vertical">
 		<f7-list-item
-			link=""
+			link="/center"
 			title="News"></f7-list-item>
 		<f7-list-item
-			link=""
-			title="Artical"></f7-list-item>
+			link="/center"
+			title="Art"></f7-list-item>
 		<f7-list-item
-			link=""
-			title="Actives"></f7-list-item>
+			link="/activity"
+			title="Activities"></f7-list-item>
 		<f7-list-item
-			link=""
-			title="Survey"></f7-list-item>
+			link="/center"
+			title="Personnel"></f7-list-item>
 		<f7-list-item
-			link=""
+			link="/center"
 			title="Study"></f7-list-item>
 		<f7-list-item
-			link=""
+			link="/center"
 			title="Delivery"></f7-list-item>
 	</f7-list>
 
