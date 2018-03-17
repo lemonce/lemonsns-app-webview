@@ -171,4 +171,4 @@ export default [
 		path: '/knowledge',
 		component: Knowledge
 	},
-]
+];

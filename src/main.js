@@ -6,7 +6,6 @@ import Framework7Vue from 'framework7-vue';
 
 Vue.use(Framework7Vue, Framework7);
 
-import 'framework7-icons/css/framework7-icons.css';
 import './css/app.less';
 
 import Routes from './routes.js';
