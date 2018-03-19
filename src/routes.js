@@ -5,8 +5,12 @@ import Binding from './pages/account/binding.vue';
 import Info from './pages/account/info.vue';
 
 import Index from './pages/index.vue';
+import Home from './pages/home/home.vue';
+import Message from './pages/message/message.vue';
+import Find from './pages/find/find.vue';
+import Personal from './pages/personal/personal.vue';
 import Article from './pages/global/article.vue';
-import Chanel from './pages/global/chanel.vue';
+import Channel from './pages/global/channel.vue';
 
 import MessageContent from './pages/message/content.vue';
 
@@ -59,17 +63,40 @@ export default [
 		path: '/info',
 		component: Info
 	},
+
 	{
-		path: '/index',
-		component: Index
+		path: '/index/',
+		component: Index,
+		tabs: [
+			{
+				path: '/',
+				id: 'home',
+				component: Home
+			},
+			{
+				path: '/message/',
+				id: 'message',
+				component: Message
+			},
+			{
+				path: '/find/',
+				id: 'find',
+				component: Find
+			},
+			{
+				path: '/personal/',
+				id: 'personal',
+				component: Personal
+			}
+		]
 	},
 	{
 		path: '/article',
 		component: Article
 	},
 	{
-		path: '/chanel',
-		component: Chanel
+		path: '/channel',
+		component: Channel
 	},
 
 	{

@@ -33,7 +33,7 @@
 	<f7-block inset>
 		<f7-row>
 			<f7-col width="100">
-				<f7-button big fill tab-link href="/index">Welcome</f7-button>
+				<f7-button big fill tab-link href="/index/">Welcome</f7-button>
 			</f7-col>
 		</f7-row>
 	</f7-block>

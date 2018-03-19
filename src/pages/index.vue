@@ -4,7 +4,9 @@
 	<f7-page toolbar-fixed navbar-fixed name="index" id="index">
 		<f7-navbar>
 			<f7-nav-left>
-				<f7-link href="#message" tab-link>
+				<f7-link href="./message/"
+					tab-link
+					@tab:show="tabActived('message')">
 					<f7-icon if-ios="f7:bell" if-md="material:notifications_none"></f7-icon>
 				</f7-link>
 			</f7-nav-left>
@@ -15,51 +17,55 @@
 				</f7-link>
 			</f7-nav-right>
 		</f7-navbar>
-
+		
 		<f7-toolbar tabbar labels bottom-md> 
 			<f7-link active
 				text="Home"
 				tab-link
 				tab-link-active
-				href="#home"
+				data-route-tab-id="home"
+				href="./"
 				icon-f7="home"
 			></f7-link>
 			<f7-link
 				text="Messages"
 				tab-link
-				href="#message"
+				data-route-tab-id="message"
+				href="./message/"
 				icon-f7="email"
 			></f7-link>
 			<f7-link
 				text="Find"
 				tab-link
-				href="#find"
+				data-route-tab-id="find"
+				href="./find/"
 				icon-f7="compass"
 			></f7-link>
 			<f7-link
 				text="Personal"
 				tab-link
-				href="#personal"
+				data-route-tab-id="personal"
+				href="./personal/"
 				icon-f7="person"
 			></f7-link>
 		</f7-toolbar>
 
-		<f7-tabs>
+		<f7-tabs routable>
 			<f7-tab id="home" tab-active
 				@tab:show="tabActived('home')">
-				<home></home>
+				<!-- <home></home> -->
 			</f7-tab>
 			<f7-tab id="message"
 				@tab:show="tabActived('message')">
-				<message></message>
+				<!-- <message></message> -->
 			</f7-tab>
 			<f7-tab id="find"
 				@tab:show="tabActived('find')">
-				<find></find>
+				<!-- <find></find> -->
 			</f7-tab>
 			<f7-tab id="personal"
 				@tab:show="tabActived('personal')">
-				<personal></personal>	
+				<!-- <personal></personal>	 -->
 			</f7-tab>
 		</f7-tabs>
 	</f7-page>
@@ -68,19 +74,19 @@
 </template>
 
 <script>
-import Home from './home/home.vue';
-import Message from './message/message.vue';
-import Find from './find/find.vue';
-import Personal from './personal/personal.vue';
+// import Home from './home/home.vue';
+// import Message from './message/message.vue';
+// import Find from './find/find.vue';
+// import Personal from './personal/personal.vue';
 
 export default {
 	name: 'index',
-	components: {
-		Home,
-		Message,
-		Find,
-		Personal
-	},
+	// components: {
+	// 	Home,
+	// 	Message,
+	// 	Find,
+	// 	Personal
+	// },
 	data() {
 		return {
 			activedTab: 'home',

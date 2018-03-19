@@ -7,6 +7,7 @@ module.exports = {
 		app: [
 			'framework7/dist/css/framework7.min.css',
 			'framework7-icons/css/framework7-icons.css',
+			'material-design-icons/iconfont/material-icons.css',
 			path.resolve(__dirname, '../src/main.js')
 		]
 	},

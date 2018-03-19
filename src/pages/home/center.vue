@@ -5,7 +5,7 @@
 
 	<img src="http://lorempixel.com/1000/600/nature/3/" width="100%">
 
-	<f7-toolbar tabbar>
+	<f7-toolbar tabbar bottom-md>
 		<f7-link active tab-link tab-link-active
 			text="tab1"
 			href="#tab1"

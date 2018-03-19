@@ -1,7 +1,7 @@
 <template>
 
 <div id="personal-page">
-	<f7-list media-list class="no-margin-top no-margin-bottom">
+	<f7-list media-list class="margin-top no-margin-bottom">
 		<f7-list-item
 			link="/personal-info"
 			title="Zhang San"

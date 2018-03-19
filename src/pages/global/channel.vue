@@ -1,14 +1,14 @@
 <template>
 
-<f7-page name="chanel">
-	<f7-navbar title="xx chanel" back-link></f7-navbar>
+<f7-page name="channel">
+	<f7-navbar title="xx channel" back-link></f7-navbar>
 
 	<f7-list media-list class="no-margin">
 		<f7-list-item
-			title="xx chanel">
+			title="xx channel">
 			<f7-icon slot="media" material="album" size="44px" color="yellow"></f7-icon>
 			<f7-chip slot="text" color="green">
-				<f7-link text="Follow" slot="text" href="/chanel" color="white"></f7-link>
+				<f7-link text="Follow" slot="text" href="/channel" color="white"></f7-link>
 			</f7-chip>
 		</f7-list-item>
 	</f7-list>

@@ -62,7 +62,7 @@
 			<f7-col>
 				<f7-link
 					text="Vote"
-					href="/vote"
+					href="/vote-index"
 					color="black"
 					class="padding-vertical"
 				></f7-link>
