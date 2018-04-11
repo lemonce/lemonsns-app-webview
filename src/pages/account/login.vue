@@ -8,22 +8,22 @@
 					<img src="../../../build/logo.png" alt="logo" width="100px">
 				</f7-col>
 			</f7-row>
-			<f7-login-screen-title>Login</f7-login-screen-title>
+			<f7-login-screen-title>登录</f7-login-screen-title>
 
 			<f7-list form>
 				<f7-list-item>
-					<f7-label>Phone</f7-label>
-					<f7-input name="phone" placeholder="Your number" type="text"></f7-input>
+					<f7-label>手机</f7-label>
+					<f7-input name="phone" placeholder="手机号" type="text"></f7-input>
 				</f7-list-item>
 				<f7-list-item>
-					<f7-label>Password</f7-label>
-					<f7-input name="password" type="password" placeholder="Your password"></f7-input>
+					<f7-label>密码</f7-label>
+					<f7-input name="password" type="password" placeholder="密码"></f7-input>
 				</f7-list-item>
 			</f7-list>
 			<f7-list>
-				<f7-list-button title="Sign In" href="/index/"></f7-list-button>
+				<f7-list-button title="登录" href="/index/"></f7-list-button>
 				<f7-block-footer>
-					Click <a href="/binding">Register</a> to have a new account.
+					点击 <a href="/binding">注册</a> 申请一个新账号。
 				</f7-block-footer>
 			</f7-list>
 		</f7-page>

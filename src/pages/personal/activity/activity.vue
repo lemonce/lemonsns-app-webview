@@ -1,15 +1,15 @@
 <template>
 
 <f7-page name="activity">
-	<f7-navbar title="Activities" back-link></f7-navbar>
+	<f7-navbar title="我的活动" back-link></f7-navbar>
 
 	<f7-toolbar tabbar>
 		<f7-link active tab-link tab-link-active
-			text="Involved"
+			text="已参与"
 			href="#involved"
 		></f7-link>
 		<f7-link tab-link
-			text="All"
+			text="全部"
 			href="#all-activity"
 		></f7-link>
 	</f7-toolbar>

@@ -1,30 +1,35 @@
 <template>
 
 <f7-page name="center">
-	<f7-navbar title="xx center" back-link></f7-navbar>
+	<f7-navbar title="新闻中心" back-link></f7-navbar>
 
 	<img src="http://lorempixel.com/1000/600/nature/3/" width="100%">
 
 	<f7-toolbar tabbar bottom-md>
 		<f7-link active tab-link tab-link-active
-			text="tab1"
+			text="多党合作"
 			href="#tab1"
+			style="font-size:14px"
 		></f7-link>
 		<f7-link tab-link
-			text="tab2"
+			text="民族宗教"
 			href="#tab2"
+			style="font-size:14px"
 		></f7-link>
 		<f7-link tab-link
-			text="tab3"
+			text="非公经济"
 			href="#tab3"
+			style="font-size:14px"
 		></f7-link>
 		<f7-link tab-link
-			text="tab4"
+			text="党外人才"
 			href="#tab4"
+			style="font-size:14px"
 		></f7-link>
 		<f7-link tab-link
-			text="tab5"
+			text="港澳台海"
 			href="#tab5"
+			style="font-size:14px"
 		></f7-link>
 	</f7-toolbar>
 	<f7-tabs>

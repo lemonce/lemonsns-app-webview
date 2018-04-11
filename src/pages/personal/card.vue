@@ -1,14 +1,14 @@
 <template>
 
 <f7-page name="card">
-	<f7-navbar title="Card" back-link></f7-navbar>
+	<f7-navbar title="我的名片" back-link></f7-navbar>
 
 	<f7-card>
 		<f7-card-header>
 			<f7-list media-list>
 				<f7-list-item
-					title="Zhang San"
-					subtitle="xxxx group">
+					title="张三"
+					subtitle="xxxx组">
 					<f7-icon material="person" slot="media" size="44px"></f7-icon>
 				</f7-list-item>
 			</f7-list>

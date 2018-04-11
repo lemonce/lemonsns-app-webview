@@ -4,8 +4,8 @@
 	<f7-list media-list class="margin-top no-margin-bottom">
 		<f7-list-item
 			link="/personal-info"
-			title="Zhang San"
-			subtitle="xxxx group">
+			title="张三"
+			subtitle="xxxx组">
 			<f7-icon material="person" slot="media" size="44px"></f7-icon>
 		</f7-list-item>
 
@@ -14,7 +14,7 @@
 				<f7-link
 					href="/card"
 					icon-f7="card"
-					text="Card"
+					text="我的名片"
 					color="black"
 					class="no-margin padding-vertical"
 				></f7-link>
@@ -23,7 +23,7 @@
 				<f7-link
 					href="/collection"
 					icon-f7="star"
-					text="Collection"
+					text="收藏"
 					color="black"
 					class="no-margin padding-vertical"
 				></f7-link>
@@ -32,7 +32,7 @@
 				<f7-link
 					href="/follow"
 					icon-f7="eye"
-					text="Follow"
+					text="关注"
 					color="black"
 					class="no-margin padding-vertical"
 				></f7-link>
@@ -43,27 +43,36 @@
 	<f7-list class="margin-top">
 		<f7-list-item
 			link="/track"
-			title="Tracks"
-		></f7-list-item>
+			title="足迹">
+			<f7-icon slot="media" material="pets"></f7-icon>
+		</f7-list-item>
 		<f7-list-item
 			link="/activity"
-			title="Activities"
-		></f7-list-item>
+			title="我的活动"
+		>
+			<f7-icon slot="media" material="alarm_on"></f7-icon>
+		</f7-list-item>
 		<f7-list-item
 			link="/advice"
-			title="Advice"
-		></f7-list-item>
+			title="我的建言"
+		>
+			<f7-icon slot="media" material="chat"></f7-icon>
+		</f7-list-item>
 		<f7-list-item
 			link="/feedback"
-			title="Feedback"
-		></f7-list-item>
+			title="反馈"
+		>
+			<f7-icon slot="media" material="content_paste"></f7-icon>
+		</f7-list-item>
 	</f7-list>
 
 	<f7-list class="margin-top">
 		<f7-list-item
 			link="/setting"
-			title="Settings"
-		></f7-list-item>
+			title="设置"
+		>
+			<f7-icon slot="media" material="brightness_low"></f7-icon>
+		</f7-list-item>
 	</f7-list>
 
 </div>

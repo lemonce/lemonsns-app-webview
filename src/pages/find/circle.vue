@@ -1,20 +1,20 @@
 <template>
 
 <f7-page name="circle">
-	<f7-navbar title="Leadership circle" back-link></f7-navbar>
+	<f7-navbar title="领导圈" back-link></f7-navbar>
 
 	<f7-card>
 		<f7-card-header>
 			<f7-list media-list>
 				<f7-list-item
-					title="Zhang San"
-					subtitle="1 minute ago">
+					title="张三"
+					subtitle="1分钟前">
 					<f7-icon slot="media" f7="social_github" size="36px"></f7-icon>
 				</f7-list-item>
 			</f7-list>
 		</f7-card-header>
 		<f7-card-content>
-			<p>What a nice day today!</p>
+			<p>多么棒的一天！</p>
 		</f7-card-content>
 		<f7-card-footer>
 			<f7-link icon-f7="heart_fill" text="1"></f7-link>
@@ -27,8 +27,8 @@
 		<f7-card-header>
 			<f7-list media-list>
 				<f7-list-item
-					title="Wang Ha Ha"
-					subtitle="two hours ago">
+					title="王权有"
+					subtitle="两小时前">
 					<f7-icon slot="media" f7="social_twitter_fill" size="36px"></f7-icon>
 				</f7-list-item>
 			</f7-list>

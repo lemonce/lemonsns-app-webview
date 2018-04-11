@@ -4,42 +4,62 @@
 	<f7-list class="margin-vertical">
 		<f7-list-item
 			link="/circle"
-			title="Leader"
+			title="领导圈"
 			badge="1"
-			badge-color="red"></f7-list-item>
+			badge-color="red">
+			<f7-icon slot="media" material="camera"></f7-icon>	
+		</f7-list-item>
 		<f7-list-item
 			link="/circle"
-			title="Follow"></f7-list-item>
+			title="关注">
+			<f7-icon slot="media" material="lightbulb_outline"></f7-icon>	
+		</f7-list-item>
 	</f7-list>
 
 	<f7-list class="margin-vertical">
 		<f7-list-item
 			link=""
-			title="QR Code"></f7-list-item>
+			title="扫一扫">
+			<f7-icon slot="media" material="crop_free"></f7-icon>	
+		</f7-list-item>
 		<f7-list-item
 			link="/see"
-			title="See"></f7-list-item>
+			title="看一看">
+			<f7-icon slot="media" material="remove_red_eye"></f7-icon>	
+		</f7-list-item>
 	</f7-list>
 
 	<f7-list class="margin-vertical">
 		<f7-list-item
 			link="/center"
-			title="News"></f7-list-item>
+			title="新闻中心">
+			<f7-icon slot="media" material="description"></f7-icon>
+		</f7-list-item>
 		<f7-list-item
 			link="/center"
-			title="Art"></f7-list-item>
+			title="文化艺术">
+			<f7-icon slot="media" material="business"></f7-icon>
+		</f7-list-item>
 		<f7-list-item
 			link="/activity"
-			title="Activities"></f7-list-item>
+			title="活动中心">
+			<f7-icon slot="media" material="alarm_on"></f7-icon>
+		</f7-list-item>
 		<f7-list-item
 			link="/center"
-			title="Personnel"></f7-list-item>
+			title="人才中心">
+			<f7-icon slot="media" material="people"></f7-icon>
+		</f7-list-item>
 		<f7-list-item
 			link="/center"
-			title="Study"></f7-list-item>
+			title="知识学习">
+			<f7-icon slot="media" material="live_tv"></f7-icon>	
+		</f7-list-item>
 		<f7-list-item
 			link="/center"
-			title="Delivery"></f7-list-item>
+			title="投递中心">
+			<f7-icon slot="media" material="drafts"></f7-icon>	
+		</f7-list-item>
 	</f7-list>
 
 </div>

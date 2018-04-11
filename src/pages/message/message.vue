@@ -4,14 +4,14 @@
 	<f7-list media-list class="no-margin-top">
 		<f7-list-item
 			link="/message-content"
-			title="Item 1"
-			subtitle="Subtitle 1"
-			text="Item 1 Text"></f7-list-item>
+			title="系统消息"
+			subtitle="活动"
+			text="您参加的活动将于xx号开始。"></f7-list-item>
 		<f7-list-item
 			link=""
-			title="Item 2"
-			subtitle="Subtitle 2"
-			text="Item 2 Text"></f7-list-item>
+			title="系统通知"
+			subtitle="审核"
+			text="您的账户已通过审核。"></f7-list-item>
 	</f7-list>
 </div>
 

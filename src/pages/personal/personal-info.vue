@@ -1,6 +1,6 @@
 <template>
 <f7-page name="personal-info">
-	<f7-navbar title="Personal info" back-link></f7-navbar>
+	<f7-navbar title="个人信息" back-link></f7-navbar>
 
 	<f7-list class="margin-top">
 		<f7-list-item
@@ -22,43 +22,43 @@ export default {
 			infoList: [
 				{
 					link: '',
-					title: 'Head',
+					title: '头像',
 					after: ''
 				},
 				{
 					link: '',
-					title: 'Account',
+					title: '账号',
 					after: '135xxxxxxxx'
 				},
 				{
 					link: '',
-					title: 'Phone',
+					title: '手机',
 					after: '135xxxxxxxx'
 				},
 				{
 					link: '',
-					title: 'Name',
-					after: 'zhang San'
+					title: '姓名',
+					after: '张三'
 				},
 				{
 					link: '',
-					title: 'Sex',
-					after: 'Man'
+					title: '性别',
+					after: '男'
 				},
 				{
 					link: '',
-					title: 'Party',
-					after: 'Nonparty'
+					title: '党派',
+					after: '无党派'
 				},
 				{
 					link: '',
-					title: 'Nation',
-					after: 'Han'
+					title: '民族',
+					after: '汉族'
 				},
 				{
 					link: '',
-					title: 'Company',
-					after: 'xxxx group'
+					title: '公司',
+					after: 'xxxx组'
 				},
 			]
 		}

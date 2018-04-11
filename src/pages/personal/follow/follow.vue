@@ -1,15 +1,15 @@
 <template>
 
 <f7-page name="follow">
-	<f7-navbar title="Follow management" back-link></f7-navbar>
+	<f7-navbar title="关注管理" back-link></f7-navbar>
 
 	<f7-toolbar tabbar>
 		<f7-link active tab-link tab-link-active
-			text="Already"
+			text="已关注"
 			href="#already"
 		></f7-link>
 		<f7-link tab-link
-			text="All"
+			text="全部"
 			href="#all-follow"
 		></f7-link>
 	</f7-toolbar>

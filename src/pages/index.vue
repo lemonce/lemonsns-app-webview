@@ -20,7 +20,7 @@
 		
 		<f7-toolbar tabbar labels bottom-md> 
 			<f7-link active
-				text="Home"
+				text="首页"
 				tab-link
 				tab-link-active
 				data-route-tab-id="home"
@@ -28,21 +28,21 @@
 				icon-f7="home"
 			></f7-link>
 			<f7-link
-				text="Messages"
+				text="消息"
 				tab-link
 				data-route-tab-id="message"
 				href="./message/"
 				icon-f7="email"
 			></f7-link>
 			<f7-link
-				text="Find"
+				text="发现"
 				tab-link
 				data-route-tab-id="find"
 				href="./find/"
 				icon-f7="compass"
 			></f7-link>
 			<f7-link
-				text="Personal"
+				text="我"
 				tab-link
 				data-route-tab-id="personal"
 				href="./personal/"
@@ -91,10 +91,10 @@ export default {
 		return {
 			activedTab: 'home',
 			tabList: {
-				'home': 'My App',
-				'message': 'Messages',
-				'find': 'Find',
-				'personal': 'Personal'
+				'home': '统战平台App',
+				'message': '消息',
+				'find': '发现',
+				'personal': '我'
 			}
 		}
 	},

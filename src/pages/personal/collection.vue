@@ -1,12 +1,12 @@
 <template>
 
 <f7-page name="collection">
-	<f7-navbar title="Collections" back-link></f7-navbar>
+	<f7-navbar title="收藏" back-link></f7-navbar>
 
 	<f7-searchbar
-		disable-link-text="Cancel"
+		disable-link-text="取消"
 		search-container="#search-list"
-		placeholder="Search in colections"
+		placeholder="在收藏中搜索..."
 		:clear-button="true"
 		@searchbar:search="onSearch()"
 		@searchbar:enable="onEnable()"
@@ -16,7 +16,7 @@
 
     <!-- Will be visible if there is no any results found, defined by "searchbar-not-found" class -->
     <f7-list class="searchbar-not-found margin-top">
-      <f7-list-item title="Nothing found"></f7-list-item>
+      <f7-list-item title="很抱歉，没有结果"></f7-list-item>
     </f7-list>
 
     <!-- Search through this list -->
@@ -38,17 +38,17 @@ export default {
 		return {
 			items: [
 				{
-					title: 'item 1',
-					text: 'item-1',
-					link: '/index'
+					title: '学习十九大精神',
+					text: '微课堂',
+					link: '/index/'
 				},
 				{
-					title: 'item 2',
-					text: 'item-2'
+					title: '学习统战知识',
+					text: '知识学习'
 				},
 				{
-					title: 'item 3',
-					text: 'item-3'
+					title: '西青区特色文化艺术',
+					text: '艺术长廊'
 				},
 			]
 		};
