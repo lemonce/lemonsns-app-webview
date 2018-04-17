@@ -22,7 +22,7 @@
 	<div id="home-item-pool" class="">
 		<f7-row no-gap>
 			<f7-col class="padding-top">
-				<f7-icon material="description"></f7-icon><br>
+				<f7-icon material="description" color="blue"></f7-icon><br>
 				<f7-link
 					text="闻资讯"
 					href="/center"
@@ -31,7 +31,7 @@
 				></f7-link>
 			</f7-col>
 			<f7-col class="padding-top">
-				<f7-icon material="business"></f7-icon><br>
+				<f7-icon material="business" color="green"></f7-icon><br>
 				<f7-link
 					text="文化站"
 					href="/center"
@@ -40,7 +40,7 @@
 				></f7-link>
 			</f7-col>
 			<f7-col class="padding-top">
-				<f7-icon material="chat_bubble_outline"></f7-icon><br>
+				<f7-icon material="chat_bubble_outline" color="orange"></f7-icon><br>
 				<f7-link
 					text="通知栏"
 					href="/activity"
@@ -49,7 +49,7 @@
 				></f7-link>
 			</f7-col>
 			<f7-col class="padding-top">
-				<f7-icon material="border_color"></f7-icon><br>
+				<f7-icon material="border_color" color="red"></f7-icon><br>
 				<f7-link
 					text="签到处"
 					href="/"
@@ -60,7 +60,7 @@
 		</f7-row>
 		<f7-row no-gap>
 			<f7-col class="padding-top">
-				<f7-icon material="people"></f7-icon><br>
+				<f7-icon material="people" color="yellow"></f7-icon><br>
 				<f7-link
 					text="群英汇"
 					href="/center"
@@ -69,7 +69,7 @@
 				></f7-link>
 			</f7-col>
 			<f7-col class="padding-top">
-				<f7-icon material="live_tv"></f7-icon><br>
+				<f7-icon material="live_tv" color="gray"></f7-icon><br>
 				<f7-link
 					text="微课堂"
 					href="/center"
@@ -78,7 +78,7 @@
 				></f7-link>
 			</f7-col>
 			<f7-col class="padding-top">
-				<f7-icon material="playlist_add_check"></f7-icon><br>
+				<f7-icon material="playlist_add_check" color="black"></f7-icon><br>
 				<f7-link
 					text="填填看"
 					href="/vote-index"
@@ -87,7 +87,7 @@
 				></f7-link>
 			</f7-col>
 			<f7-col class="padding-top">
-				<f7-icon material="drafts"></f7-icon><br>
+				<f7-icon material="drafts" color="pink"></f7-icon><br>
 				<f7-link
 					text="投递箱"
 					href="/center"

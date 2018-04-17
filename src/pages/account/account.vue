@@ -1,6 +1,6 @@
 <template>
 
-<f7-page name="account" id="account-index">
+<f7-page name="account" id="account-index" color-theme="red">
 	<f7-block>
 		<f7-row>
 			<f7-col>

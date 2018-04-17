@@ -1,6 +1,6 @@
 <template>
 
-<f7-page name="register-info">
+<f7-page name="register-info" color-theme="red">
 	<f7-navbar title="完善信息" back-link></f7-navbar>
 
 	<f7-list form class="margin-top">

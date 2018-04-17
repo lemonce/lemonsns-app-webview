@@ -1,6 +1,6 @@
 <template>
 
-<f7-login-screen id="login-screen">
+<f7-login-screen id="login-screen" color-theme="red">
 	<f7-view>
 		<f7-page login-screen>
 			<f7-row>

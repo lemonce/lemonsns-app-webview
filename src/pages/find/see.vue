@@ -10,7 +10,7 @@
 			subtitle="中国抗日战争，是中国近代以来抗击外敌入侵第一次取得完全胜利的伟大民族解放战争，也是世界反法西斯战争的重要组成部分。而抗日战争最终取得完全胜利与中国共产党所倡导建立的以国共合作为基础的抗日民族统一战线是密不可分的。"
 			link="/article">
 			<f7-chip slot="text">
-				<f7-link text="xx频道" slot="text" href="/channel" color="white"></f7-link>
+				<f7-link text="xx频道" slot="text" href="/channel" color=""></f7-link>
 			</f7-chip>
 			<span slot="text" class="margin-left">2018/03/16 13:55</span>
 			<f7-swipeout-actions>

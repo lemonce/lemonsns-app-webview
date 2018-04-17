@@ -1,6 +1,6 @@
 <template>
 
-<f7-page name="binding">
+<f7-page name="binding" color-theme="red">
 	<f7-navbar title="手机绑定" back-link></f7-navbar>
 
 	<f7-list form class="margin-top">

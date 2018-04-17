@@ -44,24 +44,21 @@
 		<f7-list-item
 			link="/track"
 			title="足迹">
-			<f7-icon slot="media" material="pets"></f7-icon>
+			<f7-icon slot="media" material="event_note"></f7-icon>
 		</f7-list-item>
 		<f7-list-item
 			link="/activity"
-			title="我的活动"
-		>
+			title="我的活动">
 			<f7-icon slot="media" material="alarm_on"></f7-icon>
 		</f7-list-item>
 		<f7-list-item
 			link="/advice"
-			title="我的建言"
-		>
+			title="我的建言">
 			<f7-icon slot="media" material="chat"></f7-icon>
 		</f7-list-item>
 		<f7-list-item
 			link="/feedback"
-			title="反馈"
-		>
+			title="反馈">
 			<f7-icon slot="media" material="content_paste"></f7-icon>
 		</f7-list-item>
 	</f7-list>
@@ -69,8 +66,7 @@
 	<f7-list class="margin-top">
 		<f7-list-item
 			link="/setting"
-			title="设置"
-		>
+			title="设置">
 			<f7-icon slot="media" material="brightness_low"></f7-icon>
 		</f7-list-item>
 	</f7-list>
