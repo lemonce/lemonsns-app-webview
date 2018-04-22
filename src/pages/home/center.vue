@@ -3,7 +3,7 @@
 <f7-page name="center">
 	<f7-navbar title="新闻中心" back-link></f7-navbar>
 
-	<img src="http://lorempixel.com/1000/600/nature/3/" width="100%">
+	<img src="../../images/home/slide4.jpg" width="100%">
 
 	<f7-toolbar tabbar bottom-md>
 		<f7-link active tab-link tab-link-active

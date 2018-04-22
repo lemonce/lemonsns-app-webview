@@ -9,7 +9,7 @@
 				<img src="../../../../build/logo.png" alt="logo" width="80">
 			</f7-col>
 		</f7-row>
-		<f7-block-footer style="text-align:center">统战平台App 1.0.0</f7-block-footer>
+		<f7-block-footer style="text-align:center">青新微互连 1.0.0</f7-block-footer>
 	</f7-block>
 
 	<f7-list>

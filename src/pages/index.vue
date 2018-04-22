@@ -91,7 +91,7 @@ export default {
 		return {
 			activedTab: 'home',
 			tabList: {
-				'home': '统战平台App',
+				'home': '青新微互连',
 				'message': '消息',
 				'find': '发现',
 				'personal': '我'
