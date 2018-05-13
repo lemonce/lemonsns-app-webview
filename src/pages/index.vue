@@ -23,49 +23,41 @@
 				text="首页"
 				tab-link
 				tab-link-active
-				data-route-tab-id="home"
 				href="./"
-				icon-f7="home"
+				icon-material="home"
 			></f7-link>
 			<f7-link
 				text="消息"
 				tab-link
-				data-route-tab-id="message"
 				href="./message/"
-				icon-f7="email"
+				icon-material="email"
 			></f7-link>
 			<f7-link
 				text="发现"
 				tab-link
-				data-route-tab-id="find"
 				href="./find/"
-				icon-f7="compass"
+				icon-material="search"
 			></f7-link>
 			<f7-link
 				text="我"
 				tab-link
-				data-route-tab-id="personal"
 				href="./personal/"
-				icon-f7="person"
+				icon-material="person"
 			></f7-link>
 		</f7-toolbar>
 
 		<f7-tabs routable>
 			<f7-tab id="home" tab-active
 				@tab:show="tabActived('home')">
-				<!-- <home></home> -->
 			</f7-tab>
 			<f7-tab id="message"
 				@tab:show="tabActived('message')">
-				<!-- <message></message> -->
 			</f7-tab>
 			<f7-tab id="find"
 				@tab:show="tabActived('find')">
-				<!-- <find></find> -->
 			</f7-tab>
 			<f7-tab id="personal"
 				@tab:show="tabActived('personal')">
-				<!-- <personal></personal>	 -->
 			</f7-tab>
 		</f7-tabs>
 	</f7-page>
@@ -74,10 +66,6 @@
 </template>
 
 <script>
-// import Home from './home/home.vue';
-// import Message from './message/message.vue';
-// import Find from './find/find.vue';
-// import Personal from './personal/personal.vue';
 
 export default {
 	name: 'index',
