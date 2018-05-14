@@ -56,3 +56,10 @@
 	</f7-card>
 </f7-page>
 </template>
+
+<script>
+export default {
+
+}
+</script>
+

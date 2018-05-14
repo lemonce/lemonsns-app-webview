@@ -20,9 +20,11 @@
   },
   "homepage": "https://github.com/lemonce/lemonsns-app-webview#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "framework7": "^2.2.5",
     "framework7-icons": "^0.8.9",
     "framework7-vue": "^2.2.5",
+    "markdown-it": "^8.4.1",
     "material-design-icons": "^3.0.1",
     "vue": "^2.5.13"
   },

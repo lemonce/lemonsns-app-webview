@@ -116,6 +116,16 @@
 				<img src="../../images/home/slide2.jpg" style="width:6rem">
 			</div>
 		</f7-list-item>
+		<f7-list-item
+			v-for="(article, index) in articleList"
+			:key="index"
+			:title="article.title"
+			:text="article.abstract"
+			:link="`/article/${article.id}`">
+			<div slot="media">
+				<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:6rem">
+			</div>
+		</f7-list-item>
 	</f7-list>
 
 	<f7-block-title>文化中心</f7-block-title>
@@ -134,8 +144,41 @@
 </template>
 
 <script>
+import axios from 'axios';
+import {baseUrl} from '../../../config.json';
+
 export default {
 	name: 'home',
+	data() {
+		return {
+			articleList: []
+		};
+	},
+	mounted() {
+		this.getArticleList();
+		console.log(baseUrl);
+	},
+	methods: {
+		getArticleList() {
+			return axios.get(`${baseUrl}/app/article`).then(res => {
+				const articleList = res.data.data;
+
+				articleList.forEach(article => {
+
+					if (article.thumbnail) {
+						this.articleList.push(article);
+					}
+
+				});
+			}).catch(err => {
+				console.log(err.message);
+			});
+		},
+
+		thumbnailSrc(hash, regular) {
+			return `${baseUrl}/service/release/thumbnail/${hash}/regular/${regular}`;
+		}
+	}
 	
 }
 </script>

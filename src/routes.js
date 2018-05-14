@@ -91,11 +91,11 @@ export default [
 		]
 	},
 	{
-		path: '/article',
+		path: '/article/:id',
 		component: Article
 	},
 	{
-		path: '/channel',
+		path: '/channel/:id',
 		component: Channel
 	},
 

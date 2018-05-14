@@ -32,6 +32,9 @@
 </template>
 
 <script>
+import axios from 'axios';
+import {baseUrl} from '../../../config.json';
+
 export default {
 	name: 'collection',
 	data() {
@@ -65,6 +68,11 @@ export default {
 		},
 		onDisable(event) {
 			console.log("disable");
+		},
+		getCollection() {
+			return axios.get(`${baseUrl}/app/article?like=true`).then(res => {
+				this.items = res.data.data;
+			});
 		}
 	}
 };

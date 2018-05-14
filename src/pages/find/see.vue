@@ -4,7 +4,7 @@
 	<f7-navbar title="看一看" back-link></f7-navbar>
 
 	<f7-list media-list class="no-margin-top">
-		<f7-list-item swipeout
+		<!-- <f7-list-item swipeout
 			@swipeout:deleted="onSwipoutDeleted"
 			title="统战知识 | 抗日民族统一战线：抗日战争胜利的根本保证"
 			subtitle="中国抗日战争，是中国近代以来抗击外敌入侵第一次取得完全胜利的伟大民族解放战争，也是世界反法西斯战争的重要组成部分。而抗日战争最终取得完全胜利与中国共产党所倡导建立的以国共合作为基础的抗日民族统一战线是密不可分的。"
@@ -38,8 +38,55 @@
 			<f7-swipeout-actions>
 				<f7-swipeout-button delete>不感兴趣</f7-swipeout-button>
 			</f7-swipeout-actions>
+		</f7-list-item> -->
+		<f7-list-item swipeout
+			@swipeout:deleted="onSwipoutDeleted"
+			v-for="(article, index) in articleList"
+			:key="index"
+			:title="article.title"
+			:subtitle="article.abstract"
+			:link="`/article/${article.id}`">
+			<!-- <f7-chip text="xx频道" slot="text"></f7-chip> -->
+			<span slot="text" class="margin-left">2018/02/26 07:38</span>
+			<f7-swipeout-actions>
+				<f7-swipeout-button delete>不感兴趣</f7-swipeout-button>
+			</f7-swipeout-actions>
 		</f7-list-item>
 	</f7-list>
 
 </f7-page>
 </template>
+
+<script>
+import axios from 'axios';
+import {baseUrl} from '../../../config.json';
+
+export default {
+	data() {
+		return {
+			articleList: []
+		};
+	},
+	mounted() {
+		this.getArticleList();
+	},
+	methods: {
+		getArticleList() {
+			return axios.get(`${baseUrl}/app/article`).then(res => {
+				const articleList = res.data.data;
+
+				articleList.forEach(article => {
+
+					if (article.thumbnail) {
+						this.articleList.push(article);
+					}
+
+				});
+			}).catch(err => {
+				console.log(err.message);
+			});
+		}
+	}
+}
+</script>
+
