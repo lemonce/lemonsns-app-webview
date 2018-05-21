@@ -191,7 +191,7 @@ export default [
 	},
 
 	{
-		path: '/center',
+		path: '/center/:name',
 		component: Center
 	},
 	{

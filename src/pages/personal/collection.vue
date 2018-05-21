@@ -32,8 +32,7 @@
 </template>
 
 <script>
-import axios from 'axios';
-import {baseUrl} from '../../../config.json';
+import axios from '../../../axios.js';
 
 export default {
 	name: 'collection',
@@ -70,7 +69,7 @@ export default {
 			console.log("disable");
 		},
 		getCollection() {
-			return axios.get(`${baseUrl}/app/article?like=true`).then(res => {
+			return axios.get(`app/article?like=true`).then(res => {
 				this.items = res.data.data;
 			});
 		}

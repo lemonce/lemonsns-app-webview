@@ -14,3 +14,13 @@
 	</f7-list>
 </div>
 </template>
+
+<script>
+export default {
+	mounted() {
+		// console.log(this.$f7route)
+	},
+	props: ['data']
+}
+</script>
+

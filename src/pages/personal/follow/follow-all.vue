@@ -24,8 +24,7 @@
 </div>
 </template>
 <script>
-import axios from 'axios';
-import {baseUrl} from '../../../../config.json';
+import axios from '../../../../axios.js';
 
 export default {
 	data() {
@@ -40,7 +39,7 @@ export default {
 	},
 	methods: {
 		getChannelList() {
-			return axios.get(`${baseUrl}/app/channel`).then(res => {
+			return axios.get(`app/channel`).then(res => {
 				const channelList = res.data.data;
 
 				channelList.forEach(channel => {
@@ -58,7 +57,7 @@ export default {
 			});
 		},
 		getSubscribe() {
-			return axios.get(`${baseUrl}/app/account/channel`).then(res => {
+			return axios.get(`app/account/channel`).then(res => {
 				const channelList = res.data.data;
 
 				channelList.forEach(channel => {
@@ -74,9 +73,9 @@ export default {
 			const {isFollow, id} = channel;
 
 			if (!isFollow) {
-				return axios.post(`${baseUrl}/app/account/channel/${id}`);
+				return axios.post(`app/account/channel/${id}`);
 			} else {
-				return axios.delete(`${baseUrl}/app/account/channel/${id}`);
+				return axios.delete(`app/account/channel/${id}`);
 			}
 		}
 	}

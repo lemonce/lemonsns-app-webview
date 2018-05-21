@@ -58,8 +58,7 @@
 </template>
 
 <script>
-import axios from 'axios';
-import {baseUrl} from '../../../config.json';
+import axios from '../../../axios.js';
 
 export default {
 	data() {
@@ -72,7 +71,7 @@ export default {
 	},
 	methods: {
 		getArticleList() {
-			return axios.get(`${baseUrl}/app/article`).then(res => {
+			return axios.get(`app/article`).then(res => {
 				const articleList = res.data.data;
 
 				articleList.forEach(article => {

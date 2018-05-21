@@ -25,7 +25,7 @@
 				<f7-icon material="description" color="blue"></f7-icon><br>
 				<f7-link
 					text="闻资讯"
-					href="/center"
+					href="/center/news"
 					color="black"
 					class="padding-vertical"
 				></f7-link>
@@ -34,7 +34,7 @@
 				<f7-icon material="business" color="green"></f7-icon><br>
 				<f7-link
 					text="文化站"
-					href="/center"
+					href="/center/culture"
 					color="black"
 					class="padding-vertical"
 				></f7-link>
@@ -63,7 +63,7 @@
 				<f7-icon material="people" color="yellow"></f7-icon><br>
 				<f7-link
 					text="群英汇"
-					href="/center"
+					href="/center/personnel"
 					color="black"
 					class="padding-vertical"
 				></f7-link>
@@ -72,7 +72,7 @@
 				<f7-icon material="live_tv" color="gray"></f7-icon><br>
 				<f7-link
 					text="微课堂"
-					href="/center"
+					href="/center/course"
 					color="black"
 					class="padding-vertical"
 				></f7-link>
@@ -90,7 +90,7 @@
 				<f7-icon material="drafts" color="pink"></f7-icon><br>
 				<f7-link
 					text="投递箱"
-					href="/center"
+					href="/center/mailbox"
 					color="black"
 					class="padding-vertical"
 				></f7-link>
@@ -144,8 +144,7 @@
 </template>
 
 <script>
-import axios from 'axios';
-import {baseUrl} from '../../../config.json';
+import axios from '../../../axios.js';
 
 export default {
 	name: 'home',
@@ -160,7 +159,7 @@ export default {
 	},
 	methods: {
 		getArticleList() {
-			return axios.get(`${baseUrl}/app/article`).then(res => {
+			return axios.get(`app/article`).then(res => {
 				const articleList = res.data.data;
 
 				articleList.forEach(article => {
@@ -176,7 +175,7 @@ export default {
 		},
 
 		thumbnailSrc(hash, regular) {
-			return `${baseUrl}/service/release/thumbnail/${hash}/regular/${regular}`;
+			return `service/release/thumbnail/${hash}/regular/${regular}`;
 		}
 	}
 	

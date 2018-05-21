@@ -21,8 +21,7 @@
 </template>
 
 <script>
-import axios from 'axios';
-import {baseUrl} from '../../../config.json';
+import axios from '../../../axios.js';
 
 export default {
 	data() {
@@ -43,13 +42,13 @@ export default {
 	},
 	methods: {
 		getChannel() {
-			return axios.get(`${baseUrl}/app/channel/${this.id}`).then(res => {
+			return axios.get(`app/channel/${this.id}`).then(res => {
 				this.channel.name = res.data.data.name;
 				this.channel.description = res.data.data.description;
 			});
 		},
 		getSubscribe() {
-			return axios.get(`${baseUrl}/app/account/channel`).then(res => {
+			return axios.get(`app/account/channel`).then(res => {
 				const channelList = res.data.data;
 				const subscribe = [];
 

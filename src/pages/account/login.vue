@@ -33,8 +33,7 @@
 </template>
 
 <script>
-import axios from 'axios';
-import {baseUrl} from '../../../config.json'
+import axios from '../../../axios.js';
 
 const $$ = Dom7;
 
@@ -50,7 +49,7 @@ export default {
   methods: {
 	  signin() {
 		 
-		return axios.post(`${baseUrl}/app/account/session`, {
+		return axios.post(`app/account/session`, {
 			name: this.account.name.join(''),
 			password:  this.account.password.join('')
 		}).then(res => {

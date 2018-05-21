@@ -33,8 +33,7 @@
 </f7-page>
 </template>
 <script>
-import axios from 'axios';
-import {baseUrl} from '../../../config.json';
+import axios from '../../../axios.js';
 import MarkdownIt from 'markdown-it';
 import _ from 'lodash';
 import dateFormat from 'dateformat';
@@ -65,7 +64,7 @@ export default {
 	},
 	methods: {
 		getArticle() {
-			return axios.get(`${baseUrl}/app/article/${this.id}`).then(res => {
+			return axios.get(`app/article/${this.id}`).then(res => {
 				
 				const mixedAccount = _.pick(res.data.data, [
 					'title', 'content', 'created_at', 'view'
@@ -80,19 +79,19 @@ export default {
 			});
 		},
 		getChannel() {
-			return axios.get(`${baseUrl}/app/channel/${this.channelId}`).then(res => {
+			return axios.get(`app/channel/${this.channelId}`).then(res => {
 				this.channel = res.data.data.name;
 			});
 		},
 		collect() {
-			return axios.post(`${baseUrl}/app/article/${this.id}/favorite`).then(res => {
+			return axios.post(`app/article/${this.id}/favorite`).then(res => {
 				console.log('collected!');
 			}).catch(err => {
 				console.log(err.message);
 			});
 		},
 		like() {
-			return axios.post(`${baseUrl}/app/article/${this.id}/like`).then(res => {
+			return axios.post(`app/article/${this.id}/like`).then(res => {
 				console.log('liked!');
 			}).catch(err => {
 				console.log(err.message);
