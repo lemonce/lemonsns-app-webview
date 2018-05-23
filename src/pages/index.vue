@@ -12,7 +12,7 @@
 			</f7-nav-left>
 			<f7-nav-title>{{navTitle}}</f7-nav-title>
 			<f7-nav-right>
-				<f7-link href="/">
+				<f7-link href="/login">
 					<f7-icon material="crop_free"></f7-icon>
 				</f7-link>
 			</f7-nav-right>
@@ -69,12 +69,6 @@
 
 export default {
 	name: 'index',
-	// components: {
-	// 	Home,
-	// 	Message,
-	// 	Find,
-	// 	Personal
-	// },
 	data() {
 		return {
 			activedTab: 'home',
@@ -94,6 +88,9 @@ export default {
 	methods: {
 		tabActived(tab) {
 			this.activedTab = tab;
+			
+			$$('a.tab-link-active').removeClass('tab-link-active');
+			this.$refs[tab].$el.className = 'tab-link tab-link-active';
 		}
 	}
 }

@@ -78,6 +78,11 @@
 <script>
 export default {
 	name: 'personal',
+	beforeCreate() {
+		if (!this.$store.state.signedIn) {
+			this.$f7router.navigate('/login');
+		}
+	}
 }
 </script>
 

@@ -1,5 +1,5 @@
 'use strict';
-import Account from './pages/account/account.vue';
+import Login from './pages/account/login.vue';
 import Register from './pages/account/register.vue';
 import Binding from './pages/account/binding.vue';
 import Info from './pages/account/info.vue';
@@ -48,8 +48,8 @@ import Knowledge from './pages/home/knowledge.vue';
 
 export default [
 	{
-		path: '/',
-		component: Account
+		path: '/login',
+		component: Login
 	},
 	{
 		path: '/register',

@@ -9,6 +9,7 @@ Vue.use(Framework7Vue, Framework7);
 import './css/app.less';
 
 import Routes from './routes.js';
+import store from './store/index.js';
 
 import App from './app.vue';
 
@@ -19,7 +20,8 @@ const $app = new Vue(Object.assign({
 		theme: 'auto',
 		material: true,
 		routes: Routes
-	}
+	},
+	store
 }, App));
 
 $app.$mount('#app');

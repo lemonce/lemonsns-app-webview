@@ -235,9 +235,6 @@ export default {
 			this.centerTitle = this.$f7route.params.name;
 			return center[this.centerTitle];
 		}
-	},
-	mounted() {
-		console.log(this.centerTitle)
 	}
 }
 </script>

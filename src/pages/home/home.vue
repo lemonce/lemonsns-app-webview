@@ -175,7 +175,7 @@ export default {
 		},
 
 		thumbnailSrc(hash, regular) {
-			return `service/release/thumbnail/${hash}/regular/${regular}`;
+			return `http://120.27.113.195:8000/static/ufwd/thumbnail/${hash}/regular/${regular}`;
 		}
 	}
 	
