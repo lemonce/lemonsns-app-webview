@@ -6,11 +6,18 @@
 	<f7-list form class="margin-top">
 		<f7-list-item>
 			<f7-label>姓名</f7-label>
-			<f7-input name="name" placeholder="你的名字" type="text"></f7-input>
+			<f7-input name="name"
+				placeholder="你的名字"
+				type="text"
+				:value="name"
+				@input="name = $event.target.value">
+			</f7-input>
 		</f7-list-item>
 		<f7-list-item>
 			<f7-label>公司</f7-label>
-			<f7-input name="company" placeholder="你的公司" type="text"></f7-input>
+			<f7-input name="company"
+				placeholder="你的公司"
+				type="text"></f7-input>
 		</f7-list-item>
 		<f7-list-item>
 			<f7-label>党派</f7-label>
@@ -40,3 +47,29 @@
 	
 </f7-page>
 </template>
+
+<script>
+import axios from '../../../axios.js';
+
+export default {
+	name: 'info',
+	data() {
+		return {
+			name: '',
+			// party: ''
+		}
+	},
+	methods: {
+		updateAccount() {
+			return axios.post('app/accocunt', {
+				ufwd: {
+					name: this.name,
+					// party: this.party
+				}
+			}).then(() => {
+				this.$f7router.navigate('/index/');
+			})
+		}
+	}
+}
+</script>

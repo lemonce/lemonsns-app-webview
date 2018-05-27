@@ -31,12 +31,12 @@
 
 	<f7-list class="margin-vertical">
 		<f7-list-item
-			link="/center"
+			link="/center/news"
 			title="新闻中心">
 			<f7-icon slot="media" material="description"></f7-icon>
 		</f7-list-item>
 		<f7-list-item
-			link="/center"
+			link="/center/culture"
 			title="文化艺术">
 			<f7-icon slot="media" material="business"></f7-icon>
 		</f7-list-item>
@@ -46,17 +46,17 @@
 			<f7-icon slot="media" material="alarm_on"></f7-icon>
 		</f7-list-item>
 		<f7-list-item
-			link="/center"
+			link="/center/personnel"
 			title="人才中心">
 			<f7-icon slot="media" material="people"></f7-icon>
 		</f7-list-item>
 		<f7-list-item
-			link="/center"
+			link="/knowledge"
 			title="知识学习">
 			<f7-icon slot="media" material="live_tv"></f7-icon>	
 		</f7-list-item>
 		<f7-list-item
-			link="/center"
+			link="/center/mailbox"
 			title="投递中心">
 			<f7-icon slot="media" material="drafts"></f7-icon>	
 		</f7-list-item>

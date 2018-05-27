@@ -3,9 +3,11 @@
 <div>
 	<f7-list class="no-margin-top">
 		<f7-list-item v-for="(channel, index) in channelList"
-			v-bind:key="index"
+			:key="index"
 			:title="channel.name">
-			<f7-toggle slot="after" :disabled="channel.disabled" :checked="channel.isFollow"
+			<f7-toggle slot="after"
+				:disabled="channel.disabled"
+				:checked="channel.isFollow"
 				@change="changeStatus(channel)"></f7-toggle>
 		</f7-list-item>
 		<!-- <f7-list-item
@@ -34,7 +36,7 @@ export default {
 	},
 	mounted() {
 		this.getChannelList().then(() => {
-			this.getSubscribe();
+			// this.getSubscribe();
 		})
 	},
 	methods: {
@@ -42,18 +44,19 @@ export default {
 			return axios.get(`app/channel`).then(res => {
 				const channelList = res.data.data;
 
-				channelList.forEach(channel => {
-					const newChannel = {};
+				console.log(channelList)
+				// channelList.forEach(channel => {
+				// 	const newChannel = {};
 
-					newChannel.name = channel.name;
-					newChannel.id = channel.id;
-					newChannel.isFollow = false;
-					newChannel.disabled = false;
+				// 	newChannel.name = channel.name;
+				// 	newChannel.id = channel.id;
+				// 	newChannel.isFollow = false;
+				// 	newChannel.disabled = false;
 
-					this.channelList.push(newChannel);
-				});
+				// 	this.channelList.push(newChannel);
+				// });
 
-				this.channelList[0].disabled = true;
+				// this.channelList[0].disabled = true;
 			});
 		},
 		getSubscribe() {

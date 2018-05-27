@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import axios from '../../../axios.js';
+
 export default {
 	name: 'personal-info',
 	data() {
@@ -62,6 +64,17 @@ export default {
 				},
 			]
 		}
+	},
+	methods: {
+		getAccountInfo() {
+			return axios.get(`app/account`)
+				.then(res => {
+					console.log(res.data.data);
+				})
+		}
+	},
+	mounted() {
+		this.getAccountInfo();
 	}
 }
 </script>

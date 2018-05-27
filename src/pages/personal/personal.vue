@@ -76,13 +76,28 @@
 </template>
 
 <script>
+import axios from '../../../axios.js';
+
 export default {
 	name: 'personal',
-	beforeCreate() {
+	mounted() {
 		if (!this.$store.state.signedIn) {
 			this.$f7router.navigate('/login');
+		} else {
+
+			this.getAccount();
 		}
-	}
+	},
+	methods: {
+		getAccount() {
+			return axios.get(`app/account`).then(res => {
+				console.log(res.data.data);
+			})
+		}
+	},
+	// mounted() {
+	// 	this.getAccount();
+	// }
 }
 </script>
 

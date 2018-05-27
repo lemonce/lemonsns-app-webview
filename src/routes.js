@@ -45,6 +45,7 @@ import Questionnaire from './pages/vote/questionnaire.vue';
 
 import Center from './pages/home/center.vue';
 import Knowledge from './pages/home/knowledge.vue';
+import ArticleList from './pages/home/article-list.vue';
 
 export default [
 	{
@@ -147,7 +148,7 @@ export default [
 		component: Advice
 	},
 	{
-		path: '/advice-detail',
+		path: '/advice-detail/:id',
 		component: AdviceDetail
 	},
 
@@ -198,4 +199,8 @@ export default [
 		path: '/knowledge',
 		component: Knowledge
 	},
+	{
+		path: '/article-list/:id',
+		component: ArticleList
+	}
 ];

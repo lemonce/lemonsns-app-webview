@@ -24,24 +24,28 @@
 				tab-link
 				tab-link-active
 				href="./"
+				ref="home"
 				icon-material="home"
 			></f7-link>
 			<f7-link
 				text="消息"
 				tab-link
 				href="./message/"
+				ref="message"
 				icon-material="email"
 			></f7-link>
 			<f7-link
 				text="发现"
 				tab-link
 				href="./find/"
+				ref="find"
 				icon-material="search"
 			></f7-link>
 			<f7-link
 				text="我"
 				tab-link
 				href="./personal/"
+				ref="personal"
 				icon-material="person"
 			></f7-link>
 		</f7-toolbar>
@@ -66,6 +70,7 @@
 </template>
 
 <script>
+const $$ = Dom7;
 
 export default {
 	name: 'index',
@@ -73,7 +78,7 @@ export default {
 		return {
 			activedTab: 'home',
 			tabList: {
-				'home': '青新微互连',
+				'home': '西青云统战',
 				'message': '消息',
 				'find': '发现',
 				'personal': '我'
