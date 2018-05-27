@@ -9,7 +9,7 @@
 		<f7-list-item
 			v-for="(category, index) in categoryList"
 			:key="index"
-			:link="`article-list/${category.id}`"
+			:link="`/article-list/${category.id}`"
 			:title="category.name">
 
 		</f7-list-item>
@@ -49,9 +49,8 @@ export default {
 	},
 	methods: {
 		getCategoryList() {
-			return axios.get(`service/category?symbol=${this.centerName}`)
+			return axios.get(`app/category?symbol=${this.centerName}`)
 				.then(res => {
-					console.log(res.data.data);
 					
 					this.categoryList = res.data.data;
 				})

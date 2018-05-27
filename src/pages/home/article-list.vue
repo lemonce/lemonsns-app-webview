@@ -1,7 +1,7 @@
 <template>
 	
 <f7-page name="article-list">
-	<f7-navbar :title="categoryName" back-link></f7-navbar>
+	<f7-navbar title="文章列表" back-link></f7-navbar>
 
 	<f7-list media-list>
 		<f7-list-item
@@ -37,12 +37,20 @@ export default {
 		getArticleList() {
 			return axios.get(`app/category/${this.categoryId}/article`)
 				.then(res => {
-					console.log(res.data.data)
+					const articleData = res.data.data;
+
+					articleData.forEach(article => {
+						this.articleList.push(article.ufwdArticle);
+					});
 				})
+		},
+		thumbnailSrc(hash, regular) {
+			return `http://120.27.113.195:8000/static/ufwd/thumbnail/${hash}/regular/${regular}`;
 		}
 	},
 	mounted() {
 		this.getArticleList();
+		console.log(this.$f7router)
 	}
 }
 </script>
