@@ -8,20 +8,8 @@
 			<f7-toggle slot="after"
 				:disabled="channel.disabled"
 				:checked="channel.isFollow"
-				@change="changeStatus(channel)"></f7-toggle>
+				@change="followChannel(channel)"></f7-toggle>
 		</f7-list-item>
-		<!-- <f7-list-item
-			title="频道 2">
-			<f7-toggle slot="after" checked></f7-toggle>
-		</f7-list-item>
-		<f7-list-item
-			title="频道 3">
-			<f7-toggle slot="after"></f7-toggle>
-		</f7-list-item>
-		<f7-list-item
-			title="频道 4">
-			<f7-toggle slot="after"></f7-toggle>
-		</f7-list-item> -->
 	</f7-list>
 </div>
 </template>
@@ -36,27 +24,14 @@ export default {
 	},
 	mounted() {
 		this.getChannelList().then(() => {
-			// this.getSubscribe();
+			this.getSubscribe();
 		})
 	},
 	methods: {
 		getChannelList() {
 			return axios.get(`app/channel`).then(res => {
-				const channelList = res.data.data;
-
-				console.log(channelList)
-				// channelList.forEach(channel => {
-				// 	const newChannel = {};
-
-				// 	newChannel.name = channel.name;
-				// 	newChannel.id = channel.id;
-				// 	newChannel.isFollow = false;
-				// 	newChannel.disabled = false;
-
-				// 	this.channelList.push(newChannel);
-				// });
-
-				// this.channelList[0].disabled = true;
+				
+				this.channelList = res.data.data;
 			});
 		},
 		getSubscribe() {
@@ -72,7 +47,7 @@ export default {
 				});
 			});
 		},
-		changeStatus(channel) {
+		followChannel(channel) {
 			const {isFollow, id} = channel;
 
 			if (!isFollow) {

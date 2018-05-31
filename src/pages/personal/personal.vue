@@ -3,9 +3,9 @@
 <div id="personal-page">
 	<f7-list media-list class="margin-top no-margin-bottom">
 		<f7-list-item
-			link="/personal-info"
-			title="张三"
-			subtitle="xxxx组">
+			:link="`/personal-info`"
+			:title="account.name"
+			:subtitle="account.ufwdAccount.sex">
 			<f7-icon material="person" slot="media" size="44px"></f7-icon>
 		</f7-list-item>
 
@@ -88,10 +88,20 @@ export default {
 			this.getAccount();
 		}
 	},
+	data() {
+		return {
+			account: {
+				name: '',
+				ufwdAccount: {}
+			}
+		}
+	},
 	methods: {
 		getAccount() {
 			return axios.get(`app/account`).then(res => {
 				console.log(res.data.data);
+
+				this.account = res.data.data;
 			})
 		}
 	},

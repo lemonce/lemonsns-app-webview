@@ -101,7 +101,7 @@
 	<f7-block-title class="margin-bottom">新闻中心</f7-block-title>
 	<f7-list media-list>
 		<f7-list-item
-			v-for="(article, index) in articleList"
+			v-for="(article, index) in newsList"
 			:key="index"
 			:title="article.title"
 			:text="article.abstract"
@@ -112,15 +112,45 @@
 		</f7-list-item>
 	</f7-list>
 
-	<f7-block-title>文化中心</f7-block-title>
+	<f7-block-title>文化艺术</f7-block-title>
 	<f7-list media-list>
 		<f7-list-item
-			title="统战大走访 | 民进西青工委走访慰问退休会员"
-			text="按照西青区委统战部工作部署以及开展“大调研大走访”活动的要求，日前，民进西青工委有关负责同志带队对部分退休老会员进行走访慰问。"
-			link="/article">
+			v-for="(article, index) in cultureList"
+			:key="index"
+			:title="article.title"
+			:text="article.abstract"
+			:link="`/article/${article.id}`">
 			<div slot="media">
-				<img src="../../images/home/slide3.jpg" style="width:6rem">
-			</div>	
+				<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:6rem">
+			</div>
+		</f7-list-item>
+	</f7-list>
+
+	<f7-block-title>人才中心</f7-block-title>
+	<f7-list media-list>
+		<f7-list-item
+			v-for="(article, index) in personnelList"
+			:key="index"
+			:title="article.title"
+			:text="article.abstract"
+			:link="`/article/${article.id}`">
+			<div slot="media">
+				<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:6rem">
+			</div>
+		</f7-list-item>
+	</f7-list>
+
+	<f7-block-title>投递中心</f7-block-title>
+	<f7-list media-list>
+		<f7-list-item
+			v-for="(article, index) in mailboxList"
+			:key="index"
+			:title="article.title"
+			:text="article.abstract"
+			:link="`/article/${article.id}`">
+			<div slot="media">
+				<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:6rem">
+			</div>
 		</f7-list-item>
 	</f7-list>
 
@@ -134,27 +164,81 @@ export default {
 	name: 'home',
 	data() {
 		return {
-			articleList: []
+			newsList: [],
+			cultureList: [],
+			personnelList: [],
+			mailboxList:[]
 		};
 	},
 	mounted() {
 		this.getArticleList();
 	},
 	methods: {
-		getArticleList() {
-			return axios.get(`app/article`).then(res => {
+		getNewsList() {
+			return axios.get(`app/symbol/article?value=新闻中心`).then(res => {
 				const articleList = res.data.data;
 
 				articleList.forEach(article => {
 
-					if (article.thumbnail) {
-						this.articleList.push(article);
+					if (article.ufwdArticle.thumbnail) {
+						this.newsList.push(article.ufwdArticle);
 					}
 
 				});
 			}).catch(err => {
 				console.log(err.message);
 			});
+		},
+		getCultureList() {
+			return axios.get(`app/symbol/article?value=文化艺术`).then(res => {
+				const articleList = res.data.data;
+
+				articleList.forEach(article => {
+
+					if (article.ufwdArticle.thumbnail) {
+						this.cultureList.push(article.ufwdArticle);
+					}
+
+				});
+			}).catch(err => {
+				console.log(err.message);
+			});
+		},
+		getPersonnelList() {
+			return axios.get(`app/symbol/article?value=人才中心`).then(res => {
+				const articleList = res.data.data;
+
+				articleList.forEach(article => {
+
+					if (article.ufwdArticle.thumbnail) {
+						this.personnelList.push(article.ufwdArticle);
+					}
+
+				});
+			}).catch(err => {
+				console.log(err.message);
+			});
+		},
+		getMailboxList() {
+			return axios.get(`app/symbol/article?value=投递中心`).then(res => {
+				const articleList = res.data.data;
+
+				articleList.forEach(article => {
+
+					if (article.ufwdArticle.thumbnail) {
+						this.mailboxList.push(article.ufwdArticle);
+					}
+
+				});
+			}).catch(err => {
+				console.log(err.message);
+			});
+		},
+		getArticleList() {
+			this.getNewsList();
+			this.getCultureList();
+			this.getPersonnelList();
+			this.getMailboxList();
 		},
 
 		thumbnailSrc(hash, regular) {

@@ -2,7 +2,7 @@
 
 <f7-page name="login" id="login-page" color-theme="red">
 	<f7-row>
-		<f7-col>
+		<f7-col style="margin-top: 5rem;">
 			<img src="../../../build/logo.png" alt="logo">
 		</f7-col>
 	</f7-row>
@@ -31,13 +31,20 @@
 			</f7-input>
 		</f7-list-item>
 	</f7-list>
-	<f7-list no-hairlines-md class="action-area">
-		<f7-list-button title="登录" @click="signin" ref="login"></f7-list-button>
+	<f7-block inset class="action-area">
+		<f7-row>
+			<f7-col>
+				<f7-button fill @click="signIn">登录</f7-button>
+			</f7-col>
+			<f7-col>
+				<f7-button fill @click="cancelLogin">暂不登录</f7-button>
+			</f7-col>
+		</f7-row>
 		<f7-block-footer>
 			点击 <a href="/binding">注册</a> 申请一个新账号。
 		</f7-block-footer>
-	</f7-list>
-
+	</f7-block>
+	
 </f7-page>
 
 </template>
@@ -56,11 +63,14 @@ export default {
 		}
 	},
 	methods: {
-		signin() {
+		signIn() {
 			this.$store.dispatch('signIn', this.account)
 				.then(() => {
-					this.$f7router.navigate('/index/');
+					this.$f7router.back();
 				})
+		},
+		cancelLogin() {
+			this.$f7router.navigate('/index/');
 		}
 	}
 }
@@ -71,7 +81,7 @@ export default {
 #login-page {
 	div.col {
 		text-align: center;
-		margin-top: 5rem;
+		margin: 1rem 0;
 	}
 	img {
 		width: 100px;
