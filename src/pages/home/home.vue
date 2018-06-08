@@ -158,7 +158,8 @@
 </template>
 
 <script>
-import axios from '../../../axios.js';
+import axios from '../axios.js';
+import config from '../../../config.json';
 
 export default {
 	name: 'home',
@@ -242,7 +243,7 @@ export default {
 		},
 
 		thumbnailSrc(hash, regular) {
-			return `http://120.27.113.195/static/ufwd/thumbnail/${hash}/regular/${regular}`;
+			return `${config.static}thumbnail/${hash}/regular/${regular}`;
 		}
 	}
 	

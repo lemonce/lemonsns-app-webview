@@ -20,7 +20,7 @@
 
 <script>
 import TabTest from './tab-test.vue';
-import axios from '../../../axios.js';
+import axios from '../axios.js';
 
 const center = {
 	news: '新闻中心',

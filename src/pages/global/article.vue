@@ -31,7 +31,7 @@
 </f7-page>
 </template>
 <script>
-import axios from '../../../axios.js';
+import axios from '../axios.js';
 import MarkdownIt from 'markdown-it';
 import _ from 'lodash';
 import dateFormat from 'dateformat';
