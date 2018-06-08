@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --config build/webpack.dev.js --mode development",
-    "start": "http-server ./static/ -p 8300",
+    "start": "http-server ./static/ -p 8300 -S",
     "build": "webpack --config build/webpack.prod.js --mode production"
   },
   "repository": {
