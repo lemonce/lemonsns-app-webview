@@ -11,7 +11,8 @@
 			:text="article.abstract"
 			:link="`/article/${article.id}`">
 			<div slot="media">
-				<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:6rem;">
+				<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:6rem;" v-if="!article.isShow">
+				<img src="../../images/replacement.png" style="width:6rem;" v-if="article.isShow">
 			</div>
 		</f7-list-item>
 	</f7-list>
@@ -41,21 +42,23 @@ export default {
 					const articleData = res.data.data;
 
 					articleData.forEach(article => {
+						article.ufwdArticle.isShow = false;
+						
+						if (!article.ufwdArticle.thumbnail) {
+							article.ufwdArticle.isShow = true;
+						}
+
 						this.articleList.push(article.ufwdArticle);
 					});
 				})
 		},
 		thumbnailSrc(hash, regular) {
-			if (!hash) {
-				return '../../images/replacement.png'
-			}
 
 			return `${config.static}thumbnail/${hash}/regular/${regular}`;
 		}
 	},
 	mounted() {
 		this.getArticleList();
-		console.log(this.$f7router)
 	}
 }
 </script>
