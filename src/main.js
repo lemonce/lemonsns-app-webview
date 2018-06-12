@@ -13,6 +13,8 @@ import store from './store/index.js';
 
 import App from './app.vue';
 
+import axios from './pages/axios';
+
 const $app = new Vue(Object.assign({
 	framework7: {
 		id: 'app-webview',
@@ -24,4 +26,18 @@ const $app = new Vue(Object.assign({
 	store
 }, App));
 
-$app.$mount('#app');
+window.addEventListener('load', () => {
+	
+	axios.get('/app/noop', {
+		timeout: 10000
+	}).then(res => {
+		const accountId = res.data.data.account;
+
+		$app.$store.commit('updateAccount', accountId);
+		
+	}).then(() => {
+
+		$app.$mount('#app');
+	});
+
+});

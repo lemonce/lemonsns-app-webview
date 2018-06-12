@@ -19,32 +19,37 @@ import axios from '../../axios.js';
 export default {
 	data() {
 		return {
-			channelList: []
+			channelList: [],
+			subscribe: []
 		}
 	},
 	mounted() {
-		this.getChannelList().then(() => {
-			this.getSubscribe();
-		})
+		this.getSubscribe().then(() => {
+			this.getChannelList();
+		}).catch(err => {
+			console.log(err.message);
+		});
 	},
 	methods: {
 		getChannelList() {
 			return axios.get(`app/channel`).then(res => {
 				
 				this.channelList = res.data.data;
+
+				this.channelList.forEach(channel => {
+					channel.isFollow = false;
+
+					this.subscribe.forEach(item => {
+						if (item.channelId === channel.id) {
+							channel.isFollow = true;
+						}
+					})
+				});
 			});
 		},
 		getSubscribe() {
 			return axios.get(`app/account/channel`).then(res => {
-				const channelList = res.data.data;
-
-				channelList.forEach(channel => {
-					this.channelList.forEach(item => {
-						if (channel.channelId === item.id) {
-							item.isFollow = true;
-						}
-					});
-				});
+				this.subscribe = res.data.data;
 			});
 		},
 		followChannel(channel) {

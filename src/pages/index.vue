@@ -70,7 +70,10 @@
 </template>
 
 <script>
+import axios from './axios';
+
 const $$ = Dom7;
+const CHECK_INTERVAL = 5 * 60 * 1000;
 
 export default {
 	name: 'index',
@@ -96,7 +99,28 @@ export default {
 			
 			$$('a.tab-link-active').removeClass('tab-link-active');
 			this.$refs[tab].$el.className = 'tab-link tab-link-active';
+		},
+		updateSession() {
+			return axios.get('/app/noop', {
+				timeout: 10000
+			}).then(res => {
+				const accountId = res.data.data.account;
+
+				this.$store.commit('updateAccount', accountId);
+				
+				return id;
+			});
 		}
+	},
+	mounted() {
+		this.watcher = setInterval(() => {
+			this.updateSession().catch(err => {
+				console.log(err.message);
+			});
+		}, CHECK_INTERVAL);
+	},
+	destroyed() {
+		clearInterval(this.watcher);
 	}
 }
 </script>

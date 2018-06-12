@@ -29,8 +29,9 @@ export default {
 
 			id: this.$f7Route.params.id,
 			channel: {
+				id: null,
 				name: '',
-				status: '关注',
+				status: '未关注',
 				description: ''
 			}
 		}
@@ -43,6 +44,7 @@ export default {
 	methods: {
 		getChannel() {
 			return axios.get(`app/channel/${this.id}`).then(res => {
+				this.channel.id = res.data.data.id;
 				this.channel.name = res.data.data.name;
 				this.channel.description = res.data.data.description;
 			});
@@ -53,12 +55,12 @@ export default {
 				const subscribe = [];
 
 				channelList.forEach(channel => {
-					subscribe.push(channel.name);
+					subscribe.push(channel.channelId);
 				});
 
 				subscribe.forEach(item => {
-					if (item === this.channel.name) {
-						this.channel.status = '未关注';
+					if (item === this.channel.id) {
+						this.channel.status = '关注';
 					}
 				})
 			});

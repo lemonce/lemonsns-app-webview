@@ -1,8 +1,6 @@
 <template>
-
 <f7-page name="article">
 	<f7-navbar title="文章" back-link></f7-navbar>
-
 	<f7-block strong class="no-margin-top"> 
 		<h3>{{article.title}}</h3>
 		<f7-block-header>
@@ -15,8 +13,8 @@
 
 	<f7-toolbar bottom-md>
 		<f7-link
-			:icon-f7="likeTag"
-			@click="like"
+			:icon-f7="favoriteTag"
+			@click="favorite"
 			ref="like">
 		</f7-link>
 		<f7-link
@@ -52,14 +50,24 @@ export default {
 			},
 			channelId: '',
 			channel: '',
-			likeTag: 'heart',
+			favoriteTag: 'heart',
 			collectTag: 'star'
 		}
 	},
 	mounted() {
 		this.getArticle().then(() => {
+			const elementList = document.querySelectorAll('.article-content a');
+
+			elementList.forEach(element => {
+				element.className = element.className + ' external';
+				element['target'] = "_Blank";
+			});
 
 			this.getChannel();
+		}).then(() => {
+			this.isCollection();
+		}).then(() => {
+			this.isFavorite();
 		});
 	},
 	methods: {
@@ -72,7 +80,8 @@ export default {
 
 				this.channelId = res.data.data.channel;
 
-				articleData.content = _.unescape(md.render(articleData.content))
+				articleData.content = _.unescape(md.render(articleData.content));
+
 				articleData.created_at = dateFormat(articleData.created_at, 'yyyy/mm/dd HH:MM');
 
 				this.article = articleData;
@@ -83,9 +92,37 @@ export default {
 				this.channel = res.data.data.name;
 			});
 		},
+		isCollection() {
+			return axios.get(`app/article/${this.articleId}/like`)
+					.then((res) => {
+						if (res.data.data.like) {
+
+							this.collectTag = 'star_fill';
+						}
+					})
+					.catch(err => {
+						console.log(err.message);
+					});
+		},
+		isFavorite() {
+			return axios.get(`app/article/${this.articleId}/favorite`)
+					.then((res) => {
+						if (res.data.data.favorite) {
+
+							this.favoriteTag = 'heart_fill';
+						}
+					})
+					.catch(err => {
+						console.log(err.message);
+					});
+		},
 		collect() {
+			if (!this.$store.state.signedIn) {
+				return;
+			}
+
 			if (this.collectTag === 'star') {
-				return axios.post(`app/article/${this.articleId}/favorite`)
+				return axios.post(`app/article/${this.articleId}/like`)
 					.then(() => {
 						this.collectTag = 'star_fill';
 					})
@@ -93,8 +130,9 @@ export default {
 						console.log(err.message);
 					});
 			}
+
 			if (this.collectTag === 'star_fill') {
-				return axios.delete(`app/account/article/${this.articleId}/favorite`)
+				return axios.delete(`app/account/article/${this.articleId}/like`)
 					.then(() => {
 						this.collectTag = 'star';
 					})
@@ -103,20 +141,25 @@ export default {
 					})
 			}
 		},
-		like() {
-			if (this.likeTag === 'heart') {
-				return axios.post(`app/article/${this.articleId}/like`)
+		favorite() {
+			if (!this.$store.state.signedIn) {
+				return;
+			}
+
+			if (this.favoriteTag === 'heart') {
+				return axios.post(`app/article/${this.articleId}/favorite`)
 					.then(() => {
-						this.likeTag = 'heart_fill';
+						this.favoriteTag = 'heart_fill';
 					})
 					.catch(err => {
 						console.log(err.message);
 					});
 			}
-			if (this.likeTag === 'heart_fill') {
-				return axios.delete(`app/account/article/${this.articleId}/like`)
+
+			if (this.favoriteTag === 'heart_fill') {
+				return axios.delete(`app/account/article/${this.articleId}/favorite`)
 					.then(() => {
-						this.likeTag = 'heart';
+						this.favoriteTag = 'heart';
 					})
 					.catch(err => {
 						console.log(err.message);
