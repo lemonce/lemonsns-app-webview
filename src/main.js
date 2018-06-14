@@ -19,7 +19,11 @@ const $app = new Vue(Object.assign({
 		name: 'app-webview',
 		theme: 'auto',
 		material: true,
-		routes: Routes
+		routes: Routes,
+		toast: {
+			closeTimeout: 2000,
+			closeButton: true,
+		}
 	},
 	store
 }, App));
@@ -40,4 +44,34 @@ const $app = new Vue(Object.assign({
 
 // });
 
+
 $app.$mount('#app');
+
+document.addEventListener('deviceready', () => {
+	const readyExitToast = $app.$f7.toast.create({
+		text: '再按返回键退出应用',
+		closeButton: false,
+		closeTimeout: 2000
+	});
+
+	alert(1)
+
+	function onBackButton() {
+		alert(2)
+		const router = $app.$f7.router;
+		const history = $app.$f7.view.current.history;
+	
+		if (history.length > 1) {
+			return router.back();
+		}
+	
+		document.removeEventListener('backbutton', onBackButton, false);
+		readyExitToast.open();
+	
+		setTimeout(() => {
+			document.addEventListener('backbutton', onBackButton, false);
+		}, 2000);
+	}
+	
+	document.addEventListener('backbutton', onBackButton, false);
+}, false);

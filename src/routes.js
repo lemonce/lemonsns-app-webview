@@ -69,6 +69,7 @@ export default [
 	{
 		path: '/index/',
 		component: Index,
+		name: 'home',
 		tabs: [
 			{
 				path: '/',
