@@ -12,7 +12,7 @@
 			</f7-nav-left>
 			<f7-nav-title>{{navTitle}}</f7-nav-title>
 			<f7-nav-right>
-				<f7-link href="/login">
+				<f7-link>
 					<f7-icon material="crop_free"></f7-icon>
 				</f7-link>
 			</f7-nav-right>
@@ -73,7 +73,6 @@
 import axios from './axios';
 
 const $$ = Dom7;
-const CHECK_INTERVAL = 5 * 60 * 1000;
 
 export default {
 	name: 'index',
@@ -101,7 +100,7 @@ export default {
 			this.$refs[tab].$el.className = 'tab-link tab-link-active';
 		},
 		updateSession() {
-			return axios.get('/app/noop', {
+			return axios.get('app/noop', {
 				timeout: 10000
 			}).then(res => {
 				const accountId = res.data.data.account;
@@ -113,20 +112,29 @@ export default {
 		}
 	},
 	mounted() {
-		this.watcher = setInterval(() => {
-			this.updateSession().catch(err => {
-				console.log(err.message);
-			});
-		}, CHECK_INTERVAL);
-	},
-	destroyed() {
-		clearInterval(this.watcher);
+		this.updateSession().catch(err => {
+			console.log(err.message);
+		});
+		
+		const notificationCallbackOnClose = this.$f7.notification.create({
+			// icon: '',
+			title: '提示',
+			subtitle: this.$store.state.messageBox.type,
+			text: this.$store.state.messageBox.content,
+			closeOnClick: true,
+			closeTimeout: 3000
+		});
+
+		if (this.$store.state.messageBox.open) {
+
+			notificationCallbackOnClose.open();
+		}
 	}
 }
 </script>
 
 <style lang="less">
-// #app .view .navbar .title {
-// 	left: 0!important;
-// }
+#app .view .navbar .title {
+	left: 0!important;
+}
 </style>

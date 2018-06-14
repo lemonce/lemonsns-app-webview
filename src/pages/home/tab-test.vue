@@ -18,7 +18,6 @@
 <script>
 export default {
 	mounted() {
-		// console.log(this.$f7route)
 	},
 	props: ['data']
 }

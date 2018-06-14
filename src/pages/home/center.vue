@@ -27,8 +27,7 @@ const center = {
 	culture: '文化艺术',
 	personnel: '人才中心',
 	courseSpirit: '中央市委区委主要会议文件精神',
-	courseUFWD: '学习统战知识',
-	mailbox: '投递中心'
+	courseUFWD: '学习统战知识'
 }
 export default {
 	name: 'center',

@@ -1,19 +1,19 @@
 <template>
 
 <f7-page name="login" id="login-page" color-theme="red">
-	<f7-row>
+	<!-- <f7-row>
 		<f7-col style="margin-top: 5rem;">
 			<img src="../../../build/logo.png" alt="logo">
 		</f7-col>
-	</f7-row>
+	</f7-row> -->
 
-	<f7-login-screen-title>登录</f7-login-screen-title>
+	<!-- <f7-login-screen-title>登录</f7-login-screen-title> -->
 
 	<f7-list no-hairlines-md>
 		<f7-list-item>
-			<f7-label>手机</f7-label>
+			<f7-label>用户名</f7-label>
 			<f7-input
-				placeholder="手机号"
+				placeholder="用户名/手机号"
 				type="text"
 				:value="account.name"
 				@input="account.name = $event.target.value"
@@ -36,9 +36,9 @@
 			<f7-col>
 				<f7-button fill @click="signIn">登录</f7-button>
 			</f7-col>
-			<f7-col>
+			<!-- <f7-col>
 				<f7-button fill @click="cancelLogin">暂不登录</f7-button>
-			</f7-col>
+			</f7-col> -->
 		</f7-row>
 		<f7-block-footer>
 			点击 <a href="/binding">注册</a> 申请一个新账号。

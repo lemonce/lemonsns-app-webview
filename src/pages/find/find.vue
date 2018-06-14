@@ -55,11 +55,11 @@
 			title="知识学习">
 			<f7-icon slot="media" material="live_tv"></f7-icon>	
 		</f7-list-item>
-		<f7-list-item
+		<!-- <f7-list-item
 			link="/center/mailbox"
 			title="投递中心">
 			<f7-icon slot="media" material="drafts"></f7-icon>	
-		</f7-list-item>
+		</f7-list-item> -->
 	</f7-list>
 
 </div>

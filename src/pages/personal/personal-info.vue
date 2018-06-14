@@ -114,7 +114,6 @@ export default {
 		}
 	},
 	mounted() {
-		console.log(this.accountId)
 		this.getAccountInfo();
 	}
 }

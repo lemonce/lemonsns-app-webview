@@ -56,17 +56,8 @@ export default {
 	methods: {
 		getActivityList() {
 			return axios.get('app/activity').then(res => {
-				// console.log(res.data.data);
 				this.activityList = res.data.data;
 			})
-		}
-	},
-	mounted() {
-		if (!this.$store.state.signedIn) {
-			this.$f7router.navigate('/login');
-		} else {
-
-			this.getActivityList();
 		}
 	}
 }

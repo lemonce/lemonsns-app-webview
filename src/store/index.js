@@ -9,7 +9,12 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
 	state: {
 		signedIn: false,
-		accountId: null
+		accountId: null,
+		messageBox: {
+			content: null,
+			open: false,
+			type: null
+		}
 	},
 	actions: {
 		signIn({ commit }, { name, password}) {
@@ -24,12 +29,28 @@ const store = new Vuex.Store({
 				.then(() => {
 					commit('updateAccount');
 				});
+		},
+		openMessageBox({commit}, {content, type}) {
+			commit('openNotification', {content, type});
+
+			setTimeout(() => {
+				commit('closeNotification');
+			}, 3000);
 		}
+
 	},
 	mutations: {
 		updateAccount(state, accountId = null) {
 			state.accountId = accountId;
 			state.signedIn = Boolean(accountId);
+		},
+		openNotification(state, {content, type}) {
+			state.messageBox.content = content;
+			state.messageBox.type = type;
+			state.messageBox.open = true;
+		},
+		closeNotification(state) {
+			state.messageBox.open = false;
 		}
 	}
 });

@@ -31,8 +31,6 @@ export default {
 		getSubscribe() {
 			return axios.get(`app/account/channel`).then(res => {
 					this.channelList = res.data.data;
-
-					console.log(this.channelList);
 				});
 		},
 		deleteSubscribe(channelId) {

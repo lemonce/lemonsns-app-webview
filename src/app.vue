@@ -3,8 +3,8 @@
 		<f7-statusbar></f7-statusbar>
 
 		<f7-view main url="/index/" color-theme="red"></f7-view>
-		
-		<login></login>
+<!-- 		
+		<login></login> -->
 	</div>
 </template>
 
@@ -13,7 +13,6 @@ import Login from './pages/account/login.vue';
 
 export default {
 	name: 'app',
-	components: { Login }
-	
+	components: { Login },
 }
 </script>

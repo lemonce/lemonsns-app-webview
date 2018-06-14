@@ -1,7 +1,7 @@
 <template>
 
 <div>
-	<f7-list media-list class="no-margin-top">
+	<f7-list media-list class="no-margin-top" v-if="isLogin">
 		<f7-list-item
 			link="/message-content"
 			title="系统消息"
@@ -16,12 +16,14 @@
 			>
 		</f7-list-item>
 	</f7-list>
+	<login v-if="!isLogin"></login>
 </div>
 
 </template>
 
 <script>
 import axios from '../axios.js';
+import Login from '../account/login';
 
 export default {
 	name: 'message',
@@ -30,19 +32,19 @@ export default {
 			messagePool: []
 		}
 	},
+	components: {
+		Login
+	},
 	methods: {
 		getMessagePool() {
 			return axios.get('app/notification').then(res => {
-				console.log(res.data.data)
+				console.log(res.data.data);
 			})
 		}
 	},
-	mounted() {
-		if (!this.$store.state.signedIn) {
-			this.$f7router.navigate('/login');
-		} else {
-
-			this.getMessagePool();
+	computed: {
+		isLogin() {
+			return this.$store.state.signedIn;
 		}
 	}
 }

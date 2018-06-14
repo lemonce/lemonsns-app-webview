@@ -90,7 +90,7 @@
 				<f7-icon material="drafts" color="pink"></f7-icon><br>
 				<f7-link
 					text="投递箱"
-					href="/center/mailbox"
+					href="/mailbox"
 					color="black"
 					class="padding-vertical"
 				></f7-link>
@@ -140,7 +140,7 @@
 		</f7-list-item>
 	</f7-list>
 
-	<f7-block-title>投递中心</f7-block-title>
+	<!-- <f7-block-title>投递中心</f7-block-title>
 	<f7-list media-list>
 		<f7-list-item
 			v-for="(article, index) in mailboxList"
@@ -152,7 +152,7 @@
 				<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:6rem">
 			</div>
 		</f7-list-item>
-	</f7-list>
+	</f7-list> -->
 
 </div>
 </template>

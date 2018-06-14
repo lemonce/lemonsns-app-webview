@@ -45,6 +45,7 @@ import Questionnaire from './pages/vote/questionnaire.vue';
 
 import Center from './pages/home/center.vue';
 import Knowledge from './pages/home/knowledge.vue';
+import MailBox from './pages/home/mailbox.vue';
 import ArticleList from './pages/home/article-list.vue';
 
 export default [
@@ -198,6 +199,10 @@ export default [
 	{
 		path: '/knowledge',
 		component: Knowledge
+	},
+	{
+		path: '/mailbox',
+		component: MailBox
 	},
 	{
 		path: '/article-list/:id',
