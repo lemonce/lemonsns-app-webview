@@ -54,10 +54,11 @@ document.addEventListener('deviceready', () => {
 		closeTimeout: 2000
 	});
 
-	alert(1)
+	console.log(1)
 
-	function onBackButton() {
-		alert(2)
+	function onBackButton(event) {
+		event.preventDefault();
+
 		const router = $app.$f7.router;
 		const history = $app.$f7.view.current.history;
 	
