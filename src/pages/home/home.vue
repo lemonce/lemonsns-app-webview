@@ -17,6 +17,9 @@
 		<f7-swiper-slide>
 			<img src="../../images/home/slide5.jpg" alt="" width="100%">
 		</f7-swiper-slide>
+		<!-- <f7-swiper-slide  v-for="(url, index) in urlList" :key="index">
+			<img :src="url" alt="" width="100%">
+		</f7-swiper-slide> -->
 	</f7-swiper>
 
 	<div id="home-item-pool" class="">
@@ -168,11 +171,13 @@ export default {
 			newsList: [],
 			cultureList: [],
 			personnelList: [],
-			mailboxList:[]
+			mailboxList:[],
+			urlList: []
 		};
 	},
 	mounted() {
 		this.getArticleList();
+		this.getSlideList();
 	},
 	methods: {
 		getNewsList() {
@@ -244,6 +249,11 @@ export default {
 
 		thumbnailSrc(hash, regular) {
 			return `${config.static}thumbnail/${hash}/regular/${regular}`;
+		},
+		getSlideList() {
+			return axios.get(`app/thumbnail`).then(res => {
+				this.urlList = res.data.data;
+			});
 		}
 	}
 	

@@ -106,8 +106,6 @@ export default {
 				const accountId = res.data.data.account;
 
 				this.$store.commit('updateAccount', accountId);
-				
-				return id;
 			});
 		}
 	},

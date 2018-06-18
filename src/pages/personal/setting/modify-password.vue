@@ -30,6 +30,9 @@
 				<f7-button big fill tab-link
 					@click="updatePassword()">保存</f7-button>
 			</f7-col>
+			<f7-col width="100" v-if="fail">
+				<f7-button>密码修改失败！</f7-button>
+			</f7-col>
 		</f7-row>
 	</f7-block>
 </f7-page>
@@ -43,7 +46,8 @@ export default {
 	data() {
 		return  {
 			newPassword: '',
-			confirmPassword: ''
+			confirmPassword: '',
+			fail: false
 		}
 	},
 	methods: {
@@ -52,11 +56,23 @@ export default {
 				return axios.patch('app/account/password', {
 					password: this.newPassword
 				}).then(() => {
-						this.$f7router.back();
-					}).catch(err => {
-						console.log(err.message);
-					});
+					this.signOut();
+				}).catch(err => {
+					this.fail = true;
+				});
 			}
+		},
+		signOut() {
+			this.$store.dispatch('signOut').then(() => {
+				this.$store.dispatch('openMessageBox',
+					{
+						content: '用户密码成功！请再次登录！',
+						type: '个人密码修改'
+					}
+				);
+
+				this.$f7router.navigate('/index/');
+			})
 		}
 	}
 }

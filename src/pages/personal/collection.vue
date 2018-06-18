@@ -73,6 +73,9 @@ export default {
 				this.items = res.data.data;
 			});
 		}
+	},
+	mounted() {
+		this.getCollection();
 	}
 };
 </script>
