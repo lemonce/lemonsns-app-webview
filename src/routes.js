@@ -44,6 +44,7 @@ import Vote from './pages/vote/vote.vue';
 import Questionnaire from './pages/vote/questionnaire.vue';
 
 import Center from './pages/home/center.vue';
+import CardList from './pages/home/card-list.vue';
 import Knowledge from './pages/home/knowledge.vue';
 import MailBox from './pages/home/mailbox.vue';
 import ArticleList from './pages/home/article-list.vue';
@@ -195,8 +196,12 @@ export default [
 
 	{
 		path: '/center/:name',
-		component: Center
+		component: CardList
 	},
+	// {
+	// 	path: '/center/:name',
+	// 	component: Center
+	// },
 	{
 		path: '/knowledge',
 		component: Knowledge

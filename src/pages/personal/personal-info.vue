@@ -155,7 +155,7 @@ export default {
 			}).then((res) => {
 				const id = res.data.data.id;
 
-				axios.post(`app/identity/account/${id}`, {
+				axios.post(`app/account/${id}/identity`, {
 					identityPool: this.identity.addIdentity
 				});
 

@@ -23,9 +23,8 @@
 			@click="activeTab(index)">{{category.name}}</f7-link> 
 	</f7-toolbar>
 	<!--scrollable的highlight显示正常，但是没有scrollable的tabbar样式显示不正常，决定去掉tabbar，然后改tab-link和tab-link-active的样式  -->
-	<f7-swiper style="height:100%"  :params="{ observer: true }">
+	<f7-swiper style="height:100%"  :params="{ observer: true }" id="swiper-container">
 		<f7-swiper-slide
-			@touch="changeSwiper()"
 			v-for="(category, index) in categoryList"
 			:key="index">
 			<article-list :categoryId="category.id"></article-list>
@@ -35,7 +34,6 @@
 </template>
 
 <script>
-import TabTest from './tab-test.vue';
 import ArticleList from './article-list';
 import axios from '../axios.js';
 
@@ -49,10 +47,11 @@ const center = {
 
 const $$ = Dom7;
 
+let timer = null;
+
 export default {
 	name: 'center',
 	components: {
-		TabTest,
 		ArticleList
 	},
 	data() {
@@ -83,14 +82,31 @@ export default {
 
 			$$('a.tab-link-active').removeClass('tab-link-active');
 
+			const swiper = this.$f7.swiper.get('#swiper-container');
+
+			swiper.activeIndex = index;
+
 			this.categoryActive = index;
-		},
-		changeSwiper(el) {
-			console.log(el.target);
 		}
 	},
 	mounted() {
 		this.getCategoryList();
+
+		timer = setInterval(() => {
+			const swiper = this.$f7.swiper.get('#swiper-container');
+			const length = swiper.slides.length;
+
+			for (let i = 0; i < length; i ++) {
+
+				if ($$(swiper.slides[i]).hasClass('swiper-slide-active')) {
+					this.categoryActive = i;
+				}
+			}
+
+		}, 500);
+	},
+	destroyed() {
+		clearInterval(timer);
 	}
 }
 </script>
