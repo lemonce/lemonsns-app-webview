@@ -143,6 +143,13 @@
 		</f7-list-item>
 	</f7-list>
 
+	<div class="report">
+  <f7-block-title align='center'>违法和不良信息举报</f7-block-title>
+  <img src="http://www.xq.net.cn/index.files/sydb1.jpg">
+  <p>违法和不良信息举报电话：022-27919129</p>
+  <p>举报邮箱：xqxxg2017@163.com</p>
+	</div>
+
 	<!-- <f7-block-title>投递中心</f7-block-title>
 	<f7-list media-list>
 		<f7-list-item
@@ -271,6 +278,16 @@ export default {
 		background: #fff;
 		text-align: center;
 		border: 1px solid #ddd;
+	}
+}
+.report {
+	p {
+		text-align: center;
+	}
+	img {
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
 	}
 }
 </style>

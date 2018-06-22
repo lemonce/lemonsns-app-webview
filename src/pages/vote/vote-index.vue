@@ -7,7 +7,7 @@
 	<f7-list media-list class="margin-vertical">
 		<f7-list-item
 			title="[投票]xx 投票-2"
-			link="/vote"
+			link="/vote/4"
 			after="2018/03/14"></f7-list-item>
 		<f7-list-item
 			title="[问卷]xx 问卷-3"

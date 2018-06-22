@@ -186,7 +186,7 @@ export default [
 		component: VoteIndex
 	},
 	{
-		path: '/vote',
+		path: '/vote/:id',
 		component: Vote
 	},
 	{
