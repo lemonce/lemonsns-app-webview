@@ -37,7 +37,7 @@
 				<f7-icon material="business" color="green"></f7-icon><br>
 				<f7-link
 					text="文化站"
-					href="/center/culture"
+					href="/center/culture/article"
 					color="black"
 					class="padding-vertical"
 				></f7-link>
@@ -66,7 +66,7 @@
 				<f7-icon material="people" color="yellow"></f7-icon><br>
 				<f7-link
 					text="群英汇"
-					href="/center/personnel"
+					href="/"
 					color="black"
 					class="padding-vertical"
 				></f7-link>
@@ -75,7 +75,7 @@
 				<f7-icon material="live_tv" color="gray"></f7-icon><br>
 				<f7-link
 					text="微课堂"
-					href="/knowledge"
+					href="/center/knowledge/article"
 					color="black"
 					class="padding-vertical"
 				></f7-link>

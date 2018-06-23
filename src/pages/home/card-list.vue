@@ -4,10 +4,11 @@
 	<f7-card>
 		<f7-card-content>
 			<f7-list media-list>
-				<f7-list-item v-for="(category, index) in categoryList" :key="index">
+				<f7-list-item v-for="(category, index) in categoryList" :key="index"
+					:link="`/center/${category.name}/article`">
 					<div slot="media" style="position: relative">
-						<img :src="thumbnailSrc(category.thumbnail, 'small')" style="width:12rem" v-if="!category.isShow">
-						<img src="../../images/replacement.png" style="width:6rem;" v-if="category.isShow">
+						<img :src="thumbnailSrc(category.thumbnail, 'small')" style="width:10rem" v-if="!category.isShow">
+						<img src="../../images/replacement.png" style="width:10rem;" v-if="category.isShow">
 						<span class="cover">
 							<span>{{category.name}}</span>
 						</span>
@@ -29,9 +30,7 @@ import axios from '../axios.js';
 const center = {
 	news: '闻资讯',
 	culture: '文化站',
-	personnel: '微课堂',
-	courseSpirit: '中央市委区委主要会议文件精神',
-	courseUFWD: '学习统战知识'
+	knowledge: '微课堂'
 };
 
 export default {

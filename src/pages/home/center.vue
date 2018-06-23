@@ -3,18 +3,6 @@
 <f7-page name="center">
 	<f7-navbar :title="centerName" back-link></f7-navbar>
 
-	<!-- <img src="../../images/home/slide4.jpg" width="100%"> -->
-	
-	<!-- <f7-list>
-		<f7-list-item
-			v-for="(category, index) in categoryList"
-			:key="index"
-			:link="`/article-list/${category.id}`"
-			:title="category.name">
-
-		</f7-list-item>
-	</f7-list> -->
-
 	<f7-toolbar>
 		<f7-link
 			v-for="(category, index) in categoryList"
@@ -38,11 +26,8 @@ import ArticleList from './article-list';
 import axios from '../axios.js';
 
 const center = {
-	news: '新闻中心',
 	culture: '文化艺术',
-	personnel: '人才中心',
-	courseSpirit: '中央市委区委主要会议文件精神',
-	courseUFWD: '学习统战知识'
+	knowledge: '学习统战知识'
 };
 
 const $$ = Dom7;
@@ -64,7 +49,12 @@ export default {
 	computed: {
 		centerName() {
 			this.centerTitle = this.$f7route.params.name;
-			return center[this.centerTitle];
+
+			if (center[this.centerTitle]) {
+				return center[this.centerTitle];
+			}
+
+			return this.centerTitle;
 		}
 	},
 	methods: {

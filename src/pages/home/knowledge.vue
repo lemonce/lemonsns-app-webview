@@ -2,7 +2,7 @@
 
 <f7-page name="konwledge">
 	<f7-navbar title="知识学习" back-link></f7-navbar>
-
+	<!-- 目前弃用这个组件 -->
 	<!-- <f7-list>
 		<f7-list-item
 			link="/center/courseSpirit"

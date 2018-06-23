@@ -198,10 +198,10 @@ export default [
 		path: '/center/:name',
 		component: CardList
 	},
-	// {
-	// 	path: '/center/:name',
-	// 	component: Center
-	// },
+	{
+		path: '/center/:name/article',
+		component: Center
+	},
 	{
 		path: '/knowledge',
 		component: Knowledge
