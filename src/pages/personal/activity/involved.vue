@@ -106,6 +106,9 @@ export default {
 					this.hasEnded = false;
 				}
 				
+			}).catch((err) => {
+				this.hasUnderwayList = false;
+				this.hasEnded = false;
 			});
 		}
 	},

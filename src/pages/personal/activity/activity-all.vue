@@ -133,7 +133,7 @@ export default {
 					this.hasUnderwayList = false;
 				}
 
-				if (this.endedList.length) {
+				if (this.endedList.length === 0) {
 					this.hasEnded = false;
 				}
 				
