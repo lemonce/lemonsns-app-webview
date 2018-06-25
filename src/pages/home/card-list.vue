@@ -84,7 +84,7 @@ export default {
 	height: 100%;
 	background:rgba(0,0,0,0.3);
 	text-align: center;
-	line-height: 6rem;
+	line-height: 7rem;
 	color: white
 }
 </style>

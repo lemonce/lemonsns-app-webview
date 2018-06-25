@@ -1,9 +1,9 @@
 <template>
 
 <f7-page name="circle">
-	<f7-navbar title="领导圈" back-link></f7-navbar>
+	<f7-navbar :title="title" back-link></f7-navbar>
 
-	<f7-card>
+	<!-- <f7-card>
 		<f7-card-header>
 			<f7-list media-list>
 				<f7-list-item
@@ -53,13 +53,168 @@
 			<f7-link icon-f7="star"></f7-link>
 			<f7-link icon-f7="forward"></f7-link>
 		</f7-card-footer>
+	</f7-card> -->
+	<f7-card v-for="(article, index) in articleList" :key="index" v-if="isLogin && hasArticle">
+		<f7-card-header>
+			<f7-list media-list>
+				<f7-list-item
+					:title="article.channel.name"
+					:subtitle="article.updated_at">
+				</f7-list-item>
+			</f7-list>
+		</f7-card-header>
+		<f7-card-content>
+			<img :src="thumbnailSrc(article.thumbnail, 'small')" width="100%" v-if="!article.isShow">
+			<img src="../../images/replacement.png" width="100%" v-if="article.isShow">
+			<f7-list media-list>
+				<f7-list-item
+					:title="article.title"
+					:text="article.abstract"
+					:link="`/article/${article.id}`">
+				</f7-list-item>
+			</f7-list>
+		</f7-card-content>
+		<!-- <f7-card-footer>
+			<f7-link
+				:icon-f7="favoriteTag"
+				@click="favorite"
+				ref="like">
+			</f7-link>
+			<f7-link
+				:icon-f7="collectTag"
+				@click="collect"
+				ref="collect">
+			</f7-link>
+			<f7-link icon-f7="forward"></f7-link>
+		</f7-card-footer> -->
 	</f7-card>
+	<login v-if="!isLogin"></login>
+	<f7-block-title v-if="!hasArticle">没有新文章</f7-block-title>
 </f7-page>
 </template>
 
 <script>
-export default {
+import axios from '../axios.js';
+import config from '../../../config.json';
+import dateFormat from 'dateformat';
+import Login from '../account/login';
 
+export default {
+	name: 'circle',
+	data() {
+		return {
+			title: '',
+			street: 0,
+			channelList: [],
+			articleList: [],
+			query: '',
+			isLogin: true,
+			hasArticle: true
+		}
+	},
+	components: {
+		Login
+	},
+	methods: {
+		getSubscribe() {
+			return axios.get(`app/account/channel`).then(res => {
+				this.subscribe = res.data.data;
+			});
+		},
+		getChannelList() {
+			return axios.get(`app/channel`).then(res => {
+				const channelList = res.data.data;
+
+				this.channelList = channelList.map(channel => {
+					channel.isFollow = false;
+
+					this.subscribe.forEach(item => {
+						if (item.channelId === channel.id) {
+							channel.isFollow = true;
+						}
+					});
+
+					return {
+						id: channel.id,
+						name: channel.name,
+						isFollow: channel.isFollow
+					}
+				});
+			});
+		},
+		getArticleList() {
+			const url = this.getUrl();
+
+			return axios.get(`${url}`).then(res => {
+				const articleList = res.data.data;
+
+				articleList.forEach(article => {
+					article.isShow = false;
+
+					article.updated_at = dateFormat(article.updated_at, 'yyyy/mm/dd HH:MM');
+						
+					if (!article.thumbnail) {
+						article.isShow = true;
+					}
+
+					this.channelList.forEach(channel => {
+						if (channel.id === article.channel) {
+							article.channel = channel;
+						}
+					})
+				});
+
+				if (articleList.length === 0) {
+					this.hasArticle = false;
+				}
+
+				this.articleList = articleList;
+			}).catch(err => {
+				console.log(err.message);
+			});
+		},
+		thumbnailSrc(hash, regular) {
+
+			return `${config.static}thumbnail/${hash}/regular/${regular}`;
+		},
+		getAccountInfo() {
+
+			return axios.get(`app/account`)
+				.then(res => {
+					this.street = res.data.data.street;
+				});
+		},
+		getUrl() {
+			
+			if (this.query === 'all') {
+				this.title = '领导圈';
+
+				return 'app/article';
+			} else if (this.query === 'subscribe') {
+				this.title = '关注';
+
+				const channelList = this.subscribe.map(channel => channel.channelId);
+
+				if (channelList.length === 0) {
+					this.hasArticle = false;
+				}
+
+				this.isLogin = this.$store.state.signedIn;
+
+				return `app/article?channel=${channelList}`
+			}
+		}
+	},
+	mounted() {
+		this.query = this.$f7Route.query.parameter;
+
+		this.getSubscribe().then(() => {
+			this.getChannelList().then(() => {
+				this.getArticleList();
+				this.getAccountInfo();
+			});
+		});
+	}
 }
 </script>
 

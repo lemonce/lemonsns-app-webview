@@ -47,8 +47,6 @@ export default {
 				const surveyList = res.data.data;
                 const date = new Date();
                 
-                console.log(surveyList);
-
 				surveyList.forEach(survey => {
 					const end = new Date(survey.time);
 					const now = new Date();
@@ -72,6 +70,9 @@ export default {
 					this.hasEnded = false;
 				}
 				
+			}).catch(err => {
+				this.hasUnderwayList = false;
+				this.hasEnded = false;
 			});
 		}
 	},

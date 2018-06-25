@@ -3,14 +3,12 @@
 <div>
 	<f7-list class="margin-vertical">
 		<f7-list-item
-			link="/circle"
-			title="领导圈"
-			badge="1"
-			badge-color="red">
+			link="/circle?parameter=all"
+			title="领导圈">
 			<f7-icon slot="media" material="camera"></f7-icon>	
 		</f7-list-item>
 		<f7-list-item
-			link="/circle"
+			link="/circle?parameter=subscribe"
 			title="关注">
 			<f7-icon slot="media" material="lightbulb_outline"></f7-icon>	
 		</f7-list-item>
@@ -51,7 +49,7 @@
 			<f7-icon slot="media" material="people"></f7-icon>
 		</f7-list-item>
 		<f7-list-item
-			link="/knowledge"
+			link="/center/knowledge/article"
 			title="知识学习">
 			<f7-icon slot="media" material="live_tv"></f7-icon>	
 		</f7-list-item>

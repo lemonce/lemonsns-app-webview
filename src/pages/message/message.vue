@@ -55,6 +55,8 @@ export default {
 				});
 
 				this.messagePool = messageList;
+			}).catch(err => {
+				this.hasMessage = false;
 			})
 		},
 		deleteMessage(id) {

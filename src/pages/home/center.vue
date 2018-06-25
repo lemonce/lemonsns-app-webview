@@ -11,7 +11,7 @@
 			@click="activeTab(index)">{{category.name}}</f7-link> 
 	</f7-toolbar>
 	<!--scrollable的highlight显示正常，但是没有scrollable的tabbar样式显示不正常，决定去掉tabbar，然后改tab-link和tab-link-active的样式  -->
-	<f7-swiper style="height:100%"  :params="{ observer: true }" id="swiper-container">
+	<f7-swiper style="min-height:100%"  :params="{ observer: true }" id="swiper-container">
 		<f7-swiper-slide
 			v-for="(category, index) in categoryList"
 			:key="index">

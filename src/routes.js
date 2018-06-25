@@ -142,7 +142,7 @@ export default [
 		component: Activity
 	},
 	{
-		path: '/activity-detail',
+		path: '/activity-detail/:id',
 		component: ActivityDetail
 	},
 

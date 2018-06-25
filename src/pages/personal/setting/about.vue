@@ -6,7 +6,7 @@
 	<f7-block>
 		<f7-row>
 			<f7-col style="text-align:center; margin-top:2.5rem">
-				<img src="../../../../build/logo.png" alt="logo" width="80">
+				<img src="../../../../icon/icon-192x192.png" alt="logo" width="80">
 			</f7-col>
 		</f7-row>
 		<f7-block-footer style="text-align:center">西青云统战 1.0.0</f7-block-footer>

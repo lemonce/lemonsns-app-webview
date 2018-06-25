@@ -56,13 +56,13 @@ export default {
 					const articleData = res.data.data;
 
 					articleData.forEach(article => {
-						article.ufwdArticle.isShow = false;
+						article.isShow = false;
 						
-						if (!article.ufwdArticle.thumbnail) {
-							article.ufwdArticle.isShow = true;
+						if (!article.thumbnail) {
+							article.isShow = true;
 						}
 
-						this.articleList.push(article.ufwdArticle);
+						this.articleList.push(article);
 					});
 				})
 		},
