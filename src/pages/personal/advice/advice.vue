@@ -5,6 +5,7 @@
 
 	<f7-list class="no-margin-top">
 		<f7-list-item
+			v-if="hasAdvice"
 			v-for="(advice, index) in adviceList"
 			:key="index"
 			:link="`/advice-detail/${advice.id}`"
@@ -12,6 +13,7 @@
 			:after="advice.created_at|timeFormat">
 		</f7-list-item>
 	</f7-list>
+	<f7-block-title v-if="!hasAdvice">你还没有任何建言！</f7-block-title>
 </f7-page>
 </template>
 
@@ -23,14 +25,19 @@ export default {
 	name: 'advice',
 	data() {
 		return {
-			adviceList: []
+			adviceList: [],
+			hasAdvice: true
 		}
 	},
 	methods: {
 		getAdviceList() {
 			return axios.get('app/advise').then(res => {
 				this.adviceList = res.data.data;
-			})
+
+				if (this.adviceList.length === 0) {
+					this.hasAdvice = false;
+				}
+			});
 		}
 	},
 	mounted() {

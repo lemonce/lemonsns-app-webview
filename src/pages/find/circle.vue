@@ -88,8 +88,8 @@
 			<f7-link icon-f7="forward"></f7-link>
 		</f7-card-footer> -->
 	</f7-card>
-	<login v-if="!isLogin"></login>
 	<f7-block-title v-if="!hasArticle">没有新文章</f7-block-title>
+	<login v-if="!isLogin"></login>
 </f7-page>
 </template>
 
@@ -195,11 +195,11 @@ export default {
 
 				const channelList = this.subscribe.map(channel => channel.channelId);
 
+				this.isLogin = this.$store.state.signedIn;
+
 				if (channelList.length === 0) {
 					this.hasArticle = false;
 				}
-
-				this.isLogin = this.$store.state.signedIn;
 
 				return `app/article?channel=${channelList}`
 			}
