@@ -28,6 +28,10 @@
 				<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:6rem;" v-if="!article.isShow">
 				<img src="../../images/replacement.png" style="width:6rem;" v-if="article.isShow">
 			</div>
+			<div slot="root"
+				@touchmove="isSwiping=true"
+				@touchend="clickWithoutSwipe($event)"
+				class="mask"></div>
 		</f7-list-item>
 	</f7-list>
 </template>
@@ -40,6 +44,7 @@ export default {
 	name: 'article-list',
 	data() {
 		return {
+			isSwiping: false,
 			articleList: []
 		}
 	},
@@ -50,6 +55,13 @@ export default {
 		}
 	},
 	methods: {
+		clickWithoutSwipe(event) {
+			if (!this.isSwiping) {
+				event.target.parentElement.querySelector('a').click();
+			}
+			
+			this.isSwiping = false;
+		},
 		getArticleList() {
 			return axios.get(`app/category/${this.categoryId}/article`)
 				.then(res => {
@@ -76,3 +88,15 @@ export default {
 	}
 }
 </script>
+
+<style lang="less">
+.mask {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	top: 0;
+	left: 0;
+}
+</style>
+

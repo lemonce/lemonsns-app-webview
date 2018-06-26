@@ -6,12 +6,21 @@
 	<f7-toolbar>
 		<f7-link
 			v-for="(category, index) in categoryList"
-			:class="{'tab-link-active': categoryActive === index , 'tab-link': true}"
+			class="tab-link"
+			:class="{
+				'tab-link-active': categoryActivedIndex === index
+			}"
 			:key="index"
 			@click="activeTab(index)">{{category.name}}</f7-link> 
 	</f7-toolbar>
 	<!--scrollable的highlight显示正常，但是没有scrollable的tabbar样式显示不正常，决定去掉tabbar，然后改tab-link和tab-link-active的样式  -->
-	<f7-swiper style="min-height:100%"  :params="{ observer: true }" id="swiper-container">
+	<f7-swiper style="min-height:100%"
+		ref="list"
+		:params="{
+			observer: true,
+			on: { slideChange: updateActive }
+		}"
+		id="swiper-container">
 		<f7-swiper-slide
 			v-for="(category, index) in categoryList"
 			:key="index">
@@ -30,9 +39,6 @@ const center = {
 	knowledge: '学习统战知识'
 };
 
-const $$ = Dom7;
-
-let timer = null;
 
 export default {
 	name: 'center',
@@ -43,7 +49,7 @@ export default {
 		return {
 			centerTitle: '',
 			categoryList: [],
-			categoryActive: 0
+			categoryActivedIndex: 0
 		}
 	},
 	computed: {
@@ -59,44 +65,21 @@ export default {
 	},
 	methods: {
 		getCategoryList() {
-			return axios.get(`app/category?symbol=${this.centerName}`)
-				.then(res => {
-					
-					this.categoryList = res.data.data;
-				});
+			return axios.get(`app/category`, {
+				params: {
+					symbol: this.centerName
+				}
+			}).then(res => this.categoryList = res.data.data);
 		},
-		activeTab(index, id) {
-			if (index === this.categoryActive) {
-				return;
-			}
-
-			$$('a.tab-link-active').removeClass('tab-link-active');
-
-			const swiper = this.$f7.swiper.get('#swiper-container');
-
-			swiper.activeIndex = index;
-
-			this.categoryActive = index;
+		updateActive() {
+			this.categoryActivedIndex = this.$refs.list.swiper.activeIndex;
+		},
+		activeTab(index) {
+			this.$refs.list.swiper.slideTo(index);
 		}
 	},
 	mounted() {
 		this.getCategoryList();
-
-		timer = setInterval(() => {
-			const swiper = this.$f7.swiper.get('#swiper-container');
-			const length = swiper.slides.length;
-
-			for (let i = 0; i < length; i ++) {
-
-				if ($$(swiper.slides[i]).hasClass('swiper-slide-active')) {
-					this.categoryActive = i;
-				}
-			}
-
-		}, 500);
-	},
-	destroyed() {
-		clearInterval(timer);
 	}
 }
 </script>
