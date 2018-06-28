@@ -43,7 +43,7 @@
 			link
 			:text="underway.created_at"></f7-list-item>
 		<f7-list-item>
-			<f7-block-title v-if="!hasUnderwayList">没有正在进行的活动</f7-block-title>
+			<f7-block-title v-if="!hasUnderwayList">没有正在进行的活动或会议</f7-block-title>
 		</f7-list-item>
 	</f7-list>
 
@@ -56,7 +56,7 @@
 			link
 			:text="end.created_at"></f7-list-item>
 		<f7-list-item>
-			<f7-block-title v-if="!hasEnded">没有已经结束的活动</f7-block-title>
+			<f7-block-title v-if="!hasEnded">没有已经结束的活动或会议</f7-block-title>
 		</f7-list-item>
 	</f7-list>
 </div>

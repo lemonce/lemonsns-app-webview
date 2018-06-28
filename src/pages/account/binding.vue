@@ -169,11 +169,15 @@ export default {
 			}
 
 			if (this.confirmPassword === this.password) {
-				
+				const ufwd = this.ufwd;
+
+				ufwd.party = parseInt(ufwd.party);
+				ufwd.street = parseInt(ufwd.street);
+
 				return axios.post('app/account', {
 					name: this.username,
 					password: this.password,
-					ufwd: this.ufwd
+					ufwd
 				}).then((res) => {
 					const id = res.data.data.id;
 

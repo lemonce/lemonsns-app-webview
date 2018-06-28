@@ -1,8 +1,8 @@
 <template>
 
 <div>
-	<f7-block-title v-if="isLogin && !hasMessage">当前没有消息通知！</f7-block-title>
-	<f7-list media-list class="no-margin-top" v-if="isLogin && hasMessage">
+	<f7-block-title v-if="!hasMessage">当前没有消息通知！</f7-block-title>
+	<f7-list media-list class="no-margin-top" v-if="hasMessage">
 		<!-- <f7-list-item
 			link="/message-content"
 			title="系统消息"
@@ -20,7 +20,6 @@
 			</f7-swipeout-actions>
 		</f7-list-item>
 	</f7-list>
-	<login v-if="!isLogin"></login>
 </div>
 
 </template>
@@ -78,7 +77,18 @@ export default {
 		}
 	},
 	mounted() {
-		this.getMessagePool();
+		if (!this.isLogin) {
+			this.$f7router.navigate('/login/');
+		} else {
+			this.getMessagePool();
+		}		
 	}
 }
 </script>
+
+<style lang="less">
+.list .item-subtitle {
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+</style>

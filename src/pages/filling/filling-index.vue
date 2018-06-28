@@ -23,7 +23,7 @@
 			after="2018/01/29"></f7-list-item>
 	</f7-list> -->
 
-	<f7-toolbar tabbar v-if="isLogin">
+	<f7-toolbar tabbar>
 		<f7-link active tab-link tab-link-active
 			text="全部问卷"
 			href="#all-survey"
@@ -33,7 +33,7 @@
 			href="#all-vote"
 		></f7-link>
 	</f7-toolbar>
-	<f7-tabs v-if="isLogin">
+	<f7-tabs>
 		<f7-tab id="all-survey" tab-active>
 			<all-survey></all-survey>
 		</f7-tab>
@@ -41,21 +41,23 @@
 			<all-vote></all-vote>
 		</f7-tab>
 	</f7-tabs>
-	<login v-if="!isLogin"></login>
 </f7-page>
 </template>
 
 <script>
 import AllSurvey from './questionnaire-list.vue';
 import AllVote from './vote-list.vue';
-import Login from '../account/login';
 
 export default {
 	name: 'filling',
 	components: {
 		AllSurvey,
-		AllVote,
-		Login
+		AllVote
+	},
+	mounted() {
+		if (!this.isLogin) {
+			this.$f7router.navigate('/login/');
+		}
 	},
 	computed: {
 		isLogin() {

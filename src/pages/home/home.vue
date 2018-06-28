@@ -101,7 +101,7 @@
 		</f7-row>
 	</div>
 
-	<f7-block-title class="margin-bottom">新闻中心</f7-block-title>
+	<f7-block-title class="margin-bottom">闻资讯</f7-block-title>
 	<f7-list media-list>
 		<f7-list-item
 			v-for="(article, index) in newsList"
@@ -115,7 +115,7 @@
 		</f7-list-item>
 	</f7-list>
 
-	<f7-block-title>文化艺术</f7-block-title>
+	<f7-block-title>文化站</f7-block-title>
 	<f7-list media-list>
 		<f7-list-item
 			v-for="(article, index) in cultureList"
@@ -129,7 +129,7 @@
 		</f7-list-item>
 	</f7-list>
 
-	<f7-block-title>人才中心</f7-block-title>
+	<f7-block-title>微课堂</f7-block-title>
 	<f7-list media-list>
 		<f7-list-item
 			v-for="(article, index) in personnelList"
@@ -191,15 +191,11 @@ export default {
 	},
 	methods: {
 		getNewsList() {
-			return axios.get(`app/symbol/article?value=新闻中心`).then(res => {
+			return axios.get(`app/symbol/article?highLevel=闻资讯`).then(res => {
 				const articleList = res.data.data;
 
 				articleList.forEach(article => {
-
-					if (article.ufwdArticle.thumbnail) {
-						this.newsList.push(article.ufwdArticle);
-					}
-
+					this.newsList.push(article.ufwdArticle);
 				});
 			}).catch(err => {
 				console.log(err.message);
@@ -210,11 +206,7 @@ export default {
 				const articleList = res.data.data;
 
 				articleList.forEach(article => {
-
-					if (article.ufwdArticle.thumbnail) {
-						this.cultureList.push(article.ufwdArticle);
-					}
-
+					this.cultureList.push(article.ufwdArticle);
 				});
 			}).catch(err => {
 				console.log(err.message);
@@ -225,11 +217,7 @@ export default {
 				const articleList = res.data.data;
 
 				articleList.forEach(article => {
-
-					if (article.ufwdArticle.thumbnail) {
-						this.personnelList.push(article.ufwdArticle);
-					}
-
+					this.personnelList.push(article.ufwdArticle);
 				});
 			}).catch(err => {
 				console.log(err.message);
@@ -240,11 +228,7 @@ export default {
 				const articleList = res.data.data;
 
 				articleList.forEach(article => {
-
-					if (article.ufwdArticle.thumbnail) {
-						this.mailboxList.push(article.ufwdArticle);
-					}
-
+					this.mailboxList.push(article.ufwdArticle);
 				});
 			}).catch(err => {
 				console.log(err.message);

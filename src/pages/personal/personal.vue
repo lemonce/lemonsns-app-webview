@@ -2,7 +2,7 @@
 
 <div>
 
-	<div id="personal-page" v-if="isLogin">
+	<div id="personal-page">
 		<f7-list media-list class="margin-top no-margin-bottom">
 			<f7-list-item
 				:link="`/personal-info`"
@@ -74,7 +74,6 @@
 		</f7-list>
 
 	</div>
-	<login v-if="!isLogin"></login>
 </div>
 
 </template>
@@ -96,6 +95,13 @@ export default {
 			}
 		}
 	},
+	mounted() {
+		if (!this.isLogin) {
+			this.$f7router.navigate('/login/');
+		} else {
+			this.getAccount();
+		}		
+	},
 	methods: {
 		getAccount() {
 			return axios.get(`app/account`).then(res => {
@@ -105,11 +111,6 @@ export default {
 	},
 	computed: {
 		isLogin() {
-			if (this.$store.state.signedIn) {
-
-				this.getAccount();
-			}
-
 			return this.$store.state.signedIn;
 		}
 	}

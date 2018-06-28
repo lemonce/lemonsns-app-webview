@@ -2,7 +2,7 @@
 
     <f7-page>
         <f7-navbar title="投递箱" back-link></f7-navbar>
-        <f7-list form v-if="isLogin">
+        <f7-list form>
             <f7-list-item>
                 <f7-label>标题</f7-label>
                 <f7-input
@@ -36,57 +36,57 @@
             <f7-block v-if="fail">投递信息失败!</f7-block>
             <!-- <p style="color: red; text-align:center" >投递信息失败!</p> -->
         </f7-list>
-
-        <login v-if="!isLogin"></login>
     </f7-page>
 </template>
 
 <script>
 import axios from '../axios.js';
-import Login from '../account/login';
 
 export default {
-	name: 'mailbox',
-	data() {
-		return {
-			advise: {
-                title: '',
-                category: '建言献策',
-                content: ''
-            },
-            category: [
-                '建言献策', '提建议', '其他投稿', 'APP反馈'
-            ],
-            fail: false
-		}
-    },
-    components: {
-		Login
+  name: 'mailbox',
+  data() {
+    return {
+      advise: {
+        title: '',
+        category: '建言献策',
+        content: ''
+      },
+      category: [
+				'建言献策', '提建议', '其他投稿', 'APP反馈'
+			],
+      fail: false
+    };
 	},
-	computed: {
-		isLogin() {
-			return this.$store.state.signedIn;
+	mounted() {
+		if (!this.isLogin) {
+			this.$f7router.navigate('/login/');
 		}
 	},
-	methods: {
-		createAdvise() {
-            if (this.advise.title === '' || this.advise.content === '') {
-                return;
-            }
+  computed: {
+    isLogin() {
+      return this.$store.state.signedIn;
+    }
+  },
+  methods: {
+    createAdvise() {
+      if (this.advise.title === '' || this.advise.content === '') {
+        return;
+      }
 
-            return axios.post(`/app/advise`, this.advise).then(() => {
-                this.$store.dispatch('openMessageBox',
-                    {
-                        content: '信息投递成功！',
-                        type: '投递箱'
-                    }
-                );
+      return axios
+        .post(`/app/advise`, this.advise)
+        .then(() => {
+          this.$store.dispatch('openMessageBox', {
+            content: '信息投递成功！',
+            type: '投递箱'
+          });
 
-                this.$f7router.navigate('/index/');
-            }).catch(err => {
-                this.fail = true;
-            });
-        }
-	}
-}
+          this.$f7router.navigate('/index/');
+        })
+        .catch(err => {
+          this.fail = true;
+        });
+    }
+  }
+};
 </script>

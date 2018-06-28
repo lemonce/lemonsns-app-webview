@@ -54,7 +54,7 @@ document.addEventListener('deviceready', () => {
 		closeTimeout: 2000
 	});
 
-	console.log(1)
+	console.log(1);
 
 	function onBackButton(event) {
 		event.preventDefault();
@@ -76,3 +76,11 @@ document.addEventListener('deviceready', () => {
 	
 	document.addEventListener('backbutton', onBackButton, false);
 }, false);
+
+function getlocalStorage(key) {
+	return JSON.parse(localStorage.getItem(key));
+}
+
+const { accountId } = getlocalStorage('loginStatus');
+
+store.commit('updateAccount', accountId);

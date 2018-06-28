@@ -6,6 +6,10 @@ import axios from '../pages/axios';
 
 Vue.use(Vuex);
 
+function setLocalStorage(key, value) {
+	localStorage.setItem(key, JSON.stringify(value));
+}
+
 const store = new Vuex.Store({
 	state: {
 		signedIn: false,
@@ -43,6 +47,11 @@ const store = new Vuex.Store({
 		updateAccount(state, accountId = null) {
 			state.accountId = accountId;
 			state.signedIn = Boolean(accountId);
+			const loginStatus = {
+				accountId
+			};
+
+			setLocalStorage('loginStatus', loginStatus);
 		},
 		openNotification(state, {content, type}) {
 			state.messageBox.content = content;

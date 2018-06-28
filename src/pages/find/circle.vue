@@ -54,7 +54,7 @@
 			<f7-link icon-f7="forward"></f7-link>
 		</f7-card-footer>
 	</f7-card> -->
-	<f7-card v-for="(article, index) in articleList" :key="index" v-if="isLogin && hasArticle">
+	<f7-card v-for="(article, index) in articleList" :key="index" v-if="hasArticle">
 		<f7-card-header>
 			<f7-list media-list>
 				<f7-list-item
@@ -89,7 +89,6 @@
 		</f7-card-footer> -->
 	</f7-card>
 	<f7-block-title v-if="!hasArticle">没有新文章</f7-block-title>
-	<login v-if="!isLogin"></login>
 </f7-page>
 </template>
 
@@ -97,7 +96,6 @@
 import axios from '../axios.js';
 import config from '../../../config.json';
 import dateFormat from 'dateformat';
-import Login from '../account/login';
 
 export default {
 	name: 'circle',
@@ -108,12 +106,8 @@ export default {
 			channelList: [],
 			articleList: [],
 			query: '',
-			isLogin: true,
 			hasArticle: true
 		}
-	},
-	components: {
-		Login
 	},
 	methods: {
 		getSubscribe() {
@@ -195,8 +189,6 @@ export default {
 
 				const channelList = this.subscribe.map(channel => channel.channelId);
 
-				this.isLogin = this.$store.state.signedIn;
-
 				if (channelList.length === 0) {
 					this.hasArticle = false;
 				}
@@ -205,15 +197,24 @@ export default {
 			}
 		}
 	},
+	computed: {
+		isLogin() {
+			return this.$store.state.signedIn;
+		}
+	},
 	mounted() {
-		this.query = this.$f7Route.query.parameter;
+		if (!this.isLogin) {
+			this.$f7router.navigate('/login/');
+		} else {
+			this.query = this.$f7Route.query.parameter;
 
-		this.getSubscribe().then(() => {
+			this.getSubscribe().then(() => {
 			this.getChannelList().then(() => {
 				this.getArticleList();
 				this.getAccountInfo();
+				});
 			});
-		});
+		}
 	}
 }
 </script>

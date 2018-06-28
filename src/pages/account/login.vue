@@ -66,8 +66,37 @@ export default {
 		signIn() {
 			this.$store.dispatch('signIn', this.account)
 				.then(() => {
-					this.$f7router.back();
-				})
+					this.$f7router.navigate('/index/');
+				}).catch(err => {
+						let alertText;
+						const status = err.response.status;
+
+						switch(status) {
+							case 400:
+								alertText = '密码应为6到32位';
+								break;
+							case 401: 
+								alertText = '密码错误';
+								break;
+							case 403:
+								alertText = '请勿重复登录';
+								break;
+							case 404:
+								alertText = '用户名不存在';
+								break;
+						}
+
+						const dialog = this.$f7.dialog.create({
+							title: '登录失败',
+							text: alertText,
+							buttons: [{
+								text: '确定',
+								close: true
+							}]
+						});
+	
+						dialog.open();
+					});
 		},
 		cancelLogin() {
 			this.$f7router.navigate('/index/');
