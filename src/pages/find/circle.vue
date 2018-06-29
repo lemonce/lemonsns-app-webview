@@ -1,6 +1,6 @@
 <template>
 
-<f7-page name="circle">
+<f7-page name="circle" infinite @infinite="onInfiniteScroll">
 	<f7-navbar :title="title" back-link></f7-navbar>
 
 	<!-- <f7-card>
@@ -106,7 +106,9 @@ export default {
 			channelList: [],
 			articleList: [],
 			query: '',
-			hasArticle: true
+			hasArticle: true,
+			loadSwitch: true,
+			offset: 0
 		}
 	},
 	methods: {
@@ -136,8 +138,10 @@ export default {
 				});
 			});
 		},
-		getArticleList() {
-			const url = this.getUrl();
+		getArticleList({limit = 3, offset}) {
+			const url = offset
+			? this.getUrl()+`?limit=${limit}&offset=${offset}`
+			: this.getUrl()+`?limit=${limit}`;
 
 			return axios.get(`${url}`).then(res => {
 				const articleList = res.data.data;
@@ -159,10 +163,20 @@ export default {
 				});
 
 				if (articleList.length === 0) {
-					this.hasArticle = false;
-				}
+					if (!offset) {
+						this.hasArticle = false;
+					} else {
+						setTimeout(() => {
+							this.loadSwitch = true;
+						}, 60 * 1000);
+						return;
+					}
+				} 
 
-				this.articleList = articleList;
+				this.articleList = this.articleList.concat(articleList);
+
+				this.loadSwitch = true;
+				this.offset += limit;
 			}).catch(err => {
 				console.log(err.message);
 			});
@@ -195,6 +209,14 @@ export default {
 
 				return `app/article?channel=${channelList}`
 			}
+		},
+		onInfiniteScroll() {
+			if (this.loadSwitch) {
+				this.getArticleList({
+					offset: this.offset
+				});
+				this.loadSwitch = false;
+			}
 		}
 	},
 	computed: {
@@ -210,7 +232,9 @@ export default {
 
 			this.getSubscribe().then(() => {
 			this.getChannelList().then(() => {
-				this.getArticleList();
+				this.getArticleList({
+					offset: null
+				});
 				this.getAccountInfo();
 				});
 			});
@@ -218,4 +242,3 @@ export default {
 	}
 }
 </script>
-

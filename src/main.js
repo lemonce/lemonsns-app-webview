@@ -81,6 +81,10 @@ function getlocalStorage(key) {
 	return JSON.parse(localStorage.getItem(key));
 }
 
-const { accountId } = getlocalStorage('loginStatus');
+const loginStatus = getlocalStorage('loginStatus');
 
-store.commit('updateAccount', accountId);
+if (!loginStatus) {
+	store.commit('updateAccount', null);
+}
+
+store.commit('updateAccount', loginStatus.accountId);

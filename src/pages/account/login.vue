@@ -1,6 +1,7 @@
 <template>
 
 <f7-page name="login" id="login-page" color-theme="red">
+	<f7-navbar title="登录" back-link></f7-navbar>
 	<!-- <f7-row>
 		<f7-col style="margin-top: 5rem;">
 			<img src="../../../build/logo.png" alt="logo">
@@ -66,7 +67,7 @@ export default {
 		signIn() {
 			this.$store.dispatch('signIn', this.account)
 				.then(() => {
-					this.$f7router.navigate('/index/');
+					this.$f7.router.navigate('/index/');
 				}).catch(err => {
 						let alertText;
 						const status = err.response.status;
