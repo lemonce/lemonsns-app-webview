@@ -64,13 +64,15 @@
 			</f7-list>
 		</f7-card-header>
 		<f7-card-content>
-			<img :src="thumbnailSrc(article.thumbnail, 'small')" width="100%" v-if="!article.isShow">
-			<img src="../../images/replacement.png" width="100%" v-if="article.isShow">
 			<f7-list media-list>
 				<f7-list-item
 					:title="article.title"
 					:text="article.abstract"
 					:link="`/article/${article.id}`">
+					<div slot="media">
+						<img :src="thumbnailSrc(article.thumbnail, 'small')" v-if="!article.isShow">
+						<img src="../../images/replacement.png" v-if="article.isShow">
+					</div>
 				</f7-list-item>
 			</f7-list>
 		</f7-card-content>
@@ -247,6 +249,7 @@ export default {
 			this.getSubscribe().then(() => {
 			this.getChannelList().then(() => {
 				this.getArticleList({
+					limit: 6,
 					offset: null
 				});
 				this.getAccountInfo();
@@ -259,8 +262,14 @@ export default {
 
 <style lang="less">
 #hint{
-	.p{
+	p{
 		text-align: center;
+	}
+}
+.item-media{
+	width: 20%;
+	img{
+		width: 100%;
 	}
 }
 </style>
