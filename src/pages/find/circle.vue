@@ -1,6 +1,6 @@
 <template>
 
-<f7-page name="circle" infinite @infinite="onInfiniteScroll">
+<f7-page name="circle" infinite @infinite="onInfiniteScroll" color-theme="red">
 	<f7-navbar :title="title" back-link></f7-navbar>
 
 	<!-- <f7-card>
@@ -89,6 +89,13 @@
 		</f7-card-footer> -->
 	</f7-card>
 	<f7-block-title v-if="!hasArticle">没有新文章</f7-block-title>
+	<f7-block v-show="showHint" id="hint" inset class="action-area">
+		<f7-row>
+			<f7-col>
+				<p>暂时没有更多文章了，稍等再刷新看看吧。</p>
+			</f7-col>
+		</f7-row>
+	</f7-block>
 </f7-page>
 </template>
 
@@ -108,6 +115,8 @@ export default {
 			query: '',
 			hasArticle: true,
 			loadSwitch: true,
+			showHint: false,
+			getArticleListCooldown: 5 * 1000,
 			offset: 0
 		}
 	},
@@ -166,9 +175,13 @@ export default {
 					if (!offset) {
 						this.hasArticle = false;
 					} else {
+						this.preloader.style.display = 'none';
+						this.showHint = true;
 						setTimeout(() => {
 							this.loadSwitch = true;
-						}, 60 * 1000);
+							this.preloader.style.display = 'block';
+							this.showHint = false;
+						}, this.getArticleListCooldown);
 						return;
 					}
 				} 
@@ -226,8 +239,9 @@ export default {
 	},
 	mounted() {
 		if (!this.isLogin) {
-			this.$f7router.navigate('/login/');
+			this.$f7router.navigate('/loginAsyncLoad/');
 		} else {
+			this.preloader = document.querySelector('.infinite-scroll-preloader');
 			this.query = this.$f7Route.query.parameter;
 
 			this.getSubscribe().then(() => {
@@ -242,3 +256,11 @@ export default {
 	}
 }
 </script>
+
+<style lang="less">
+#hint{
+	.p{
+		text-align: center;
+	}
+}
+</style>

@@ -144,7 +144,9 @@ export default {
 		}
 	},
 	mounted() {
-		this.getActivityList();
+		if(this.$store.state.signedIn) {
+			this.getActivityList();
+		}
 	}
 }
 </script>

@@ -78,7 +78,7 @@ export default {
 	},
 	mounted() {
 		if (!this.isLogin) {
-			this.$f7router.navigate('/login/');
+			this.$f7router.navigate('/loginSyncLoad/');
 		} else {
 			this.getMessagePool();
 		}		

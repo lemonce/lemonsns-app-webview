@@ -77,7 +77,9 @@ export default {
 		}
 	},
 	mounted() {
-		this.getVoteList();
+		if(this.$store.state.signedIn) {
+			this.getVoteList();
+		}
 	}
 }
 </script>

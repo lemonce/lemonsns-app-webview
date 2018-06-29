@@ -77,7 +77,9 @@ export default {
 		}
 	},
 	mounted() {
-		this.getSurveyList();
+		if(this.$store.state.signedIn) {
+			this.getSurveyList();
+		}
 	}
 }
 </script>

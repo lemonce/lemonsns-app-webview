@@ -56,7 +56,7 @@ export default {
 	},
 	mounted() {
 		if (!this.isLogin) {
-			this.$f7router.navigate('/login/');
+			this.$f7router.navigate('/loginAsyncLoad/');
 		}
 	},
 	computed: {

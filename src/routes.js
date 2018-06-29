@@ -51,7 +51,16 @@ import ArticleList from './pages/home/article-list.vue';
 
 export default [
 	{
-		path: '/login',
+		path: '/loginAsyncLoad',
+		async(routeTo, routeFrom, resolve, reject) {
+			const vueComponent = () => import('./pages/account/login.vue');
+			vueComponent().then((vc) => {
+				resolve({ component: vc.default })
+			});
+		}
+	},
+	{
+		path: '/loginSyncLoad',
 		component: Login
 	},
 	{
