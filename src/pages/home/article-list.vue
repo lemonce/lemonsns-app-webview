@@ -18,22 +18,24 @@
 	</f7-list>
 </f7-page> -->
 <f7-list media-list>
-		<f7-list-item
-			v-for="(article, index) in articleList"
-			:key="index"
-			:title="article.title"
-			:text="article.abstract"
-			:link="`/article/${article.id}`">
-			<div slot="media">
-				<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:6rem;" v-if="!article.isShow">
-				<img src="../../images/replacement.png" style="width:6rem;" v-if="article.isShow">
-			</div>
-			<div slot="root"
-				@touchmove="isSwiping=true"
-				@touchend="clickWithoutSwipe($event)"
-				class="mask"></div>
-		</f7-list-item>
-	</f7-list>
+	<f7-list-item
+		v-if="hasArticle"
+		v-for="(article, index) in articleList"
+		:key="index"
+		:title="article.title"
+		:text="article.abstract"
+		:link="`/article/${article.id}`">
+		<div slot="media">
+			<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:6rem;" v-if="!article.isShow">
+			<img src="../../images/replacement.png" style="width:6rem;" v-if="article.isShow">
+		</div>
+		<div slot="root"
+			@touchmove="isSwiping=true"
+			@touchend="clickWithoutSwipe($event)"
+			class="mask"></div>
+	</f7-list-item>
+	<f7-block-title v-if="!hasArticle">该分类没有文章!!</f7-block-title>
+</f7-list>
 </template>
 
 <script>
@@ -45,7 +47,8 @@ export default {
 	data() {
 		return {
 			isSwiping: false,
-			articleList: []
+			articleList: [],
+			hasArticle: true
 		}
 	},
 	props: ['categoryId'],
@@ -66,6 +69,10 @@ export default {
 			return axios.get(`app/category/${this.categoryId}/article`)
 				.then(res => {
 					const articleData = res.data.data;
+
+					if (articleData.length === 0) {
+						this.hasArticle = false;
+					}
 
 					articleData.forEach(article => {
 						article.isShow = false;

@@ -36,7 +36,7 @@ import axios from '../axios.js';
 
 const center = {
 	culture: '文化艺术',
-	knowledge: '学习统战知识'
+	knowledge: '微课堂'
 };
 
 

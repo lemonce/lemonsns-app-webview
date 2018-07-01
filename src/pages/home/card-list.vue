@@ -7,14 +7,14 @@
 				<f7-list-item v-for="(category, index) in categoryList" :key="index"
 					:link="`/center/${category.name}/article`">
 					<div slot="media" style="position: relative">
-						<img :src="thumbnailSrc(category.thumbnail, 'small')" style="width:6rem" v-if="!category.isShow">
-						<img src="../../images/replacement.png" style="width:6rem;" v-if="category.isShow">
+						<img :src="thumbnailSrc(category.thumbnail, 'small')" style="width:8rem" v-if="!category.isShow">
+						<img src="../../images/replacement.png" style="width:8rem;" v-if="category.isShow">
 						<span class="cover">
 							<span>{{category.name}}</span>
 						</span>
 					</div>
 					<div slot="inner">
-						<f7-block v-for="(item, index) in category.categoryList" :key="index">{{item}}</f7-block>
+						<f7-block v-for="(item, index) in category.categoryList" :key="index" style="margin:.5rem;">{{item}}</f7-block>
 					</div>
 				</f7-list-item>
 			</f7-list>	

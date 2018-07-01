@@ -51,7 +51,7 @@
 			:link="`/activity-detail/${underway.id}`"
 			:text="underway.created_at"></f7-list-item>
 		<f7-list-item>
-			<f7-block-title v-if="!hasUnderwayList">没有正在进行的活动或会议</f7-block-title>
+			<f7-block-title v-if="!hasUnderwayList">没有正在进行的活动/会议</f7-block-title>
 		</f7-list-item>
 	</f7-list>
 
@@ -64,7 +64,7 @@
 			:link="`/activity-detail/${hasComingList.id}`"
 			:text="coming.created_at"></f7-list-item>
 		<f7-list-item>
-			<f7-block-title v-if="!hasComingList">没有即将开始的活动或会议</f7-block-title>
+			<f7-block-title v-if="!hasComingList">没有即将开始的活动/会议</f7-block-title>
 		</f7-list-item>
 	</f7-list>
 
@@ -76,7 +76,7 @@
 			:title="end.title"
 			:text="end.created_at"></f7-list-item>
 		<f7-list-item>
-			<f7-block-title v-if="!hasEnded">没有已经结束的活动或会议</f7-block-title>
+			<f7-block-title v-if="!hasEnded">没有已经结束的活动/会议</f7-block-title>
 		</f7-list-item>
 	</f7-list>
 </div>

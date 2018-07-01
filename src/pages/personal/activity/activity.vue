@@ -1,6 +1,6 @@
 <template>
 	<f7-page name="activity">
-		<f7-navbar title="我的活动和会议" back-link></f7-navbar>
+		<f7-navbar title="活动/会议" back-link></f7-navbar>
 			<f7-toolbar tabbar>
 				<f7-link active tab-link tab-link-active
 					text="已参与"

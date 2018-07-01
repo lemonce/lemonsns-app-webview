@@ -54,7 +54,7 @@
 			<f7-link icon-f7="forward"></f7-link>
 		</f7-card-footer>
 	</f7-card> -->
-	<f7-card v-for="(article, index) in articleList" :key="index" v-if="hasArticle">
+	<f7-card v-for="(article, index) in articleList" :key="index">
 		<f7-card-header>
 			<f7-list media-list>
 				<f7-list-item
@@ -70,8 +70,8 @@
 					:text="article.abstract"
 					:link="`/article/${article.id}`">
 					<div slot="media">
-						<img :src="thumbnailSrc(article.thumbnail, 'small')" v-if="!article.isShow">
-						<img src="../../images/replacement.png" v-if="article.isShow">
+						<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:5rem;" v-if="!article.isShow">
+						<img src="../../images/replacement.png" style="width:5rem;" v-if="article.isShow">
 					</div>
 				</f7-list-item>
 			</f7-list>
@@ -90,7 +90,6 @@
 			<f7-link icon-f7="forward"></f7-link>
 		</f7-card-footer> -->
 	</f7-card>
-	<f7-block-title v-if="!hasArticle">没有新文章</f7-block-title>
 	<f7-block v-show="showHint" id="hint" inset class="action-area">
 		<f7-row>
 			<f7-col>
@@ -111,14 +110,12 @@ export default {
 	data() {
 		return {
 			title: '',
-			street: 0,
 			channelList: [],
 			articleList: [],
 			query: '',
-			hasArticle: true,
 			loadSwitch: true,
 			showHint: false,
-			getArticleListCooldown: 5 * 1000,
+			getArticleListCooldown: 60 * 1000,
 			offset: 0
 		}
 	},
@@ -149,10 +146,13 @@ export default {
 				});
 			});
 		},
-		getArticleList({limit = 3, offset}) {
-			const url = offset
-			? this.getUrl()+`?limit=${limit}&offset=${offset}`
-			: this.getUrl()+`?limit=${limit}`;
+		getArticleList() {
+			const limit = 6;
+
+			const url = this.getUrl({
+					limit,
+					offset: this.offset
+				});
 
 			return axios.get(`${url}`).then(res => {
 				const articleList = res.data.data;
@@ -174,18 +174,16 @@ export default {
 				});
 
 				if (articleList.length === 0) {
-					if (!offset) {
-						this.hasArticle = false;
-					} else {
-						this.preloader.style.display = 'none';
-						this.showHint = true;
-						setTimeout(() => {
-							this.loadSwitch = true;
-							this.preloader.style.display = 'block';
-							this.showHint = false;
-						}, this.getArticleListCooldown);
-						return;
-					}
+					this.preloader.style.display = 'none';
+					this.showHint = true;
+
+					setTimeout(() => {
+						this.loadSwitch = true;
+						this.preloader.style.display = 'block';
+						this.showHint = false;
+					}, this.getArticleListCooldown);
+
+					return;
 				} 
 
 				this.articleList = this.articleList.concat(articleList);
@@ -200,36 +198,31 @@ export default {
 
 			return `${config.static}thumbnail/${hash}/regular/${regular}`;
 		},
-		getAccountInfo() {
+		// getAccountInfo() {
 
-			return axios.get(`app/account`)
-				.then(res => {
-					this.street = res.data.data.street;
-				});
-		},
-		getUrl() {
-			
+		// 	return axios.get(`app/account`)
+		// 		.then(res => {
+		// 			this.street = res.data.data.street;
+		// 		});
+		// },
+		getUrl({limit = 3, offset}) {
+
 			if (this.query === 'all') {
 				this.title = '领导圈';
 
-				return 'app/article';
+				return offset ? 'app/article' + `?limit=${limit}&offset=${offset}` : 'app/article' + `?limit=${limit}`;
 			} else if (this.query === 'subscribe') {
 				this.title = '关注';
 
 				const channelList = this.subscribe.map(channel => channel.channelId);
 
-				if (channelList.length === 0) {
-					this.hasArticle = false;
-				}
-
-				return `app/article?channel=${channelList}`
+				return offset ? `app/article?channel=${channelList}` + `&limit=${limit}&offset=${offset}` : `app/article?channel=${channelList}` + `&limit=${limit}`;
 			}
 		},
 		onInfiniteScroll() {
 			if (this.loadSwitch) {
-				this.getArticleList({
-					offset: this.offset
-				});
+				this.getArticleList();
+
 				this.loadSwitch = false;
 			}
 		}
@@ -240,19 +233,17 @@ export default {
 		}
 	},
 	mounted() {
-		if (!this.isLogin) {
+		this.query = this.$f7Route.query.parameter;
+
+		if (!this.isLogin && this.query === 'subscribe') {
 			this.$f7router.navigate('/loginAsyncLoad/');
 		} else {
 			this.preloader = document.querySelector('.infinite-scroll-preloader');
-			this.query = this.$f7Route.query.parameter;
 
 			this.getSubscribe().then(() => {
 			this.getChannelList().then(() => {
-				this.getArticleList({
-					limit: 6,
-					offset: null
-				});
-				this.getAccountInfo();
+				this.getArticleList();
+				// this.getAccountInfo();
 				});
 			});
 		}

@@ -40,7 +40,6 @@
 			</f7-swipeout-actions>
 		</f7-list-item> -->
 		<f7-list-item swipeout
-			@swipeout:deleted="onSwipoutDeleted"
 			v-for="(article, index) in articleList"
 			:key="index"
 			:title="article.title"
@@ -48,9 +47,9 @@
 			:link="`/article/${article.id}`">
 			<!-- <f7-chip text="xx频道" slot="text"></f7-chip> -->
 			<span slot="text" class="margin-left">2018/02/26 07:38</span>
-			<f7-swipeout-actions>
+			<!-- <f7-swipeout-actions>
 				<f7-swipeout-button delete>不感兴趣</f7-swipeout-button>
-			</f7-swipeout-actions>
+			</f7-swipeout-actions> -->
 		</f7-list-item>
 	</f7-list>
 
