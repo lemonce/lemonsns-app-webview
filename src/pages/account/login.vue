@@ -1,7 +1,7 @@
 <template>
 
 <f7-page name="login" id="login-page" color-theme="red">
-	<f7-navbar title="登录" back-link @click.native="cancelLogin()"></f7-navbar>
+	<f7-navbar title="登录" back-link></f7-navbar>
 	<!-- <f7-row>
 		<f7-col style="margin-top: 5rem;">
 			<img src="../../../build/logo.png" alt="logo">
@@ -98,9 +98,6 @@ export default {
 	
 						dialog.open();
 					});
-		},
-		cancelLogin() {
-			window.location.reload();
 		}
 	}
 }

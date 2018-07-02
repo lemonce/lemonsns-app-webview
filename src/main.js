@@ -54,8 +54,6 @@ document.addEventListener('deviceready', () => {
 		closeTimeout: 2000
 	});
 
-	console.log(1);
-
 	function onBackButton(event) {
 		event.preventDefault();
 

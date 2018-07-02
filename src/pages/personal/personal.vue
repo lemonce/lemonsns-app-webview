@@ -96,11 +96,7 @@ export default {
 		}
 	},
 	mounted() {
-		if (!this.isLogin) {
-			this.$f7router.navigate('/loginSyncLoad');
-		} else {
-			this.getAccount();
-		}		
+		this.getAccount();
 	},
 	methods: {
 		getAccount() {

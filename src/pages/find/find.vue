@@ -8,7 +8,7 @@
 			<f7-icon slot="media" material="camera"></f7-icon>	
 		</f7-list-item>
 		<f7-list-item
-			link="/circle?parameter=subscribe"
+			@click="navigateIfLogin('/circle?parameter=subscribe')"
 			title="关注">
 			<f7-icon slot="media" material="lightbulb_outline"></f7-icon>	
 		</f7-list-item>
@@ -39,7 +39,7 @@
 			<f7-icon slot="media" material="business"></f7-icon>
 		</f7-list-item>
 		<f7-list-item
-			link="/activity"
+			@click="navigateIfLogin('/activity')"
 			title="活动中心">
 			<f7-icon slot="media" material="alarm_on"></f7-icon>
 		</f7-list-item>
@@ -53,12 +53,26 @@
 			title="知识学习">
 			<f7-icon slot="media" material="live_tv"></f7-icon>	
 		</f7-list-item>
-		<!-- <f7-list-item
-			link="/center/mailbox"
+		<f7-list-item
+			@click="navigateIfLogin('/mailbox')"
 			title="投递中心">
 			<f7-icon slot="media" material="drafts"></f7-icon>	
-		</f7-list-item> -->
+		</f7-list-item>
 	</f7-list>
 
 </div>
 </template>
+
+<script>
+export default {
+	methods: {
+		navigateIfLogin(route) {
+			if (this.$store.state.signedIn) {
+				this.$f7.router.navigate(route);
+			} else {
+				this.$f7.router.navigate('/loginSyncLoad');
+			}
+		}
+	}
+}
+</script>

@@ -234,19 +234,14 @@ export default {
 	},
 	mounted() {
 		this.query = this.$f7Route.query.parameter;
+		this.preloader = document.querySelector('.infinite-scroll-preloader');
 
-		if (!this.isLogin && this.query === 'subscribe') {
-			this.$f7router.navigate('/loginAsyncLoad/');
-		} else {
-			this.preloader = document.querySelector('.infinite-scroll-preloader');
-
-			this.getSubscribe().then(() => {
-			this.getChannelList().then(() => {
-				this.getArticleList();
-				// this.getAccountInfo();
-				});
+		this.getSubscribe().then(() => {
+		this.getChannelList().then(() => {
+			this.getArticleList();
+			// this.getAccountInfo();
 			});
-		}
+		});
 	}
 }
 </script>
@@ -255,12 +250,6 @@ export default {
 #hint{
 	p{
 		text-align: center;
-	}
-}
-.item-media{
-	width: 20%;
-	img{
-		width: 100%;
 	}
 }
 </style>

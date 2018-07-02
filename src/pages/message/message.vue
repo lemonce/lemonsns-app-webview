@@ -2,7 +2,7 @@
 
 <div>
 	<f7-block-title v-if="!hasMessage">当前没有消息通知！</f7-block-title>
-	<f7-list media-list class="no-margin-top" v-if="hasMessage">
+	<f7-list media-list class="no-margin-top" v-if="hasMessage" id="message">
 		<!-- <f7-list-item
 			link="/message-content"
 			title="系统消息"
@@ -77,17 +77,13 @@ export default {
 		}
 	},
 	mounted() {
-		if (!this.isLogin) {
-			this.$f7router.navigate('/loginSyncLoad/');
-		} else {
-			this.getMessagePool();
-		}		
+		this.getMessagePool();
 	}
 }
 </script>
 
 <style lang="less">
-.list .item-subtitle {
+#message .list .item-subtitle {
 	word-wrap: break-word;
 	white-space: pre-wrap;
 }

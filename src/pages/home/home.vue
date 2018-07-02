@@ -46,7 +46,7 @@
 				<f7-icon material="chat_bubble_outline" color="orange"></f7-icon><br>
 				<f7-link
 					text="通知栏"
-					href="/activity"
+					@click="navigateIfLogin('/activity')"
 					color="black"
 					class="padding-vertical"
 				></f7-link>
@@ -84,7 +84,7 @@
 				<f7-icon material="playlist_add_check" color="black"></f7-icon><br>
 				<f7-link
 					text="填填看"
-					href="/filling"
+					@click="navigateIfLogin('/filling')"
 					color="black"
 					class="padding-vertical"
 				></f7-link>
@@ -93,7 +93,7 @@
 				<f7-icon material="drafts" color="pink"></f7-icon><br>
 				<f7-link
 					text="投递箱"
-					href="/mailbox"
+					@click="navigateIfLogin('/mailbox')"
 					color="black"
 					class="padding-vertical"
 				></f7-link>
@@ -190,6 +190,13 @@ export default {
 		this.getSlideList();
 	},
 	methods: {
+		navigateIfLogin(route) {
+			if (this.$store.state.signedIn) {
+				this.$f7.router.navigate(route);
+			} else {
+				this.$f7.router.navigate('/loginSyncLoad');
+			}
+		},
 		getNewsList() {
 			return axios.get(`app/symbol/article?highLevel=闻资讯`).then(res => {
 				const articleList = res.data.data;

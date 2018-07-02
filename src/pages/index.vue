@@ -4,7 +4,8 @@
 	<f7-page toolbar-fixed navbar-fixed name="index" id="index">
 		<f7-navbar>
 			<f7-nav-left>
-				<f7-link href="./message/"
+				<f7-link
+					@click="navigateIfLogin('./message/')"
 					tab-link
 					@tab:show="tabActived('message')">
 					<f7-icon if-ios="f7:bell" if-md="material:notifications_none"></f7-icon>
@@ -30,7 +31,7 @@
 			<f7-link
 				text="消息"
 				tab-link
-				href="./message/"
+				@click="navigateIfLogin('./message/')"
 				ref="message"
 				icon-material="email"
 			></f7-link>
@@ -44,7 +45,7 @@
 			<f7-link
 				text="我"
 				tab-link
-				href="./personal/"
+				@click="navigateIfLogin('./personal/')"
 				ref="personal"
 				icon-material="person"
 			></f7-link>
@@ -93,6 +94,13 @@ export default {
 		},
 	},
 	methods: {
+		navigateIfLogin(route) {
+			if (this.$store.state.signedIn) {
+				this.$f7.router.navigate(route);
+			} else {
+				this.$f7.router.navigate('/loginSyncLoad');
+			}
+		},
 		tabActived(tab) {
 			this.activedTab = tab;
 			

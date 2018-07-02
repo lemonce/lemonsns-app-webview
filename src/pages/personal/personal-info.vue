@@ -147,8 +147,8 @@ export default {
 					sex: this.account.ufwdAccount.sex,
 					phone: this.account.ufwdAccount.phone,
 					identification: this.account.ufwdAccount.identification,
-					party: this.account.ufwdAccount.party,
-					street: this.account.ufwdAccount.street,
+					party: parseInt(this.account.ufwdAccount.party),
+					street: parseInt(this.account.ufwdAccount.street),
 					job: this.account.ufwdAccount.job,
 					unit: this.account.ufwdAccount.unit
 				}

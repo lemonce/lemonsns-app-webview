@@ -32,11 +32,6 @@ export default {
 		Involved,
 		AllActivity
 	},
-	mounted() {
-		if (!this.isLogin) {
-			this.$f7router.navigate('/loginAsyncLoad/');
-		}
-	},
 	computed: {
 		isLogin() {
 			return this.$store.state.signedIn;
