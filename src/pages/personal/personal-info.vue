@@ -7,6 +7,7 @@
 			<f7-label>用户名</f7-label>
 			<f7-input name="username"
 				type="text"
+				disabled
 				:value="account.name"
 				@input="account.name = $event.target.value">
 			</f7-input>

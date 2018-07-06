@@ -24,7 +24,7 @@
       <f7-list-item
 	  	v-for="(item, index) in items"
 		:key="index"
-		:herf="item.link"
+		:link="item.link"
 		:title="item.title"
 		:text="item.text"></f7-list-item>
     </f7-list>
@@ -56,21 +56,13 @@ export default {
 		};
 	},
 	methods: {
-		onSearch(searchbar, query, previousQuery) {
-			console.log("search", query);
-		},
-		onClear(event) {
-			console.log("clear");
-		},
-		onEnable(event) {
-			console.log("enable");
-		},
-		onDisable(event) {
-			console.log("disable");
-		},
 		getCollection() {
 			return axios.get(`app/article?like=true`).then(res => {
 				this.items = res.data.data;
+
+				this.items.forEach(item => {
+					item.link = `/article/${item.id}`;
+				})
 			});
 		}
 	},

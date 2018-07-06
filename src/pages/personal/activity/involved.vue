@@ -40,10 +40,23 @@
 			v-if="hasUnderwayList"
 			v-for="(underway, index) in underwayList" :key="index"
 			:title="underway.title"
-			link
+			:link="`/activity-detail/${underway.id}`"
 			:text="underway.created_at"></f7-list-item>
 		<f7-list-item>
 			<f7-block-title v-if="!hasUnderwayList">没有正在进行的活动/会议</f7-block-title>
+		</f7-list-item>
+	</f7-list>
+
+	<f7-block-title class="margin-vertical">即将开始</f7-block-title>
+	<f7-list media-list class="margin-vertical">
+		<f7-list-item
+			v-if="hasComingList"
+			v-for="(coming, index) in comingList" :key="index"
+			:title="coming.title"
+			:link="`/activity-detail/${coming.id}`"
+			:text="coming.created_at"></f7-list-item>
+		<f7-list-item>
+			<f7-block-title v-if="!hasComingList">没有即将开始的活动/会议</f7-block-title>
 		</f7-list-item>
 	</f7-list>
 
@@ -71,8 +84,10 @@ export default {
 	data() {
 		return {
 			underwayList: [],
+			comingList: [],
 			endedList: [],
 			hasUnderwayList: true,
+			hasComingList: true,
 			hasEnded: true
 		}
 	},
@@ -89,6 +104,10 @@ export default {
 
 					activity.created_at = dateFormat(activity.created_at, 'yyyy/mm/dd HH:MM');
 
+					if (start > now) {
+						this.comingList.push(activity);
+					}
+
 					if (start < now && now < end) {
 						this.underwayList.push(activity);
 					}
@@ -97,6 +116,10 @@ export default {
 						this.endedList.push(activity);
 					}
 				});
+
+				if (this.comingList.length === 0) {
+					this.hasComingList = false;
+				}
 
 				if (this.underwayList.length === 0) {
 					this.hasUnderwayList = false;
@@ -107,6 +130,7 @@ export default {
 				}
 				
 			}).catch((err) => {
+				this.hasComingList = false;
 				this.hasUnderwayList = false;
 				this.hasEnded = false;
 			});

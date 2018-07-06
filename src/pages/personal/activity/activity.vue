@@ -3,7 +3,7 @@
 		<f7-navbar title="活动/会议" back-link></f7-navbar>
 			<f7-toolbar tabbar>
 				<f7-link active tab-link tab-link-active
-					text="已参与"
+					text="参与"
 					href="#involved"
 				></f7-link>
 				<f7-link tab-link

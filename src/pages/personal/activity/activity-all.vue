@@ -61,7 +61,7 @@
 			v-if="hasComingList"
 			v-for="(coming, index) in comingList" :key="index"
 			:title="coming.title"
-			:link="`/activity-detail/${hasComingList.id}`"
+			:link="`/activity-detail/${coming.id}`"
 			:text="coming.created_at"></f7-list-item>
 		<f7-list-item>
 			<f7-block-title v-if="!hasComingList">没有即将开始的活动/会议</f7-block-title>
@@ -135,12 +135,13 @@ export default {
 				if (this.endedList.length === 0) {
 					this.hasEnded = false;
 				}
-				
+
 			}).catch(err => {
 				this.hasComingList = false;
 				this.hasUnderwayList = false;
 				this.hasEnded = false;
 			});
+
 		}
 	},
 	mounted() {

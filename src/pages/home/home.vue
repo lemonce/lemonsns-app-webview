@@ -55,7 +55,7 @@
 				<f7-icon material="border_color" color="red"></f7-icon><br>
 				<f7-link
 					text="签到处"
-					href="/"
+					href="/error"
 					color="black"
 					class="padding-vertical"
 				></f7-link>
@@ -66,7 +66,7 @@
 				<f7-icon material="people" color="yellow"></f7-icon><br>
 				<f7-link
 					text="群英汇"
-					href="/"
+					href="/error"
 					color="black"
 					class="padding-vertical"
 				></f7-link>

@@ -33,6 +33,8 @@ import AdviceDetail from './pages/personal/advice/advice-detail.vue';
 
 import Feedback from './pages/personal/feedback.vue';
 
+import Error from './pages/personal/error.vue';
+
 import Setting from './pages/personal/setting/setting.vue';
 import MessageRemind from './pages/personal/setting/message-remind.vue';
 import ModifyPassword from './pages/personal/setting/modify-password.vue';
@@ -44,21 +46,22 @@ import Vote from './pages/filling/vote.vue';
 import Questionnaire from './pages/filling/questionnaire.vue';
 
 import Center from './pages/home/center.vue';
+import Group from './pages/home/group.vue';
 import CardList from './pages/home/card-list.vue';
 import Knowledge from './pages/home/knowledge.vue';
 import MailBox from './pages/home/mailbox.vue';
 import ArticleList from './pages/home/article-list.vue';
 
 export default [
-	{
-		path: '/loginAsyncLoad',
-		async(routeTo, routeFrom, resolve, reject) {
-			const vueComponent = () => import('./pages/account/login.vue');
-			vueComponent().then((vc) => {
-				resolve({ component: vc.default })
-			});
-		}
-	},
+	// {
+	// 	path: '/loginAsyncLoad',
+	// 	async(routeTo, routeFrom, resolve, reject) {
+	// 		const vueComponent = () => import('./pages/account/login.vue');
+	// 		vueComponent().then((vc) => {
+	// 			resolve({ component: vc.default })
+	// 		});
+	// 	}
+	// },
 	{
 		path: '/loginSyncLoad',
 		component: Login
@@ -102,6 +105,10 @@ export default [
 				component: Personal
 			}
 		]
+	},
+	{
+		path: '/error',
+		component: Error
 	},
 	{
 		path: '/article/:id',
@@ -210,6 +217,10 @@ export default [
 	{
 		path: '/center/:name/article',
 		component: Center
+	},
+	{
+		path: '/group',
+		component: Group
 	},
 	{
 		path: '/knowledge',

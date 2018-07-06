@@ -68,6 +68,8 @@ export default {
 			this.$store.dispatch('signIn', this.account)
 				.then(() => {
 					this.$f7.router.navigate('/index/');
+					
+					window.location.reload();
 				}).catch(err => {
 						let alertText;
 						const status = err.response.status;

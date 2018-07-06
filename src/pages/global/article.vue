@@ -11,7 +11,7 @@
 		<div v-html="article.content" class="article-content"></div>
 	</f7-block>
 
-	<f7-toolbar bottom-md>
+	<f7-toolbar bottom-md v-if="isShow">
 		<f7-link
 			:icon-f7="favoriteTag"
 			@click="favorite"
@@ -52,6 +52,11 @@ export default {
 			channel: '',
 			favoriteTag: 'heart',
 			collectTag: 'star'
+		}
+	},
+	computed: {
+		isShow() {
+			return this.$store.state.signedIn;
 		}
 	},
 	mounted() {
@@ -117,9 +122,6 @@ export default {
 					});
 		},
 		collect() {
-			if (!this.$store.state.signedIn) {
-				return;
-			}
 
 			if (this.collectTag === 'star') {
 				return axios.post(`app/article/${this.articleId}/like`)
@@ -142,9 +144,6 @@ export default {
 			}
 		},
 		favorite() {
-			if (!this.$store.state.signedIn) {
-				return;
-			}
 
 			if (this.favoriteTag === 'heart') {
 				return axios.post(`app/article/${this.articleId}/favorite`)

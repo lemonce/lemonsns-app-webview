@@ -4,7 +4,7 @@
 	<f7-navbar :title="activity.title" back-link></f7-navbar>
 
 	<f7-block-title class="margin-top">活动标题</f7-block-title>
-	<f7-list class="no-margin">
+	<f7-list class="no-margin" id="activityDetail">
 		<f7-list-item :title="activity.title"></f7-list-item>
 	</f7-list>
 
@@ -34,8 +34,7 @@
 
 	<f7-block-title class="margin-top">是否已参与</f7-block-title>
 	<f7-list class="no-margin">
-		<f7-list-item v-if="!hasAttendance" title="未参与"></f7-list-item>
-		<f7-list-item v-if="hasAttendance" title="已参与" :after="attendance.time"></f7-list-item>
+		<f7-list-item :title="text"></f7-list-item>
 	</f7-list>
 
 </f7-page>
@@ -53,7 +52,8 @@ export default {
 			attendance: {},
 			hasAttendance: false,
 			hasActivityTag: true,
-			tag: []
+			tag: [],
+			text: ''
 		}
 	},
 	methods: {
@@ -66,10 +66,16 @@ export default {
 				
 				this.activity = activity;
 
-				if (attendance) {
-					this.hasAttendance = true;
+				if (!attendance) {
+					this.text = '不在活动/会议的参与名单内';
+				}
 
-					attendance.time = dateFormat(attendance.time, 'yyyy/mm/dd HH:MM');
+				if (attendance && !attendance.time) {
+					this.text = '未签到';
+				}
+
+				if (attendance && attendance.time) {
+					this.text = '已签到';
 
 					this.attendance = attendance;
 				}
@@ -96,5 +102,12 @@ export default {
 	} 
 }
 </script>
+
+<style lang="less">
+#activityDetail .item-title {
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+</style>
 
 
