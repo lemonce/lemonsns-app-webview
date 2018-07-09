@@ -23,6 +23,7 @@ module.exports = {
 			'framework7-vue$': 'framework7-vue/dist/framework7-vue.min.js',
 			'template7$': 'template7/dist/template7.min.js',
 			'dom7$': 'dom7/dist/dom7.min.js',
+			'markdown-it$': 'markdown-it/dist/markdown-it.min.js',
 			'@': path.resolve(__dirname, '../src')
 		}
 	},
