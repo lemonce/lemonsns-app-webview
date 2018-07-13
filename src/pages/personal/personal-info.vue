@@ -215,8 +215,6 @@ export default {
 					addedList.splice(addedList.indexOf(value), 1)
 				}
 			}
-
-			console.log(checkedList, addedList, deleteList);
 		}
 	},
 	mounted() {

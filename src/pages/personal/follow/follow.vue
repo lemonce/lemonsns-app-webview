@@ -86,14 +86,11 @@ export default {
 						}
 					})
 				});
-
-				console.log(this.channelList);
 			});
 		},
 		getSubscribe() {
 			return axios.get(`app/account/channel`).then(res => {
 				this.subscribe = res.data.data;
-				console.log(this.subscribe);
 			});
 		},
 		followChannel(channel) {

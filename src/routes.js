@@ -19,6 +19,7 @@ import See from './pages/find/see.vue';
 
 import PersonalInfo from './pages/personal/personal-info.vue';
 import Card from './pages/personal/card.vue';
+import Details from './pages/personal/details.vue';
 import Collection from './pages/personal/collection.vue';
 
 import Follow from './pages/personal/follow/follow.vue';
@@ -140,6 +141,10 @@ export default [
 	{
 		path: '/card',
 		component: Card
+	},
+	{
+		path: '/account/:id/details',
+		component: Details
 	},
 	{
 		path: '/collection',

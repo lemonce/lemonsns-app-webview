@@ -69,6 +69,7 @@ const loginStatus = getlocalStorage('loginStatus');
 
 if (!loginStatus) {
 	store.commit('updateAccount', null);
-}
+} else {
 
-store.commit('updateAccount', loginStatus.accountId);
+	store.commit('updateAccount', loginStatus.accountId);
+}

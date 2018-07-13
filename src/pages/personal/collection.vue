@@ -8,10 +8,6 @@
 		search-container="#search-list"
 		placeholder="在收藏中搜索..."
 		:clear-button="true"
-		@searchbar:search="onSearch()"
-		@searchbar:enable="onEnable()"
-		@searchbar:disable="onDisable()"
-		@searchbar:clear="onClear()"
     ></f7-searchbar>
 
     <!-- Will be visible if there is no any results found, defined by "searchbar-not-found" class -->
@@ -38,22 +34,11 @@ export default {
 	name: 'collection',
 	data() {
 		return {
-			items: [
-				{
-					title: '学习十九大精神',
-					text: '微课堂',
-					link: '/index/'
-				},
-				{
-					title: '学习统战知识',
-					text: '知识学习'
-				},
-				{
-					title: '西青区特色文化艺术',
-					text: '艺术长廊'
-				},
-			]
+			items: null
 		};
+	},
+	mounted() {
+		this.getCollection();
 	},
 	methods: {
 		getCollection() {
@@ -65,9 +50,6 @@ export default {
 				})
 			});
 		}
-	},
-	mounted() {
-		this.getCollection();
 	}
 };
 </script>

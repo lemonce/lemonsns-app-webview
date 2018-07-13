@@ -44,7 +44,7 @@
 			<f7-icon slot="media" material="alarm_on"></f7-icon>
 		</f7-list-item>
 		<f7-list-item
-			link="/error"
+			link="/group"
 			title="人才中心">
 			<f7-icon slot="media" material="people"></f7-icon>
 		</f7-list-item>

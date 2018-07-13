@@ -1,7 +1,7 @@
 <template>
 
 <f7-page name="channel">
-	<f7-navbar title="xx 频道" back-link></f7-navbar>
+	<f7-navbar :title="`${channel.name}频道`" back-link></f7-navbar>
 
 	<f7-list media-list class="no-margin">
 		<f7-list-item
