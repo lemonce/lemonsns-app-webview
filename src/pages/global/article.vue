@@ -176,6 +176,16 @@ export default {
 	}
 	p {
 		text-indent: 2em;
+		text-align: justify;
+	}
+	.image figcaption{
+		text-align: center;
+	}
+	.image p {
+		display: none;
+	}
+	p a{
+		color: #2196f3!important;
 	}
 }
 </style>
