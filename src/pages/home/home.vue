@@ -149,7 +149,7 @@
 		<p>
 			网址：<f7-link align='center' external text="点击此链接" slot="text" href="http://report.12377.cn:13225/toreportinputNormal_anis.do" color="blue"></f7-link>
 		</p>
-		<p>违法和不良信息举报电话：022-27919129</p>
+		<p>违法和不良信息举报电话：022-27397509</p>
 		<p>举报邮箱：xq.tzb@163.com</p>
 	</div>
 
