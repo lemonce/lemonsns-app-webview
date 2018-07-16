@@ -175,8 +175,10 @@ export default {
 		width: 100%;
 	}
 	p {
-		text-indent: 2em;
 		text-align: justify;
+	}
+	mark {
+		background-color: transparent;
 	}
 	.image figcaption{
 		text-align: center;
@@ -227,8 +229,8 @@ export default {
 		padding-right: 1.5em;
 		padding-left: 1.5em;
 		margin-left: 0;
-		font-style: italic;
 		border-left: 5px solid #ccc;
+		color: rgb(99, 97, 97);
 		p {
 			text-indent: 0;
 		}

@@ -7,8 +7,8 @@
 				<f7-list-item v-for="(category, index) in categoryList" :key="index"
 					:link="`/center/${category.name}/article`">
 					<div slot="media" style="position: relative">
-						<img :src="thumbnailSrc(category.thumbnail, 'small')" style="width:8rem" v-if="!category.isShow">
-						<img src="../../images/replacement.png" style="width:8rem;" v-if="category.isShow">
+						<img :src="thumbnailSrc(category.thumbnail, 'small')" style="width:10rem" v-if="!category.isShow">
+						<img src="../../images/replacement.png" style="width:10rem;" v-if="category.isShow">
 						<span class="cover">
 							<span>{{category.name}}</span>
 						</span>
@@ -85,7 +85,8 @@ export default {
 	background:rgba(0,0,0,0.3);
 	text-align: center;
 	line-height: 7rem;
-	color: white
+	color: white;
+	font-size: 18px;
 }
 </style>
 
