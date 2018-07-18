@@ -17,13 +17,12 @@
 		</f7-list-item>
 	</f7-list>
 </f7-page> -->
-<f7-list media-list>
+<f7-list media-list class="nowrap">
 	<f7-list-item
 		v-if="hasArticle"
 		v-for="(article, index) in articleList"
 		:key="index"
 		:title="article.title"
-		:text="article.abstract"
 		:link="`/article/${article.id}`">
 		<div slot="media">
 			<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:6rem;" v-if="!article.isShow">

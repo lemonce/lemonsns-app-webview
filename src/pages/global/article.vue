@@ -176,6 +176,7 @@ export default {
 	}
 	p {
 		text-align: justify;
+		font-size: 15px;
 	}
 	mark {
 		background-color: transparent;
@@ -199,27 +200,27 @@ export default {
 	}
 
 	h1, .h1 {
-		font-size: 2.5rem;
+		font-size: 20px;
 	}
 
 	h2, .h2 {
-		font-size: 2rem;
+		font-size: 20px;
 	}
 
 	h3, .h3 {
-		font-size: 1.75rem;
+		font-size: 18px;
 	}
 
 	h4, .h4 {
-		font-size: 1.5rem;
+		font-size: 16px;
 	}
 
 	h5, .h5 {
-		font-size: 1.25rem;
+		font-size: 15px;
 	}
 
 	h6, .h6 {
-		font-size: 1rem;
+		font-size: 14px;
 	}
 	.pen-red {
 		color: #f44336;

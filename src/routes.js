@@ -6,6 +6,7 @@ import Info from './pages/account/info.vue';
 
 import Index from './pages/index.vue';
 import Home from './pages/home/home.vue';
+import Signin from './pages/home/signin.vue';
 import Message from './pages/message/message.vue';
 import Find from './pages/find/find.vue';
 import Personal from './pages/personal/personal.vue';
@@ -110,6 +111,10 @@ export default [
 	{
 		path: '/error',
 		component: Error
+	},
+	{
+		path: '/signin',
+		component: Signin
 	},
 	{
 		path: '/article/:id',

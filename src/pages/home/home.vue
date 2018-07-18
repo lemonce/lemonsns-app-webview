@@ -102,26 +102,24 @@
 	</div>
 
 	<f7-block-title class="margin-bottom">闻资讯</f7-block-title>
-	<f7-list media-list>
+	<f7-list media-list class="nowrap">
 		<f7-list-item
 			v-for="(article, index) in newsList"
 			:key="index"
 			:title="article.title"
-			:text="article.abstract"
 			:link="`/article/${article.id}`">
 			<div slot="media">
-				<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:6rem">
+				<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:8rem">
 			</div>
 		</f7-list-item>
 	</f7-list>
 
 	<f7-block-title>文化站</f7-block-title>
-	<f7-list media-list>
+	<f7-list media-list class="nowrap">
 		<f7-list-item
 			v-for="(article, index) in cultureList"
 			:key="index"
 			:title="article.title"
-			:text="article.abstract"
 			:link="`/article/${article.id}`">
 			<div slot="media">
 				<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:6rem">
@@ -130,12 +128,11 @@
 	</f7-list>
 
 	<f7-block-title>微课堂</f7-block-title>
-	<f7-list media-list>
+	<f7-list media-list class="nowrap">
 		<f7-list-item
 			v-for="(article, index) in personnelList"
 			:key="index"
 			:title="article.title"
-			:text="article.abstract"
 			:link="`/article/${article.id}`">
 			<div slot="media">
 				<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:6rem">
@@ -283,5 +280,13 @@ export default {
 		margin-right: auto;
 		display: block;
 	}
+}
+.nowrap .item-title  {
+	display: -webkit-box;
+	-webkit-box-orient: vertical; 
+	-webkit-line-clamp: 3;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+	font-size: 15px;
 }
 </style>
