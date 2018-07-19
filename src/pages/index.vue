@@ -14,7 +14,7 @@
 			<f7-nav-title>{{navTitle}}</f7-nav-title>
 			<f7-nav-right>
 				<f7-link
-					href="/signin">
+					@click="scan()">
 					<f7-icon material="crop_free"></f7-icon>
 				</f7-link>
 			</f7-nav-right>
@@ -95,6 +95,11 @@ export default {
 		},
 	},
 	methods: {
+		scan() {
+			this.$store.dispatch('openQrcodeScanning').then(url => {
+				return axios.put(url)
+			});
+		},
 		navigateIfLogin(route) {
 			if (this.$store.state.signedIn) {
 				this.$f7.router.navigate(route);

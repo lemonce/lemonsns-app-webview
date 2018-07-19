@@ -18,6 +18,9 @@ const store = new Vuex.Store({
 			content: null,
 			open: false,
 			type: null
+		},
+		qr: {
+			scanning: false
 		}
 	},
 	actions: {
@@ -40,8 +43,28 @@ const store = new Vuex.Store({
 			setTimeout(() => {
 				commit('closeNotification');
 			}, 3000);
+		},
+		openQrcodeScanning({ commit }) {
+			commit('setQRScanning', true);
+			
+			QRScanner.show();
+			return new Promise((resolve, reject) => {
+				QRScanner.scan(function displayContents(err, text){
+					if(err){
+						reject(err);
+					} else {
+						resolve(text);
+					}
+					
+					commit('setQRScanning', false);
+				});
+			});
+		},
+		cancelQrcodeScanning({ commit }) {
+			commit('setQRScanning', false);
+			QRScanner.cancel();
+			QRScanner.hide();
 		}
-
 	},
 	mutations: {
 		updateAccount(state, accountId = null) {
@@ -60,6 +83,9 @@ const store = new Vuex.Store({
 		},
 		closeNotification(state) {
 			state.messageBox.open = false;
+		},
+		setQRScanning(state, value) {
+			state.qr.scanning = value;
 		}
 	}
 });
