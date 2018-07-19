@@ -14,7 +14,7 @@
 			<f7-nav-title>{{navTitle}}</f7-nav-title>
 			<f7-nav-right>
 				<f7-link
-					href="/error">
+					href="/signin">
 					<f7-icon material="crop_free"></f7-icon>
 				</f7-link>
 			</f7-nav-right>
