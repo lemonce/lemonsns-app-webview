@@ -55,7 +55,7 @@
 				<f7-icon material="border_color" color="red"></f7-icon><br>
 				<f7-link
 					text="签到处"
-					href="/error"
+					@click="scan()"
 					color="black"
 					class="padding-vertical"
 				></f7-link>
@@ -109,7 +109,7 @@
 			:title="article.title"
 			:link="`/article/${article.id}`">
 			<div slot="media">
-				<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:8rem">
+				<img :src="thumbnailSrc(article.thumbnail, 'small')" style="width:6rem">
 			</div>
 		</f7-list-item>
 	</f7-list>
@@ -130,7 +130,7 @@
 	<f7-block-title>微课堂</f7-block-title>
 	<f7-list media-list class="nowrap">
 		<f7-list-item
-			v-for="(article, index) in personnelList"
+			v-for="(article, index) in microClassList"
 			:key="index"
 			:title="article.title"
 			:link="`/article/${article.id}`">
@@ -177,8 +177,7 @@ export default {
 		return {
 			newsList: [],
 			cultureList: [],
-			personnelList: [],
-			mailboxList:[],
+			microClassList: [],
 			urlList: []
 		};
 	},
@@ -216,23 +215,12 @@ export default {
 				console.log(err.message);
 			});
 		},
-		getPersonnelList() {
-			return axios.get(`app/symbol/article?value=人才中心`).then(res => {
+		getArticleOfClassList() {
+			return axios.get(`app/symbol/article?value=微课堂`).then(res => {
 				const articleList = res.data.data;
 
 				articleList.forEach(article => {
-					this.personnelList.push(article.ufwdArticle);
-				});
-			}).catch(err => {
-				console.log(err.message);
-			});
-		},
-		getMailboxList() {
-			return axios.get(`app/symbol/article?value=投递中心`).then(res => {
-				const articleList = res.data.data;
-
-				articleList.forEach(article => {
-					this.mailboxList.push(article.ufwdArticle);
+					this.microClassList.push(article.ufwdArticle);
 				});
 			}).catch(err => {
 				console.log(err.message);
@@ -241,8 +229,7 @@ export default {
 		getArticleList() {
 			this.getNewsList();
 			this.getCultureList();
-			this.getPersonnelList();
-			this.getMailboxList();
+			this.getArticleOfClassList();
 		},
 
 		thumbnailSrc(hash, regular) {
@@ -251,6 +238,49 @@ export default {
 		getSlideList() {
 			return axios.get(`app/thumbnail`).then(res => {
 				this.urlList = res.data.data;
+			});
+		},
+		scan() {
+			this.$store.dispatch('openQrcodeScanning').then(url => {
+
+				if (!this.$store.state.signedIn) {
+					const dialog = this.$f7.dialog.create({
+						title: '扫一扫失败',
+						text: '请登陆后再进行签到！',
+						buttons: [{
+							text: '确定',
+							close: true
+						}]
+					});
+
+					dialog.open();
+
+					return;
+				}
+
+				return axios.put(url).then(() => {
+					const dialog = this.$f7.dialog.create({
+						title: '扫一扫成功',
+						text: '签到成功！',
+						buttons: [{
+							text: '确定',
+							close: true
+						}]
+					});
+
+					dialog.open();
+				}).catch(err => {
+					const dialog = this.$f7.dialog.create({
+						title: '扫一扫失败',
+						text: '操作失败！',
+						buttons: [{
+							text: '确定',
+							close: true
+						}]
+					});
+
+					dialog.open();
+				});
 			});
 		}
 	}

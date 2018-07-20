@@ -17,7 +17,8 @@
 	<f7-list class="margin-vertical">
 		<f7-list-item
 			link=""
-			title="扫一扫">
+			title="扫一扫"
+			@click="scan()">
 			<f7-icon slot="media" material="crop_free"></f7-icon>	
 		</f7-list-item>
 		<f7-list-item
@@ -72,6 +73,48 @@ export default {
 			} else {
 				this.$f7.router.navigate('/loginSyncLoad');
 			}
+		},
+		scan() {
+			this.$store.dispatch('openQrcodeScanning').then(url => {
+				if (!this.$store.state.signedIn) {
+					const dialog = this.$f7.dialog.create({
+						title: '扫一扫失败',
+						text: '请登陆后再进行签到！',
+						buttons: [{
+							text: '确定',
+							close: true
+						}]
+					});
+
+					dialog.open();
+
+					return;
+				}
+
+				return axios.put(url).then(() => {
+					const dialog = this.$f7.dialog.create({
+						title: '扫一扫成功',
+						text: '签到成功！',
+						buttons: [{
+							text: '确定',
+							close: true
+						}]
+					});
+
+					dialog.open();
+				}).catch(err => {
+					const dialog = this.$f7.dialog.create({
+						title: '扫一扫失败',
+						text: '操作失败！',
+						buttons: [{
+							text: '确定',
+							close: true
+						}]
+					});
+
+					dialog.open();
+				});
+			});
 		}
 	}
 }
