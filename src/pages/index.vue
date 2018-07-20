@@ -74,6 +74,8 @@
 <script>
 import axios from './axios';
 
+import scan from './mixin.js';
+
 const $$ = Dom7;
 
 export default {
@@ -89,55 +91,13 @@ export default {
 			}
 		}
 	},
+	mixins: [scan],
 	computed: {
 		navTitle() {
 			return this.tabList[this.activedTab];
 		},
 	},
 	methods: {
-		scan() {
-			this.$store.dispatch('openQrcodeScanning').then(url => {
-
-				if (!this.$store.state.signedIn) {
-					const dialog = this.$f7.dialog.create({
-						title: '扫一扫失败',
-						text: '请登陆后再进行签到！',
-						buttons: [{
-							text: '确定',
-							close: true
-						}]
-					});
-
-					dialog.open();
-
-					return;
-				}
-
-				return axios.put(url).then(() => {
-					const dialog = this.$f7.dialog.create({
-						title: '扫一扫成功',
-						text: '签到成功！',
-						buttons: [{
-							text: '确定',
-							close: true
-						}]
-					});
-
-					dialog.open();
-				}).catch(err => {
-					const dialog = this.$f7.dialog.create({
-						title: '扫一扫失败',
-						text: '操作失败！',
-						buttons: [{
-							text: '确定',
-							close: true
-						}]
-					});
-
-					dialog.open();
-				});
-			});
-		},
 		navigateIfLogin(route) {
 			if (this.$store.state.signedIn) {
 				this.$f7.router.navigate(route);

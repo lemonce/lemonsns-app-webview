@@ -62,8 +62,8 @@ const store = new Vuex.Store({
 		},
 		cancelQrcodeScanning({ commit }) {
 			commit('setQRScanning', false);
-			QRScanner.cancel();
-			QRScanner.hide();
+			
+			QRScanner.destroy();
 		}
 	},
 	mutations: {

@@ -91,7 +91,7 @@ export default {
 
             let queryString = `keyword=${query}`;
 
-            if (this.party !== 0) {
+            if (this.party !== 0 && this.party !== '0') {
                 queryString += `&party=${this.party}`;
 
                 this.partyList.forEach(item => {
@@ -102,7 +102,7 @@ export default {
                 });
             }
 
-            if (this.street !== 0) {
+            if (this.street !== 0 && this.street !== '0') {
                 queryString += `&street=${this.street}`;
 
                 this.streetList.forEach(item => {
@@ -112,7 +112,7 @@ export default {
                 });
             }
 
-            if (this.identity !== 0) {
+            if (this.identity !== 0 && this.identity !== '0') {
                 queryString += `&identity=${this.identity}`;
 
                 this.identityList.forEach(item => {

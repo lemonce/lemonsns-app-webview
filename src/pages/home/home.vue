@@ -170,6 +170,7 @@
 <script>
 import axios from '../axios.js';
 import config from '../../../config.json';
+import scan from '../mixin.js';
 
 export default {
 	name: 'home',
@@ -181,6 +182,7 @@ export default {
 			urlList: []
 		};
 	},
+	mixins: [scan],
 	mounted() {
 		this.getArticleList();
 		this.getSlideList();
@@ -238,49 +240,6 @@ export default {
 		getSlideList() {
 			return axios.get(`app/thumbnail`).then(res => {
 				this.urlList = res.data.data;
-			});
-		},
-		scan() {
-			this.$store.dispatch('openQrcodeScanning').then(url => {
-
-				if (!this.$store.state.signedIn) {
-					const dialog = this.$f7.dialog.create({
-						title: '扫一扫失败',
-						text: '请登陆后再进行签到！',
-						buttons: [{
-							text: '确定',
-							close: true
-						}]
-					});
-
-					dialog.open();
-
-					return;
-				}
-
-				return axios.put(url).then(() => {
-					const dialog = this.$f7.dialog.create({
-						title: '扫一扫成功',
-						text: '签到成功！',
-						buttons: [{
-							text: '确定',
-							close: true
-						}]
-					});
-
-					dialog.open();
-				}).catch(err => {
-					const dialog = this.$f7.dialog.create({
-						title: '扫一扫失败',
-						text: '操作失败！',
-						buttons: [{
-							text: '确定',
-							close: true
-						}]
-					});
-
-					dialog.open();
-				});
 			});
 		}
 	}
