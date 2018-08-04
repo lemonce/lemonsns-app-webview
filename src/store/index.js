@@ -21,6 +21,10 @@ const store = new Vuex.Store({
 		},
 		qr: {
 			scanning: false
+		},
+		browseHistory: {
+			length: 10,
+			stack: JSON.parse(localStorage.getItem('browseHistory')) || []
 		}
 	},
 	actions: {
@@ -36,6 +40,12 @@ const store = new Vuex.Store({
 				.then(() => {
 					commit('updateAccount');
 				});
+		},
+		addHistory({ commit }, article) {
+			commit('pushBrowseHistory', article);
+		},
+		emptyHistory({commit}) {
+			commit('emptyBrowserHistory');
 		},
 		openMessageBox({commit}, {content, type}) {
 			commit('openNotification', {content, type});
@@ -75,6 +85,23 @@ const store = new Vuex.Store({
 			};
 
 			setLocalStorage('loginStatus', loginStatus);
+		},
+		pushBrowseHistory(state, article) {
+			const {length, stack} = state.browseHistory;
+			const size = stack.length;
+
+			if (size >= length) {
+				stack.shift(size + 1 - length );
+			}
+
+			if (article) {
+				stack.push(article);
+			}
+
+			setLocalStorage('browseHistory', stack);
+		},
+		emptyBrowserHistory() {
+			setLocalStorage('browseHistory', []);
 		},
 		openNotification(state, {content, type}) {
 			state.messageBox.content = content;

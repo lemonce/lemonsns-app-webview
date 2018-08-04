@@ -22,7 +22,7 @@
 			@click="collect"
 			ref="collect">
 		</f7-link>
-		<f7-link icon-f7="forward"></f7-link>
+		<f7-link icon-f7="forward" @click="share"></f7-link>
 
 	</f7-toolbar>
 
@@ -68,11 +68,16 @@ export default {
 				element['target'] = "_Blank";
 			});
 
-			this.getChannel();
-		}).then(() => {
-			this.isCollection();
-		}).then(() => {
-			this.isFavorite();
+			Promise.all([this.getChannel(), this.isCollection(), this.isFavorite()]).then(() => {
+				const stack = this.$store.state.browseHistory.stack;
+
+				const article = _.pick(this.article, ['title']);
+
+				article.id = this.articleId;
+				article.viewTime = dateFormat(new Date(), 'yyyy/mm/dd HH:MM');
+
+				this.$store.dispatch('addHistory', article);	
+			});
 		});
 	},
 	methods: {
@@ -80,7 +85,7 @@ export default {
 			return axios.get(`app/article/${this.articleId}`).then(res => {
 				
 				const articleData = _.pick(res.data.data, [
-					'title', 'content', 'created_at', 'view'
+					'title', 'abstract', 'content', 'created_at', 'view'
 				]);
 
 				this.channelId = res.data.data.channel;
@@ -164,6 +169,22 @@ export default {
 						console.log(err.message);
 					});
 			}
+		},
+		share() {
+			return window.plugins.socialsharing.share(this.article.title, null, null, 'http://www.or-change.cn/ufwd-app/latest.apk')
+				.then(() => {
+					return this.$f7.toast.create({
+						text: '文章分享成功！',
+						closeButton: false,
+						closeTimeout: 2000
+					}).open();
+				}).catch(() => {
+					return this.$f7.toast.create({
+						text: '文章分享失败！',
+						closeButton: false,
+						closeTimeout: 2000
+					}).open();
+				});
 		}
 	}
 }
