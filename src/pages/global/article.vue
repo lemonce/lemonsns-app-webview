@@ -248,7 +248,7 @@ export default {
 	}
 	blockquote {
 		overflow: hidden;
-		padding-right: 1.5em;
+		// padding-right: 1.5em;
 		padding-left: 1.5em;
 		margin-left: 0;
 		border-left: 5px solid #ccc;

@@ -9,7 +9,7 @@
 				<img src="../../../../icon/icon-192x192.png" alt="logo" width="80">
 			</f7-col>
 		</f7-row>
-		<f7-block-footer style="text-align:center">西青云统战 1.0.0</f7-block-footer>
+		<f7-block-footer style="text-align:center">西青云统战 1.0.5</f7-block-footer>
 	</f7-block>
 
 	<f7-list>
