@@ -44,7 +44,7 @@
 			<f7-icon slot="media" material="alarm_on"></f7-icon>
 		</f7-list-item>
 		<f7-list-item
-			link="/group"
+			@click="navigateIfLogin('/group')"
 			title="人才中心">
 			<f7-icon slot="media" material="people"></f7-icon>
 		</f7-list-item>
@@ -64,18 +64,9 @@
 </template>
 
 <script>
-import scan from '../mixin.js';
+import toLogin from '../mixin.js';
 
 export default {
-	mixins: [scan],
-	methods: {
-		navigateIfLogin(route) {
-			if (this.$store.state.signedIn) {
-				this.$f7.router.navigate(route);
-			} else {
-				this.$f7.router.navigate('/loginSyncLoad');
-			}
-		}
-	}
+	mixins: [toLogin]
 }
 </script>

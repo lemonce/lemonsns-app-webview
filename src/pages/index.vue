@@ -46,7 +46,7 @@
 			<f7-link
 				text="我"
 				tab-link
-				@click="navigateIfLogin('./personal/')"
+				@click="navigateIfLogin('./personal/', true)"
 				ref="personal"
 				icon-material="person"
 			></f7-link>
@@ -74,7 +74,7 @@
 <script>
 import axios from './axios';
 
-import scan from './mixin.js';
+import toLogin from './mixin.js';
 
 const $$ = Dom7;
 
@@ -91,20 +91,13 @@ export default {
 			}
 		}
 	},
-	mixins: [scan],
+	mixins: [toLogin],
 	computed: {
 		navTitle() {
 			return this.tabList[this.activedTab];
 		},
 	},
 	methods: {
-		navigateIfLogin(route) {
-			if (this.$store.state.signedIn) {
-				this.$f7.router.navigate(route);
-			} else {
-				this.$f7.router.navigate('/loginSyncLoad');
-			}
-		},
 		tabActived(tab) {
 			this.activedTab = tab;
 			

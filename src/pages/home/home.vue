@@ -1,8 +1,9 @@
 <template>
 
 <div>
-	<f7-swiper pagination :params="{ spaceBetween: 50}" class="home-swiper">
-		<f7-swiper-slide>
+	<!-- 解决渲染bug的配置 -->
+	<f7-swiper pagination :params="{ spaceBetween: 50, observer: true, observeParents: true}" class="home-swiper">
+		<!-- <f7-swiper-slide>
 			<img src="../../images/home/slide1.jpg" alt="" width="100%">
 		</f7-swiper-slide>
 		<f7-swiper-slide>
@@ -16,12 +17,15 @@
 		</f7-swiper-slide>
 		<f7-swiper-slide>
 			<img src="../../images/home/slide5.jpg" alt="" width="100%">
-		</f7-swiper-slide>
-		<!-- <f7-swiper-slide  v-for="(url, index) in urlList" :key="index">
-			<img :src="url" alt="" width="100%">
 		</f7-swiper-slide> -->
+		<f7-swiper-slide>
+			<img src="../../images/home/slide1.jpg" alt="" width="100%">
+		</f7-swiper-slide>
+		<f7-swiper-slide  v-for="(url, index) in urlList" :key="index">
+			<img :src="url" alt="" width="100%">
+		</f7-swiper-slide>
 	</f7-swiper>
-
+	
 	<div id="home-item-pool" class="">
 		<f7-row no-gap>
 			<f7-col class="padding-top">
@@ -147,7 +151,7 @@
 			网址：<f7-link align='center' external text="点击此链接" slot="text" href="http://report.12377.cn:13225/toreportinputNormal_anis.do" color="blue"></f7-link>
 		</p>
 		<p>违法和不良信息举报电话：022-27397509</p>
-		<p>举报邮箱：xq.tzb@163.com</p>
+		<p>举报邮箱：xqtzb@xq.gov.cn</p>
 	</div>
 
 	<!-- <f7-block-title>投递中心</f7-block-title>
@@ -170,7 +174,7 @@
 <script>
 import axios from '../axios.js';
 import config from '../../../config.json';
-import scan from '../mixin.js';
+import toLogin from '../mixin.js';
 
 export default {
 	name: 'home',
@@ -182,19 +186,12 @@ export default {
 			urlList: []
 		};
 	},
-	mixins: [scan],
+	mixins: [toLogin],
 	mounted() {
 		this.getArticleList();
 		this.getSlideList();
 	},
 	methods: {
-		navigateIfLogin(route) {
-			if (this.$store.state.signedIn) {
-				this.$f7.router.navigate(route);
-			} else {
-				this.$f7.router.navigate('/loginSyncLoad');
-			}
-		},
 		getNewsList() {
 			return axios.get(`app/symbol/article?highLevel=闻资讯`).then(res => {
 				const articleList = res.data.data;
@@ -239,7 +236,7 @@ export default {
 		},
 		getSlideList() {
 			return axios.get(`app/thumbnail`).then(res => {
-				this.urlList = res.data.data;
+				this.urlList = res.data.data.slice(0, 4);
 			});
 		}
 	}
