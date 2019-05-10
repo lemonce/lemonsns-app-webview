@@ -59,5 +59,6 @@ typings/
 
 www/
 src/fonts
-package-lock.json
 /static
+
+config.json

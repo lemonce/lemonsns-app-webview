@@ -88,7 +88,7 @@
 				<f7-icon material="playlist_add_check" color="black"></f7-icon><br>
 				<f7-link
 					text="填填看"
-					@click="navigateIfLogin('/filling')"
+					href="/questionanswer"
 					color="black"
 					class="padding-vertical"
 				></f7-link>

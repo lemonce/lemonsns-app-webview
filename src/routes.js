@@ -46,6 +46,8 @@ import Introduction from './pages/personal/setting/introduction.vue';
 import Filling from './pages/filling/filling-index.vue';
 import Vote from './pages/filling/vote.vue';
 import Questionnaire from './pages/filling/questionnaire.vue';
+import VoteIndex from './pages/vote/vote-index.vue';
+import QuestionAnswer from './pages/vote/question-answer.vue';
 
 import Center from './pages/home/center.vue';
 import Group from './pages/home/group.vue';
@@ -218,6 +220,10 @@ export default [
 	{
 		path: '/questionnaire/:id',
 		component: Questionnaire
+	},
+	{
+		path: '/questionanswer',
+		component: QuestionAnswer
 	},
 
 	{

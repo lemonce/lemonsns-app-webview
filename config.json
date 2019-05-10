@@ -1,4 +1,4 @@
 {
-    "baseURL": "https://ufwd.tjxqtzb.gov.cn/api/ufwd/",
+    "baseURL": "https://ufwd.tjxqtzb.gov.cn",
     "static": "https://ufwd.tjxqtzb.gov.cn/static/ufwd/"
 }
