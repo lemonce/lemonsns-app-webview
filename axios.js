@@ -1,9 +1,10 @@
 'user strict';
 
 import axios from 'axios';
+import config from './config.json';
 
 const instance = axios.create({
-	baseURL: 'http://120.27.113.195/api/ufwd/',
+	baseURL: `${config.baseURL}/api/ufwd`,
 	headers: {
 		'Content-Type': 'application/json'
 	},

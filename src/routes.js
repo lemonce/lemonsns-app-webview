@@ -42,6 +42,7 @@ import Introduction from './pages/personal/setting/introduction.vue';
 import VoteIndex from './pages/vote/vote-index.vue';
 import Vote from './pages/vote/vote.vue';
 import Questionnaire from './pages/vote/questionnaire.vue';
+import QuestionAnswer from './pages/vote/question-answer.vue';
 
 import Center from './pages/home/center.vue';
 import Knowledge from './pages/home/knowledge.vue';
@@ -189,6 +190,10 @@ export default [
 	{
 		path: '/questionnaire',
 		component: Questionnaire
+	},
+	{
+		path: '/questionanswer',
+		component: QuestionAnswer
 	},
 
 	{

@@ -81,7 +81,7 @@
 				<f7-icon material="playlist_add_check" color="black"></f7-icon><br>
 				<f7-link
 					text="填填看"
-					href="/vote-index"
+					href="/questionanswer"
 					color="black"
 					class="padding-vertical"
 				></f7-link>
@@ -159,6 +159,7 @@
 
 <script>
 import axios from '../../../axios.js';
+import config from '../../../config.json';
 
 export default {
 	name: 'home',
@@ -242,7 +243,7 @@ export default {
 		},
 
 		thumbnailSrc(hash, regular) {
-			return `http://120.27.113.195/static/ufwd/thumbnail/${hash}/regular/${regular}`;
+			return `${config.baseURL}/static/ufwd/thumbnail/${hash}/regular/${regular}`;
 		}
 	}
 	

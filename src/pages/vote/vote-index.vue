@@ -6,6 +6,10 @@
 	<f7-block-title class="margin-vertical">正在进行中</f7-block-title>
 	<f7-list media-list class="margin-vertical">
 		<f7-list-item
+			title="[答题]xx 知识问答"
+			link="/questionanswer"
+			after="2019/05/01"></f7-list-item>
+		<f7-list-item
 			title="[投票]xx 投票-2"
 			link="/vote"
 			after="2018/03/14"></f7-list-item>
