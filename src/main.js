@@ -26,6 +26,10 @@ const $app = new Vue(Object.assign({
 		toast: {
 			closeTimeout: 2000,
 			closeButton: true,
+		},
+		modal: {
+			okButton: '确定',
+			cancelButton: '取消'
 		}
 	},
 	store

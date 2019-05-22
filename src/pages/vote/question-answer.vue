@@ -4,29 +4,39 @@
     <iframe
       height='100%'
       width='100%'
-      src="http://localhost:8081"
+      :src="iframeSrc"
       frameborder="0"
     ></iframe>
   </f7-page>
 </template>
 
 <script>
+import axios from '../axios.js';
+import config from '../../../config.json';
+
 export default {
+	computed: {
+		iframeSrc() {
+			return `${config.baseURL}/answer.html`;
+		}
+	},
   methods: {
     receiveMessage(event) {
-      console.log(event);
-      this.$f7.dialog.alert(`${event.data}`, '得分', () => {
-        this.$f7router.navigate('/index/');
-        window.removeEventListener('message', this.receiveMessage, false);
-      });
+			this.$f7.dialog.confirm('提交之后无法再修改分数！', `得分： ${event.data}`, () => {
+				axios.patch('app/account/score', {
+					score: event.data
+				}).then(() => {
+					window.removeEventListener('message', this.receiveMessage, false);
+					this.$f7router.navigate('/index/');
+				});
+			}, () => {
+				window.removeEventListener('message', this.receiveMessage, false);
+				this.$f7router.navigate('/index/');
+			});
     }
   },
   mounted() {
-    if (!this.$store.state.signedIn) {
-			this.$f7router.navigate('/login');
-		} else {
-      window.addEventListener('message', this.receiveMessage, false);
-		}
+    window.addEventListener('message', this.receiveMessage, false);
   }
 }
 </script>

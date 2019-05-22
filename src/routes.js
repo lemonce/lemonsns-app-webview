@@ -43,10 +43,6 @@ import ModifyPassword from './pages/personal/setting/modify-password.vue';
 import About from './pages/personal/setting/about.vue';
 import Introduction from './pages/personal/setting/introduction.vue';
 
-import Filling from './pages/filling/filling-index.vue';
-import Vote from './pages/filling/vote.vue';
-import Questionnaire from './pages/filling/questionnaire.vue';
-import VoteIndex from './pages/vote/vote-index.vue';
 import QuestionAnswer from './pages/vote/question-answer.vue';
 
 import Center from './pages/home/center.vue';
@@ -209,18 +205,6 @@ export default [
 		component: Introduction
 	},
 
-	{
-		path: '/filling',
-		component: Filling
-	},
-	{
-		path: '/vote/:id',
-		component: Vote
-	},
-	{
-		path: '/questionnaire/:id',
-		component: Questionnaire
-	},
 	{
 		path: '/questionanswer',
 		component: QuestionAnswer
