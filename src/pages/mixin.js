@@ -3,6 +3,14 @@ import axios from './axios';
 export default {
 	methods: {
 		scan() {
+			if (typeof QRScanner === 'undefined') {
+				return this.$f7.toast.create({
+					text: '请先开放摄像头权限！',
+					closeButton: false,
+					closeTimeout: 2000
+				}).open();
+			}
+
 			if (!this.$store.state.signedIn) {
 				return this.$f7.toast.create({
 					text: '请登陆后再进行签到！',

@@ -42,9 +42,10 @@ export default {
 	mounted() {
 		// For the best user experience, make sure the user is ready to give your app
 		// camera access before you show the prompt. On iOS, you only get one chance.
-
-		QRScanner.prepare(onDone); // show the prompt
-
+		if (typeof QRScanner !== 'undefined') {
+			QRScanner.prepare(onDone); // show the prompt
+		}
+		
 		function onDone(err, status){
 			if (err) {
 			// here we can handle errors and clean up any loose ends.
@@ -68,7 +69,7 @@ export default {
 </script>
 
 <style lang="less">
-body {
+html, body {
 	background-color: transparent !important;
 }
 #cover_signin {
