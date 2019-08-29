@@ -8,7 +8,7 @@
 			<f7-list media-list>
 				<f7-list-item
 					:title="account.ufwdAccount.name"
-					:subtitle="account.ufwdAccount.sex">
+					:subtitle="account.name">
 					<f7-icon material="person" slot="media" size="44px"></f7-icon>
 				</f7-list-item>
 			</f7-list>
@@ -64,15 +64,13 @@ export default {
 
 					this.qrCode = JSON.stringify({
 						'姓名': account.name,
-						'性别': account.sex,
+						// '性别': account.sex,
 						'电话号码': account.phone,
-						'政治面貌': account.party,
+						// '政治面貌': account.party,
 						'街道': account.street,
-						'工作单位': account.unit,
+						// '工作单位': account.unit,
 						'身份类别': account.identityList
 					}); 
-					
-					console.log(this.qrCode);
 				});
 		},
 		getPartyList() {

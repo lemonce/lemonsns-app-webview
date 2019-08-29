@@ -20,14 +20,14 @@
 				@input="account.ufwdAccount.name = $event.target.value">
 			</f7-input>
 		</f7-list-item>
-		<f7-list-item>
+		<!-- <f7-list-item>
 			<f7-label>性别</f7-label>
 			<f7-input name="sex"
 				type="text"
 				:value="account.ufwdAccount.sex|sex"
 				@input="account.ufwdAccount.sex = $event.target.value">
 			</f7-input>
-		</f7-list-item>
+		</f7-list-item> -->
 		<f7-list-item>
 			<f7-label>手机号</f7-label>
 			<f7-input name="phone"
@@ -36,7 +36,7 @@
 				@input="account.ufwdAccount.phone = $event.target.value">
 			</f7-input>
 		</f7-list-item>
-		<f7-list-item>
+		<!-- <f7-list-item>
 			<f7-label>身份证号</f7-label>
 			<f7-input name="identification"
 				type="text"
@@ -54,7 +54,7 @@
 					:key="index"
 					:value="party.id">{{party.name}}</option>
 			</f7-input>
-		</f7-list-item>
+		</f7-list-item> -->
 		<f7-list-item>
 			<f7-label>街道</f7-label>
 			<f7-input name="street"
@@ -66,7 +66,7 @@
 					:value="street.id">{{street.name}}</option>
 			</f7-input>
 		</f7-list-item>
-		<f7-list-item>
+		<!-- <f7-list-item>
 			<f7-label>工作</f7-label>
 			<f7-input name="job"
 				placeholder="工作"
@@ -83,7 +83,7 @@
 				:value="account.ufwdAccount.unit"
 				@input="account.ufwdAccount.unit = $event.target.value">
 			</f7-input>
-		</f7-list-item>
+		</f7-list-item> -->
 		<f7-list-item v-for="(identityElement, index) in identity.identityPool" checkbox
 			:value="identityElement.id"
 			@change="addCheckedIdentity"
@@ -145,13 +145,13 @@ export default {
 				name: this.account.name,
 				ufwd: {
 					name: this.account.ufwdAccount.name,
-					sex: this.account.ufwdAccount.sex,
+					// sex: this.account.ufwdAccount.sex,
 					phone: this.account.ufwdAccount.phone,
-					identification: this.account.ufwdAccount.identification,
-					party: parseInt(this.account.ufwdAccount.party),
+					// identification: this.account.ufwdAccount.identification,
+					// party: parseInt(this.account.ufwdAccount.party),
 					street: parseInt(this.account.ufwdAccount.street),
-					job: this.account.ufwdAccount.job,
-					unit: this.account.ufwdAccount.unit
+					// job: this.account.ufwdAccount.job,
+					// unit: this.account.ufwdAccount.unit
 				}
 			}).then((res) => {
 				const id = res.data.data.id;

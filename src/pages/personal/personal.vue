@@ -7,7 +7,7 @@
 			<f7-list-item
 				:link="`/personal-info`"
 				:title="account.name"
-				:subtitle="account.ufwdAccount.sex">
+				:subtitle="account.ufwdAccount.name">
 				<f7-icon material="person" slot="media" size="44px"></f7-icon>
 			</f7-list-item>
 

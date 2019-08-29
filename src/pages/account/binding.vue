@@ -40,7 +40,7 @@
 				@input="ufwd.name = $event.target.value">
 			</f7-input>
 		</f7-list-item>
-		<f7-list-item>
+		<!-- <f7-list-item>
 			<f7-label>性别</f7-label>
     		<f7-input name="sex"
 				type="select"
@@ -49,7 +49,7 @@
 				<option value="female">女</option>
 				<option value="male">男</option>
     		</f7-input>
-		</f7-list-item>
+		</f7-list-item> -->
 		<f7-list-item>
 			<f7-label>手机</f7-label>
 			<f7-input name="phone"
@@ -59,7 +59,7 @@
 				@input="ufwd.phone = $event.target.value">
 			</f7-input>
 		</f7-list-item>
-		<f7-list-item>
+		<!-- <f7-list-item>
 			<f7-label>身份证号</f7-label>
 			<f7-input name="identification"
 				placeholder="身份证号"
@@ -78,7 +78,7 @@
 					:key="index"
 					:value="party.id">{{party.name}}</option>
 			</f7-input>
-		</f7-list-item>
+		</f7-list-item> -->
 		<f7-list-item>
 			<f7-label>街道</f7-label>
 			<f7-input name="street"
@@ -90,7 +90,7 @@
 					:value="street.id">{{street.name}}</option>
 			</f7-input>
 		</f7-list-item>
-		<f7-list-item>
+		<!-- <f7-list-item>
 			<f7-label>工作</f7-label>
 			<f7-input name="job"
 				placeholder="工作"
@@ -107,7 +107,7 @@
 				:value="ufwd.unit"
 				@input="ufwd.unit = $event.target.value">
 			</f7-input>
-		</f7-list-item>
+		</f7-list-item> -->
 		<!-- <f7-label>身份类别</f7-label> -->
 		<f7-list-item v-for="(identity, index) in identity.identityPool" checkbox
 			:value="identity.id"
@@ -144,12 +144,12 @@ export default {
 			confirmPassword: null,
 			ufwd: {
 				name: null,
-				sex: 'female',
+				// sex: 'female',
 				phone: null,
-				identification: null,
-				unit: null,
-				job: null,
-				party: 1,
+				// identification: null,
+				// unit: null,
+				// job: null,
+				// party: 1,
 				street: 1,
 			},
 			partyList: [],
