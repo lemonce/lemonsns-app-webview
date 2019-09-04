@@ -26,7 +26,7 @@
 			<f7-label>确认密码</f7-label>
 			<f7-input name="password"
 				type="password"
-				placeholder="重复密码"
+				placeholder="确认密码"
 				:value="confirmPassword"
 				@input="confirmPassword = $event.target.value">
 			</f7-input>
@@ -123,7 +123,7 @@
 					@click="signUp">下一步</f7-button>
 			</f7-col>
 			<f7-col width="100" v-if="fail">
-				<f7-button>用户注册失败！</f7-button>
+				<f7-button>用户注册失败，用户名已存在或手机号不正确！</f7-button>
 			</f7-col>
 		</f7-row>
 	</f7-block>

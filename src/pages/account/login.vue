@@ -85,7 +85,7 @@ export default {
 								alertText = '请勿重复登录';
 								break;
 							case 404:
-								alertText = '用户名不存在';
+								alertText = '用户名不存在或账户暂未通过审核';
 								break;
 						}
 
