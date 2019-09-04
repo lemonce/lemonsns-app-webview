@@ -17,7 +17,7 @@
 			<f7-label>密码</f7-label>
 			<f7-input name="password"
 				type="password"
-				placeholder="密码"
+				placeholder="密码长度不得少于6位"
 				:value="password"
 				@input="password = $event.target.value">
 			</f7-input>
@@ -163,8 +163,7 @@ export default {
 	},
 	methods: {
 		signUp() {
-			if (!(this.username && this.password && this.ufwd.name && this.ufwd.phone && this.ufwd.identification &&
-				this.ufwd.unit && this.ufwd.job)) {
+			if (!(this.username && this.password && this.ufwd.name && this.ufwd.phone)) {
 					return false;
 			}
 
