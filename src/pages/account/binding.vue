@@ -109,11 +109,11 @@
 			</f7-input>
 		</f7-list-item> -->
 		<!-- <f7-label>身份类别</f7-label> -->
-		<f7-list-item v-for="(identity, index) in identity.identityPool" checkbox
+		<!-- <f7-list-item v-for="(identity, index) in identity.identityPool" checkbox
 			:value="identity.id"
 			@change="addCheckedIdentity"
 			:key="index" name="identity"
-			:title="identity.name"></f7-list-item>
+			:title="identity.name"></f7-list-item> -->
 	</f7-list>
 
 	<f7-block inset>

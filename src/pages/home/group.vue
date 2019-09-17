@@ -36,7 +36,7 @@
                         :value="street.id">{{street.name}}</option>
                 </f7-input>
             </f7-list-item>
-            <f7-list-item>
+            <!-- <f7-list-item>
                 <f7-label>身份类别</f7-label>
                 <f7-input name="identity"
                     type="select"
@@ -47,7 +47,7 @@
                         :key="index"
                         :value="identity.id">{{identity.name}}</option>
                 </f7-input>
-            </f7-list-item>
+            </f7-list-item> -->
         </f7-list>
         <f7-list class="searchbar-not-found">
             <f7-list-item title="无匹配条件的人员"></f7-list-item>

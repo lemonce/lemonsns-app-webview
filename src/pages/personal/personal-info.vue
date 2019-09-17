@@ -84,12 +84,12 @@
 				@input="account.ufwdAccount.unit = $event.target.value">
 			</f7-input>
 		</f7-list-item> -->
-		<f7-list-item v-for="(identityElement, index) in identity.identityPool" checkbox
+		<!-- <f7-list-item v-for="(identityElement, index) in identity.identityPool" checkbox
 			:value="identityElement.id"
 			@change="addCheckedIdentity"
 			:key="index" name="identity"
 			:title="identityElement.name"
-			:checked="identity.checkedIdentity.indexOf(identityElement.id) >= 0"></f7-list-item>
+			:checked="identity.checkedIdentity.indexOf(identityElement.id) >= 0"></f7-list-item> -->
 	</f7-list>
 
 	<f7-block inset>

@@ -76,13 +76,13 @@
                         :value="account.unit">
                     </f7-input>
                 </f7-list-item> -->
-                <f7-list-item v-for="(identityElement, index) in identityList" checkbox
+                <!-- <f7-list-item v-for="(identityElement, index) in identityList" checkbox
                     disabled
                     :value="identityElement.id"
                     :key="index" name="identity"
                     :title="identityElement.name"
                     :checked="account.identityList.indexOf(identityElement.id) >= 0"
-                    ></f7-list-item>
+                    ></f7-list-item> -->
             </f7-list>
 		</f7-card-content>
 	</f7-card>

@@ -69,7 +69,7 @@ export default {
 						// '政治面貌': account.party,
 						'街道': account.street,
 						// '工作单位': account.unit,
-						'身份类别': account.identityList
+						// '身份类别': account.identityList
 					}); 
 				});
 		},
